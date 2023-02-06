@@ -4,13 +4,13 @@
 
 ## Table of contents (Índice)
 1. [Subject](#1-subject)
-    - [1.1 The rules](#11-the-rules)
-    - [1.2 blank](#12-blank)
-    - [1.3 The programme](#13-the-programme)
+    - [1.1 The rules](#1-the-rules)
+    - [1.2 blank](#2-blank)
+    - [1.3 The programme](#3-the-programme)
 2. [Additional subject](#2-additional-subject)
-    - [2.1 How many arguments are required?](#21-how-many-arguments-are-required)
-    - [2.2 How many times I can sort?](#22-how-many-times-i-can-sort)
-    - [2.3 Is there a time limit?](#23-is-there-a-time-limit)
+    - [2.1 How many arguments are required?](#1-how-many-arguments-are-required)
+    - [2.2 How many times I can sort?](#2-how-many-times-i-can-sort)
+    - [2.3 Is there a time limit?](#3-is-there-a-time-limit)
 3. [Posible error](#3-possible-error)
 
 ## 1. Subject
