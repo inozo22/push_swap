@@ -2,6 +2,17 @@
 課題のPush_swapについてまとめる。
 目標はとりあえず課題を理解すること。
 
+## Table of contents (Índice)
+1. [Subject](#1-subject)
+    - [1.1 The rules](#11-the-rules)
+    - [1.2 blank](#12-blank)
+    - [1.3 The programme](#13-the-programme)
+2. [Additional subject](#2-additional-subject)
+    - [2.1 How many arguments are required?](#21-how-many-arguments-are-required)
+    - [2.2 How many times I can sort?](#22-how-many-times-i-can-sort)
+    - [2.3 Is there a time limit?](#23-is-there-a-time-limit)
+3. [Posible error](#3-possible-error)
+
 ## 1. Subject
 ### 1. The rules
 - The game consists of two stacks, called a and b.
@@ -46,7 +57,7 @@ It depends on the number of arguments.
 ### 3. Is there a time limit?
 - No, but it should be reasonable time.
 
-## 3. Posible error
+## 3. Possible error
 - No arguments (argc should be more than 2) -> Should be written "\n"
 - It's not integer
 - There are dubbed numbers
