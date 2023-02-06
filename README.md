@@ -32,6 +32,9 @@
     - rra :**reverse rotate a** Shifts all the elements of the stack **a** down one position, so that the last element becomes the first.
     - rrb :**reverse rotate b** Shifts all the elements of the stack **b** down one position, so that the last element becomes the first.
     - rrr :**reverse rotate both** Moves all the elements of stack **a** and **b** down one position at the same time, so that the last element becomes the first.
+    https://github.com/inozo22/push_swap/issues/1#issue-1573068708
+    https://github.com/inozo22/push_swap/issues/2#issue-1573069349
+    https://github.com/inozo22/push_swap/issues/3#issue-1573069620
 
 ### 2. 
 ### 3. The programme
