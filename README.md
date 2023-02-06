@@ -10,7 +10,7 @@
 2. [Additional subject](#2-additional-subject)
     - [2.1 How many arguments are required?](#1-how-many-arguments-are-required)
     - [2.2 How many times I can sort?](#2-how-many-times-i-can-sort)
-    - [2.3 Is there a time limit?](#3-is-there-a-time-limit)
+    - [2.3 Is there any time limit?](#3-is-there-any-time-limit)
 3. [Posible error](#3-possible-error)
 
 ## 1. Subject
@@ -54,7 +54,7 @@ It depends on the number of arguments.
 - If there are 5 arguments, less than 12 times? (in the subject, there are 6 arguments, but according to Slack, 5 arguments, **confirmation required**)
 - 100 argumments, 700 times (until 1500 times it's accetable, but points will be deducted)
 - 500 argumments, 5500 times (until 11500 times it's accetable, but points will be deducted)
-### 3. Is there a time limit?
+### 3. Is there any time limit?
 - No, but it should be reasonable time.
 
 ## 3. Possible error
