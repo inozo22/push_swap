@@ -33,8 +33,24 @@ to sort the stack a, from smallest to largest where the smallest is at the top o
 - If no parameters are specified, the program should not display anything and should return control to the user.
 - In case of an error, you should display Error followed by a "\n" in the standard error output. Some of the possible errors are: arguments that are not integers, arguments greater than an int, and/or finding duplicate numbers.
 
-## 2. Posible error
-- No arguments (argc should be more than 2)
+## 2. Additional subject
+### 1. How many arguments are required.
+- At least 500.
+### 2. How many times I can sort?
+It depends on the number of arguments.
+- If it's sorted, it should be 0 times.
+- If there are 3 arguments, less than 3 times.
+- If there are 5 arguments, less than 12 times? (in the subject, there are 6 arguments, but according to Slack, 5 arguments, **confirmation required**)
+- 100 argumments, 700 times (until 1500 times it's accetable, but points will be deducted)
+- 500 argumments, 5500 times (until 11500 times it's accetable, but points will be deducted)
+### 3. Is there a time limit?
+- No, but it should be reasonable time.
+
+## 3. Posible error
+- No arguments (argc should be more than 2) -> Should be written "\n"
 - It's not integer
 - There are dubbed numbers
 - 
+
+
+
