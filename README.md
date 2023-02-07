@@ -68,12 +68,16 @@ It depends on the number of arguments.
 - There are dubbed numbers
 - 
 ## 4. Algorithm
-**??**
+**??**  
 If the arguments are less than 7, use Brute-force search, and then for arguments more than 6 use quick sort?
 ### 1. Quick sort
+- Quick sorting is a method of repeatedly sorting into groups of 'values less than the standard' and groups of 'values greater than the standard' by setting an appropriate standard value. First of all, I have to dicide the standard(pibot)
 ### 2. Insert sort
+- Insertion sort is an alignment algorithm that takes values one by one from an "unaligned array" and inserts them in the appropriate positions in an "aligned arrayºº"
 ### 3. Merge sort
+- Merge sorting is an alignment algorithm that repeatedly divides into two parts until the number of elements is one, and then returns in an aligned manner.
 ### 4. Brute-force search
+- Explore all possible street numbers.
 ### 5. Binary seach
 ### 6. Ternary seach
 ### 7. Backtracking method (Depth-first search)
