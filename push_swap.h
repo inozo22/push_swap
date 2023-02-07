@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:44:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/07 15:41:09 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/07 15:55:47 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # define ARGLIMIT 501
 
-typedef enum e_cmd
+typedef enum e_cmd// to control commands
 {
 	SA,
 	SB,
@@ -35,13 +35,13 @@ typedef enum e_cmd
 	RRR,
 }	t_cmd;
 
-typedef struct s_stack
+typedef struct s_stack// try to use doubly-circularly-linked list
 {
 	long			value;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
-
+// Do not forget put a dummy pointer at the beginning 
 
 
 #endif
