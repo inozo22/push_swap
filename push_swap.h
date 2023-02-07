@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:44:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/06 17:13:28 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/07 14:06:59 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 typedef struct s_stack
 {
-	void			*content;
+	long			value;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;

@@ -55,8 +55,8 @@ to sort the stack a, from smallest to largest where the smallest is at the top o
 ### 2. How many times I can sort?
 It depends on the number of arguments.
 - If it's sorted, it should be 0 times.
-- If there are 3 arguments, less than 3 times.
-- If there are 5 arguments, less than 12 times(in the subject, it's put 6 arguments, but according to Slack we have to show the instruction shorter than 12 times with 5 arguments, also guidelines.pdf(it's a copy of correction in Urduliz)).
+- If there are 3 arguments, less than 4 times.
+- If there are 5 arguments, less than 13 times(in the subject, it's put 6 arguments, but according to Slack we have to show the instruction shorter than 12 times with 5 arguments, also guidelines.pdf(it's a copy of correction in Urduliz)).
 - 100 argumments, 700 times (until 1500 times it's accetable, but points will be deducted)
 - 500 argumments, 5500 times (until 11500 times it's accetable, but points will be deducted)
 ### 3. Is there any time limit?
@@ -67,6 +67,16 @@ It depends on the number of arguments.
 - It's not integer
 - There are dubbed numbers
 - 
-
+## 4. Algorithm
+**??**
+If the arguments are less than 7, use Brute-force search, and then for arguments more than 6 use quick sort?
+### 1. Quick sort
+### 2. Insert sort
+### 3. Merge sort
+### 4. Brute-force search
+### 5. Binary seach
+### 6. Ternary seach
+### 7. Backtracking method (Depth-first search)
+- Depth-first search is an algorithm for exploning graphs and tree structures, in which the path does not return until it comes across a dead-end node where no further pogress can be made, and then proceeds through neighbouring nodes.
 
 
