@@ -80,9 +80,9 @@ It depends on the number of arguments.
 It's recommended to make my own algorithm for a week... ::(> <)::  
 <!-- If the arguments are less than 7, use Brute-force search, and then for arguments more than 6 use quick sort? -->
 ### 4.1. Quick sort
-- Quick sorting is a method of repeatedly sorting into groups of 'values less than the standard' and groups of 'values greater than the standard' by setting an appropriate standard value. First of all, I have to dicide the standard(pibot)  
+- Quick sorting is a method of repeatedly sorting into groups of 'values less than the standard' and groups of 'values greater than the standard' by setting an appropriate standard value. First of all, I have to decide the standard(pibot)  
 ### 4.2. Insert sort
-- Insertion sort is an alignment algorithm that takes values one by one from an "unaligned array" and inserts them in the appropriate positions in an "aligned arrayºº"
+- Insertion sort is an alignment algorithm that takes values one by one from an "unaligned array" and inserts them in the appropriate positions in an "aligned array"
 ### 4.3. Merge sort
 - Merge sorting is an alignment algorithm that repeatedly divides into two parts until the number of elements is one, and then returns in an aligned manner.
 ### 4.4. Brute-force search
@@ -90,6 +90,6 @@ It's recommended to make my own algorithm for a week... ::(> <)::
 ### 4.5. Binary seach
 ### 4.6. Ternary seach
 ### 4.7. Backtracking method (Depth-first search)
-- Depth-first search is an algorithm for exploning graphs and tree structures, in which the path does not return until it comes across a dead-end node where no further pogress can be made, and then proceeds through neighbouring nodes.
+- Depth-first search is an algorithm for exploning graphs and tree structures, in which the path does not return until it comes across a dead-end node where no further progress can be made, and then proceeds through neighbouring nodes.
 
 
