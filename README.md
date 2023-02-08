@@ -1,7 +1,7 @@
 # push_swap
 課題のPush_swapについてまとめる。
 目標はとりあえず課題を理解すること。
-Summarise the push_swap assignment.
+Summarize the push_swap assignment.
 The goal is to understand well the issue.
 
 ## Table of contents (Índice)
@@ -65,8 +65,8 @@ It depends on the number of arguments.
 - If it's sorted, it should be 0 times.
 - If there are 3 arguments, less than 4 times.
 - If there are 5 arguments, less than 13 times(in the subject, it's put 6 arguments, but according to Slack we have to show the instruction shorter than 12 times with 5 arguments, also guidelines.pdf(it's a copy of correction in Urduliz)).
-- 100 argumments, 700 times (until 1500 times it's accetable, but points will be deducted)
-- 500 argumments, 5500 times (until 11500 times it's accetable, but points will be deducted)
+- 100 arguments, 700 times (until 1500 times it's acceptable, but points will be deducted)
+- 500 arguments, 5500 times (until 11500 times it's acceptable, but points will be deducted)
 ### 2.3. Is there any time limit?
 - No, but it should be reasonable time.
 
@@ -103,10 +103,15 @@ It's recommended to make my own algorithm for a week...
                 -4. if there is command redundant, quit and go back to 3
                     -5. change the STACK
                         -6. reenter to 1
+                            (-?. depth first check?)
 So, I can check all of commands one by one, but also cut some cases in line 1 and 4
 
 Theoretically, it is able to count until 8 turns
 (with simple calculation, normally takes 1s for 10000 * 10000 times, as I have 11 commands, 11^8 = 214358881 so it will take 2s more or less.) 
+*review required*
+If I will check all case one by one, I may be able to omit 1.? (If so, I only need once to record the turn)
+This will be simpler than memo, maybe do it simply first, and then if there is problem, change?
+*review required* 
 
 
 
