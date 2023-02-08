@@ -25,9 +25,9 @@ t_stack	get_list(int ac, char **av)
 
 void	push_swap(int ac, char **av)
 {
-	t_stack	a;//stack a, put all av here
-	t_stack	b;//stack b, should be empty
+	t_stack	stack_a;//stack a, put all av here
+	t_stack	stack_b;//stack b, should be empty
 
-	a = malloc(get_list(ac, av));
+	stack_a = malloc(get_list(ac, av));
 	
 }
