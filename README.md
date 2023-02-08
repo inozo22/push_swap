@@ -24,7 +24,7 @@ The goal is to understand well the issue.
     - [4.7 Backtracking method (Depth-first search)](#47-backtracking-method-(depth-first-search)      
 
 ## 1. Subject
-### 1. The rules
+### 1.1. The rules
 - The game consists of two stacks, called a and b.
 - To start with:
     - In a you will have positive and/or negative numbers, never duplicated.
@@ -46,8 +46,8 @@ The goal is to understand well the issue.
     ![42 Push_swap-16](https://user-images.githubusercontent.com/119419194/217055394-9670ef55-5b93-489b-82b8-ce6862a5a2e9.jpg)
     ![42 Push_swap-17](https://user-images.githubusercontent.com/119419194/217055484-5345209b-93f0-4be4-9387-709debf892bb.jpg)
 
-### 2. 
-### 3. The programme
+### 1.2. 
+### 1.3. The programme
 - You must write a program called push_swap that will receive as argument the stack a in the format of a list of integers. The first argument must be the one on top of the stack(be careful with the order).
 - The program must display the list of instructions(shortest)
 to sort the stack a, from smallest to largest where the smallest is at the top of the stack.
@@ -58,16 +58,16 @@ to sort the stack a, from smallest to largest where the smallest is at the top o
 - In case of an error, you should display Error followed by a "\n" in the standard error output. Some of the possible errors are: arguments that are not integers, arguments greater than an int, and/or finding duplicate numbers.
 
 ## 2. Cryptic subject
-### 1. How many arguments are required.
+### 2.1. How many arguments are required.
 - At least 500.
-### 2. How many times I can sort?
+### 2.2. How many times I can sort?
 It depends on the number of arguments.
 - If it's sorted, it should be 0 times.
 - If there are 3 arguments, less than 4 times.
 - If there are 5 arguments, less than 13 times(in the subject, it's put 6 arguments, but according to Slack we have to show the instruction shorter than 12 times with 5 arguments, also guidelines.pdf(it's a copy of correction in Urduliz)).
 - 100 argumments, 700 times (until 1500 times it's accetable, but points will be deducted)
 - 500 argumments, 5500 times (until 11500 times it's accetable, but points will be deducted)
-### 3. Is there any time limit?
+### 2.3. Is there any time limit?
 - No, but it should be reasonable time.
 
 ## 3. Possible error
@@ -83,13 +83,13 @@ It's recommended to make my own algorithm for a week... ::(> <)::
 - Quick sorting is a method of repeatedly sorting into groups of 'values less than the standard' and groups of 'values greater than the standard' by setting an appropriate standard value. First of all, I have to dicide the standard(pibot)  
 ### 4.2. Insert sort
 - Insertion sort is an alignment algorithm that takes values one by one from an "unaligned array" and inserts them in the appropriate positions in an "aligned arrayºº"
-### 3. Merge sort
+### 4.3. Merge sort
 - Merge sorting is an alignment algorithm that repeatedly divides into two parts until the number of elements is one, and then returns in an aligned manner.
-### 4. Brute-force search
+### 4.4. Brute-force search
 - Explore all possible street numbers.
-### 5. Binary seach
-### 6. Ternary seach
-### 7. Backtracking method (Depth-first search)
+### 4.5. Binary seach
+### 4.6. Ternary seach
+### 4.7. Backtracking method (Depth-first search)
 - Depth-first search is an algorithm for exploning graphs and tree structures, in which the path does not return until it comes across a dead-end node where no further pogress can be made, and then proceeds through neighbouring nodes.
 
 
