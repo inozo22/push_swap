@@ -9,11 +9,15 @@ The goal is to understand well the issue.
     - [1.1 The rules](#1-the-rules)
     - [1.2 blank](#2-blank)
     - [1.3 The programme](#3-the-programme)
-2. [Additional subject](#2-additional-subject)
+2. [Cryptic subject](#2-cryptic-subject)
     - [2.1 How many arguments are required?](#1-how-many-arguments-are-required)
     - [2.2 How many times I can sort?](#2-how-many-times-i-can-sort)
     - [2.3 Is there any time limit?](#3-is-there-any-time-limit)
-3. [Posible error](#3-possible-error)
+3. [Possible error](#3-possible-error)
+4. [Algorithm](#4-algorithm)
+    - [4.1 Quick sort](#4-1-quick-sort)
+    - [2.2 How many times I can sort?](#2-how-many-times-i-can-sort)
+    - [2.3 Is there any time limit?](#3-is-there-any-time-limit)
 
 ## 1. Subject
 ### 1. The rules
@@ -43,7 +47,7 @@ The goal is to understand well the issue.
 - You must write a program called push_swap that will receive as argument the stack a in the format of a list of integers. The first argument must be the one on top of the stack(be careful with the order).
 - The program must display the list of instructions(shortest)
 to sort the stack a, from smallest to largest where the smallest is at the top of the stack.
-- The instrctions should be separated using a "\n" and nothing else.
+- The instructions should be separated using a "\n" and nothing else.
 - The goal is to sort the stack with as few operation as possible. During the evaluation we will compare the number of instructions obtained by your program with a maximum instruction range.
 - Your program will receive no points either if your program displays a list that is too long or if the result is not correct.
 - If no parameters are specified, the program should not display anything and should return control to the user.
