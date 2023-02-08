@@ -21,7 +21,7 @@ The goal is to understand well the issue.
     - [4.4 Brute-force search](#44-brute-force-search)
     - [4.5 Binary search](#45-binary-search)
     - [4.6 Ternary search](#46-ternary-search)
-    - [4.7 Backtracking method (Depth-first search)](#47-backtracking-method-(depth-first-search)      
+    - [4.7 Backtracking method (Depth-first search)](#47-backtracking-method-depth-first-search)      
 
 ## 1. Subject
 ### 1.1. The rules
