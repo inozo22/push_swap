@@ -76,8 +76,8 @@ It depends on the number of arguments.
 - There are dubbed numbers
 - 
 ## 4. Algorithm
-**??**  
-It's recommended to make my own algorithm for a week... ::(> <)::  
+**::(> <)::**  
+It's recommended to make my own algorithm for a week...   
 <!-- If the arguments are less than 7, use Brute-force search, and then for arguments more than 6 use quick sort? -->
 ### 4.1. Quick sort
 - Quick sorting is a method of repeatedly sorting into groups of 'values less than the standard' and groups of 'values greater than the standard' by setting an appropriate standard value. First of all, I have to decide the standard(pibot)  
@@ -90,6 +90,26 @@ It's recommended to make my own algorithm for a week... ::(> <)::
 ### 4.5. Binary seach
 ### 4.6. Ternary seach
 ### 4.7. Backtracking method (Depth-first search)
-- Depth-first search is an algorithm for exploning graphs and tree structures, in which the path does not return until it comes across a dead-end node where no further progress can be made, and then proceeds through neighbouring nodes.
+- Depth-first search is an algorithm for exploning graphs and tree structures, in which the path does not return until it comes across a dead-end node where no further progress can be made, and then proceeds through neighbouring nodes.  
+
+
+### memo
+
+    -1. if the number of turn is same as the turn is recorded -> goodbye  
+    (Because there is no possibility to be shorter than that)
+        -2. if STACK a is sorted, update the record and exit
+            -3. start check all commands
+            while check all of them...
+                -4. if there is command redundant, quit and go back to 3
+                    -5. change the STACK
+                        -6. reenter to 1
+So, I can check all of commands one by one, but also cut some cases in line 1 and 4
+
+Theoretically, it is able to count until 8 turns
+(with simple calculation, 1s = 10000 * 10000, as I have 11 commands, 11^8 = 214358881 so it will take 2s more or less.) 
+
+
+
+
 
 
