@@ -75,9 +75,9 @@ It depends on the number of arguments.
 **??**  
 It's recommended to make my own algorithm for a week... ::(> <)::  
 <!-- If the arguments are less than 7, use Brute-force search, and then for arguments more than 6 use quick sort? -->
-### 1. Quick sort
+### 4.1. Quick sort
 - Quick sorting is a method of repeatedly sorting into groups of 'values less than the standard' and groups of 'values greater than the standard' by setting an appropriate standard value. First of all, I have to dicide the standard(pibot)  
-### 2. Insert sort
+### 4.2. Insert sort
 - Insertion sort is an alignment algorithm that takes values one by one from an "unaligned array" and inserts them in the appropriate positions in an "aligned arrayºº"
 ### 3. Merge sort
 - Merge sorting is an alignment algorithm that repeatedly divides into two parts until the number of elements is one, and then returns in an aligned manner.
