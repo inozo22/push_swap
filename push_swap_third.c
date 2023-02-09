@@ -6,16 +6,25 @@
 /*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:15:49 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/09 18:32:32 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/09 19:07:11 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void	add_num(t_stack *stack_a)
+void	add_num(t_stack *stack_a, int value)
 {
-	
+	t_stack	*new;
+	t_stack	*tmp;
+
+	if (!(new = malloc(sizeof(t_stack))))
+		return (0);//error
+	new->value = value;//add value to new
+	tmp->next = new;//keep next(new)
+	tmp->prev = stack_a;//keep prev(stack_a) to tmp
+	stack_a->prev = new;//put prev(new) to stack a
+	new->prev = tmp;//put prev(tmp<-stacka) to new
 
 	return (stack_a);
 }
@@ -47,7 +56,7 @@ void	push_swap(int ac, char **av)
 	{
 		while (i < ac)
 		{
-			add_num(stack_a);
+			add_num(stack_a, atoi(av[i]));
 
 
 
