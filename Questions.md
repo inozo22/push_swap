@@ -16,12 +16,3 @@ I will leave here questions and a tedious soliloquy.
 - There are people do this project using array in stead of list..., curiously, the 42 Urduliz document recommends not to use list orz.
 - I don't know why there is function read, thus I will not open any file descriptor?
 
-## Reference
-- doubly-circularly-linked list
-(JPhttps://cattech-lab.com/science-tools/simulation-lecture-mini-6/
-(JP)https://programming-place.net/ppp/contents/algorithm/data_struct/004.html
-- algorithm
-(EN)https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
-(JP)https://www.edrawsoft.com/jp/explain-algorithm-flowchart.html
-- in general
-(EN)https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a

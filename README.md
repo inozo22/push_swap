@@ -115,13 +115,13 @@ This will be simpler than memo, maybe do it simply first, and then if there is p
 *review required* 
 
 ## 5. Reference
-- doubly-circularly-linked list
-(JPhttps://cattech-lab.com/science-tools/simulation-lecture-mini-6/
-(JP)https://programming-place.net/ppp/contents/algorithm/data_struct/004.html
-- algorithm
-(EN)https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
-(JP)https://www.edrawsoft.com/jp/explain-algorithm-flowchart.html
-- in general
+- doubly-circularly-linked list  
+(JP)https://cattech-lab.com/science-tools/simulation-lecture-mini-6/  
+(JP)https://programming-place.net/ppp/contents/algorithm/data_struct/004.html  
+- algorithm  
+(EN)https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e  
+(JP)https://www.edrawsoft.com/jp/explain-algorithm-flowchart.html  
+- in general  
 (EN)https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
 
 
