@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:44:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/07 15:55:47 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/09 13:01:24 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,18 @@ typedef enum e_cmd// to control commands
 
 typedef struct s_stack// try to use doubly-circularly-linked list
 {
-	long			value;
+	int				value;//maybe long? to avoid error
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
 // Do not forget put a dummy pointer at the beginning 
 
+typedef struct s_pushswap
+{
+	int				a_size;
+	struct pushswap	*tmp;
+}	t_pushswap;
+
+void	push_swap(int ac, char **av);
 
 #endif

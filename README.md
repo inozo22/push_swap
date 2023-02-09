@@ -107,10 +107,10 @@ It's recommended to make my own algorithm for a week...
 So, I can check all of commands one by one, but also cut some cases in line 1 and 4
 
 Theoretically, it is able to count until 8 turns
-(with simple calculation, normally takes 1s for 10000 * 10000 times, as I have 11 commands, 11^8 = 214358881 so it will take 2s more or less.) 
-*review required*
-If I will check all case one by one, I may be able to omit 1.? (If so, I only need once to record the turn)
-This will be simpler than memo, maybe do it simply first, and then if there is problem, change?
+(with simple calculation, normally takes 1s for 10000 * 10000 times, as I have 11 commands, 11^8 = 214358881 so it will take 2s more or less.)   
+*review required*  
+If I will check all case one by one, I may be able to omit 1.? (If so, I only need once to record the first turn)  
+This will be simpler than memo, maybe do it simply first, and then if there is problem, change?  
 *review required* 
 
 
