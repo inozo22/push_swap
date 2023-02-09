@@ -21,7 +21,8 @@ The goal is to understand well the issue.
     - [4.4. Brute-force search](#44-brute-force-search)
     - [4.5. Binary search](#45-binary-search)
     - [4.6. Ternary search](#46-ternary-search)
-    - [4.7. Backtracking method (Depth-first search)](#47-backtracking-method-depth-first-search)      
+    - [4.7. Backtracking method (Depth-first search)](#47-backtracking-method-depth-first-search) 
+5. [Reference](#5-reference)     
 
 ## 1. Subject
 ### 1.1. The rules
@@ -113,7 +114,15 @@ If I will check all case one by one, I may be able to omit 1.? (If so, I only ne
 This will be simpler than memo, maybe do it simply first, and then if there is problem, change?  
 *review required* 
 
-
+## 5. Reference
+- doubly-circularly-linked list
+(JPhttps://cattech-lab.com/science-tools/simulation-lecture-mini-6/
+(JP)https://programming-place.net/ppp/contents/algorithm/data_struct/004.html
+- algorithm
+(EN)https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
+(JP)https://www.edrawsoft.com/jp/explain-algorithm-flowchart.html
+- in general
+(EN)https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a
 
 
 
