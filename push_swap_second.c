@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:15:49 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/09 16:00:46 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/09 16:25:19 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	push_swap(int ac, char **av)
 	int			i;
 	int			len;
 
-	i = 0;
+	i = 1;
 	len = 0;
 	if (ac > 2)
 	{
 		while (i < ac)
 		{
-			if (i == 0)
+			if (i == 1)
 			{
 				p = malloc(sizeof(t_stack));
 				start = p;

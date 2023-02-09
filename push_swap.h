@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:44:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/09 14:26:16 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/09 18:38:03 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ typedef struct s_stack// try to use doubly-circularly-linked list
 
 typedef struct s_pushswap
 {
-	int				a_size;
-	int				n;
-	struct pushswap	*tmp;
+	int					a_size;
+	int					n;
+	struct s_stack		*tmp;
 }	t_pushswap;
 
 void	push_swap(int ac, char **av);

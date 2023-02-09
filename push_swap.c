@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:15:49 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/09 14:32:24 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/09 16:25:20 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 }
 
 
-/* t_stack	*make_lst(void)
-{
-	t_stack	*new;
-	t_stack	*tmp;
-
-	
-} */
 
 t_stack	*add_lst(int value, t_pushswap *pushswap)
 {
@@ -80,9 +73,16 @@ t_stack	*add_lst(int value, t_pushswap *pushswap)
 	new->value = -1;
 	new->next = new;
 	new->prev = new;
+	i = 0;
+	while (i < pushswap->a_size)
+	{
+		
+	}
 
-	if (value == '\0')
-		return (0);//error, liberar
+
+
+
+
 	if (stack_a->value == -1)
 	{
 		if (!(new = (t_stack *)malloc(sizeof(t_stack))))
@@ -115,6 +115,7 @@ void	push_swap(int ac, char **av)
 	int	i;
 
 	i = 0;
+	init_pushswap(pushswap);//initialize the structure a_size = 0, n = 0, ps_error = 0; 
 	while (*av[i])
 		i++;
 	pushswap->a_size = i;
