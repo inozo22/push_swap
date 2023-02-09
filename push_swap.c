@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:15:49 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/09 12:57:17 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/09 14:32:24 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,39 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	*lst = NULL;
 }
 
-t_stack	*ft_lstnew(int value)
+
+/* t_stack	*make_lst(void)
 {
-	t_stack	*stack_a;
+	t_stack	*new;
+	t_stack	*tmp;
+
+	
+} */
+
+t_stack	*add_lst(int value, t_pushswap *pushswap)
+{
+	t_stack	*new;
+	t_stack	*tmp;
+	int		i;
+
+	new = (t_stack *)malloc(sizeof(t_stack));
+	if (!new)
+		return (0);//error, liberar
+	new->value = -1;
+	new->next = new;
+	new->prev = new;
+
+	if (value == '\0')
+		return (0);//error, liberar
+	if (stack_a->value == -1)
+	{
+		if (!(new = (t_stack *)malloc(sizeof(t_stack))))
+			return (0);//error, liberar
+		tmp = stack_a->next;
+		new = 
+	}
+
+
 
 	stack_a = malloc(sizeof (t_stack));
 	if (!stack_a)
@@ -70,28 +100,30 @@ t_stack	*ft_lstnew(int value)
 		return (NULL);
 	}
 
-	stack_a -> value = value;
-	stack_a -> next = NULL;
-	stack_a -> prev = 	
+	stack_a->value = value;
+	stack_a->next = NULL;
+	stack_a->prev = 	
 	return (new_list);
 }
 
+
 void	push_swap(int ac, char **av)
 {
-	t_stack	*stack_a;//stack a, put all av here
-	t_stack	*stack_b;//stack b, should be empty
+	t_stack		*stack_a;//stack a, put all av here
+	t_stack		*stack_b;//stack b, should be empty
+	t_pushswap	*pushswap;
 	int	i;
 
-	//stack_a = malloc(get_list(ac, av));
 	i = 0;
 	while (*av[i])
 		i++;
-	stack_a->a_size = i;
+	pushswap->a_size = i;
 	i = 0;
 	while (*av[i])
 	{
+		add_list(atoi(av[i]), *pushswap);
 
-		ft_lstnew(atoi(av[i]));
+		//ft_lstnew(atoi(av[i]));
 		stack_a->value = atoi(av[i]);
 		i++;
 	}
