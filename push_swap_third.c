@@ -6,12 +6,26 @@
 /*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:15:49 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/10 14:02:18 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/10 16:23:02 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+void	fill_ps(t_pushswap *ps, int ac, char **av)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 0;
+	while (i < ac)
+	{
+		ps->n[j++].value = ps_atoi(av[i]);
+		i++;
+	}
+}
 
 t_stack	*add_num(t_stack *stack_a, int value)
 {
@@ -42,9 +56,15 @@ t_stack	*init_stack(void)
 	return (stack);
 }
 
-t_pushswap	*ps(void)
+t_pushswap	*init_ps(int ac, char **av)
 {
+	t_pushswap	*ps;
 
+	ps = (t_pushswap *)malloc(sizeof(t_pushswap));
+	fill_ps(ps, ac, av);
+	ps->size = 0;
+	ps->answer = 0;
+	return (ps);
 }
 
 void	push_swap(int ac, char **av)
@@ -58,8 +78,16 @@ void	push_swap(int ac, char **av)
 
 	int			i;
 	int			len;
-
-	printf("%s", "KOKOmade");
+	if (ac < 2)
+	{
+		printf("There is no arguments! Put something");
+		return ;
+	}
+	if (ac == 2)
+	{
+		printf("Ato de kangaeru");
+		return ;
+	}
 	ps = init_ps(ac, av);
 	stack_a = init_stack();
 	stack_b = init_stack();
@@ -69,7 +97,7 @@ void	push_swap(int ac, char **av)
 	{
 		while (i++ < ac)
 		{
-			stack_a = add_num(stack_a, (ps->n[len].value = atoi(av[i])));
+			stack_a = add_num(stack_a, (ps->n[len].value));
 			len++;
 		}
 	}
