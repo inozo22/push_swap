@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:15:49 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/10 11:17:00 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/10 14:02:18 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_stack	*add_num(t_stack *stack_a, int value)
 	tmp->prev = stack_a;//keep prev(stack_a) to tmp
 	stack_a->prev = new;//put prev(new) to stack a
 	new->prev = tmp;//put prev(tmp<-stacka) to new
-
 	return (stack_a);
 }
 
@@ -43,6 +42,11 @@ t_stack	*init_stack(void)
 	return (stack);
 }
 
+t_pushswap	*ps(void)
+{
+
+}
+
 void	push_swap(int ac, char **av)
 {
 	t_stack		*stack_a;//stack a, put all av here
@@ -56,6 +60,7 @@ void	push_swap(int ac, char **av)
 	int			len;
 
 	printf("%s", "KOKOmade");
+	ps = init_ps(ac, av);
 	stack_a = init_stack();
 	stack_b = init_stack();
 	i = 1;
