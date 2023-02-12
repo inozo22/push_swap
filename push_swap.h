@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:44:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/10 11:10:13 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/10 15:56:54 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ typedef struct s_sorting//structure to sort
 }	t_sorting;
 
 void	push_swap(int ac, char **av);
+<<<<<<< HEAD
 void	push_swap2(int ac, char ** av);//For test
+=======
+int		ps_atoi(char *str);
+>>>>>>> test2
 
 #endif

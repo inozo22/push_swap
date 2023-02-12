@@ -6,13 +6,14 @@
 #    By: nimai <nimai@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 13:19:10 by nimai             #+#    #+#              #
-#    Updated: 2023/02/06 13:27:39 by nimai            ###   ########.fr        #
+#    Updated: 2023/02/11 09:14:46 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g1
+#if add "-fsanitize=address", give me "0xbebebebebebebebe" instead of null
 
 NAME = push_swap
 
