@@ -17,6 +17,6 @@ int	main(int ac, char **av)
 	if (ac > ARGLIMIT)
 		return (0);//error
 	else
-		push_swap(ac, av);
+		push_swap2(ac, av);//for test
 	return (0);
 }

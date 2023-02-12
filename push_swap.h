@@ -66,5 +66,6 @@ typedef struct s_sorting//structure to sort
 }	t_sorting;
 
 void	push_swap(int ac, char **av);
+void	push_swap2(int ac, char ** av);//For test
 
 #endif
