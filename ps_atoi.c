@@ -22,7 +22,7 @@ int	is_digit(char c)
 
 int	ps_atoi(char *str)
 {
-	int	ret;
+	int	ret;//better use long to avoid error
 	int	sign;
 
 	ret = 0;

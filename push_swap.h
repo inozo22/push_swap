@@ -53,7 +53,7 @@ typedef struct s_pushswap//structure to control in generarl
 {
 	int			size;
 	t_boxes		*answer;
-	t_pair		n[ARGLIMIT];
+	//t_pair		n[ARGLIMIT];
 }	t_pushswap;
 
 typedef struct s_sorting//structure to sort
