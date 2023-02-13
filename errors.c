@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ps_error(void)
+int	ps_error(void)
 {
 	ft_putstr_fd("Error\n", stderr);
 	return (1);
