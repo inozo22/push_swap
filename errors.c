@@ -14,6 +14,5 @@
 
 void	ps_error(void)
 {
-	ft_putstr_fd(1, "Error\n", 6);
-	return (stderr);
+	ft_putstr_fd("Error\n", STDERR);
 }

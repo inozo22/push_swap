@@ -12,8 +12,33 @@
 
 #include "push_swap.h"
 
+t_boxes	make_stack(void)
+{
+	t_boxes	*new;
+
+	new = malloc(sizeof(t_boxes));
+	if (!new)
+		return (ps_error());
+}
+
+t_boxes	put_num(int ac, char **av)
+{
+	t_boxes	*ret;
+
+	ret = make_stack();
+
+
+}
+
 void	push_swap(int ac, char **av)
 {
-	
+	t_boxes	*a[4];
+	t_boxes	*b[];
+
+	a = put_num(ac, av);
+	b = make_stack();
+
+
+
 
 }

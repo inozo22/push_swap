@@ -52,7 +52,7 @@ typedef struct s_boxes// try to use doubly-circularly-linked list
 typedef struct s_pushswap//structure to control in generarl
 {
 	int			size;
-	t_stack		*answer;
+	t_boxes		*answer;
 	t_pair		n[ARGLIMIT];
 }	t_pushswap;
 
