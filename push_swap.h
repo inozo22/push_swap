@@ -35,12 +35,12 @@ typedef enum e_cmd// to control commands
 	RRR,
 }	t_cmd;
 
-typedef struct s_stack// try to use doubly-circularly-linked list
+typedef struct s_boxes// try to use doubly-circularly-linked list
 {
 	int				value;//maybe long? to avoid error
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}	t_stack;
+	struct s_boxes	*next;
+	struct s_boxes	*prev;
+}	t_boxes;
 // Do not forget put a dummy pointer at the beginning 
 
 /* typedef struct s_pair

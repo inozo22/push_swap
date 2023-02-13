@@ -78,8 +78,7 @@ It depends on the number of arguments.
 - 
 ## 4. Algorithm
 **::(> <)::**  
-It's recommended to make my own algorithm for a week...   
-<!-- If the arguments are less than 7, use Brute-force search, and then for arguments more than 6 use quick sort? -->
+If the arguments are less than 6, use Brute-force search, and then for arguments more than 6 use quick sort?  
 ### 4.1. Quick sort
 - Quick sorting is a method of repeatedly sorting into groups of 'values less than the standard' and groups of 'values greater than the standard' by setting an appropriate standard value. First of all, I have to decide the standard(pibot)  
 ### 4.2. Insert sort
