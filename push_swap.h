@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nimai <nimai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 16:44:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/10 15:56:54 by nimai            ###   ########.fr       */
+/*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
+/*   Updated: 2023/02/13 13:03:26 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ typedef struct s_stack// try to use doubly-circularly-linked list
 }	t_stack;
 // Do not forget put a dummy pointer at the beginning 
 
-typedef struct s_pair
+/* typedef struct s_pair
 {
 	int	value;
 	int	id;
-}	t_pair;
+}	t_pair; */
 
 typedef struct s_pushswap//structure to control in generarl
 {
@@ -56,9 +56,6 @@ typedef struct s_pushswap//structure to control in generarl
 	t_pair		n[ARGLIMIT];
 }	t_pushswap;
 
-
-
-
 typedef struct s_sorting//structure to sort
 {
 	int	turn;
@@ -66,10 +63,6 @@ typedef struct s_sorting//structure to sort
 }	t_sorting;
 
 void	push_swap(int ac, char **av);
-<<<<<<< HEAD
-void	push_swap2(int ac, char ** av);//For test
-=======
 int		ps_atoi(char *str);
->>>>>>> test2
 
 #endif
