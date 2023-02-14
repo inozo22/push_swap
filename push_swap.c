@@ -90,6 +90,15 @@ void	push_swap(int ac, char **av)
 		stack_b = stack_b->next;
 	}
 	printf("------\t------\nstackA\tstackB\n");
+	swap(stack_a);
+	while (stack_a->next->value != -1)
+	{
+		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);
+		stack_a = stack_a->next;
+		stack_b = stack_b->next;
+	}
+	printf("------\t------\nstackA\tstackB\n");
+
 }
 
 /* void	main(void)

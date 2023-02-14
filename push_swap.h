@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdbool.h>
 
 # define ARGLIMIT 501
 
@@ -64,5 +65,6 @@ typedef struct s_sorting//structure to sort
 
 void	push_swap(int ac, char **av);
 int		ps_atoi(char *str);
+bool	swap(t_boxes *box);
 
 #endif
