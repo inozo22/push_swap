@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_boxes	*search_head(t_boxes *dummy)
+t_boxes	*search_head(t_boxes *dummy)//20230214疑義有。要確認！
 {
 	t_boxes	*ret;
 
@@ -42,7 +42,6 @@ void	add_box(t_boxes *dummy, int num)
 	new->prev = tmp;
 	dummy->prev = new;
 	dummy->next = head;
-
 }
 
 t_boxes	*make_dummy(void)
@@ -80,16 +79,18 @@ void	push_swap(int ac, char **av)
 
 	stack_a = put_num(ac, av);
 	stack_b = make_dummy();
-	/* printf(":::::\nvalue of stacka: %d\npoint of stacka: %p\n", stack_a->value, stack_a);
+	printf(":::::\nvalue of stacka: %d\npoint of stacka: %p\n", stack_a->value, stack_a);
 	printf("\n:::::\nnext value of stacka: %d\npoint of stacka: %p\n", stack_a->next->value, stack_a);
-	printf("\n:::::\nnext next value of stacka: %d\npoint of stacka: %p\n", stack_a->next->next->value, stack_a); */
-	/* while (stack_a->next->value != -1)
+	printf("\n:::::\nnext next value of stacka: %d\npoint of stacka: %p\n", stack_a->next->next->value, stack_a);
+	while (stack_a->next->value != -1)
 	{
 		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);
 		stack_a = stack_a->next;
 		stack_b = stack_b->next;
 	}
-	printf("------\t------\nstackA\tstackB\n"); */
+	printf("------\t------\nstackA\tstackB\n");
+	search_head(stack_a);
+	printf("+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
 	swap(stack_a);
 	printf("@@@@@@\nvalue of stacka: %d\n", stack_a->value);
 	while (stack_a->next->value != -1)
