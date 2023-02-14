@@ -83,14 +83,15 @@ void	push_swap(int ac, char **av)
 	/* printf(":::::\nvalue of stacka: %d\npoint of stacka: %p\n", stack_a->value, stack_a);
 	printf("\n:::::\nnext value of stacka: %d\npoint of stacka: %p\n", stack_a->next->value, stack_a);
 	printf("\n:::::\nnext next value of stacka: %d\npoint of stacka: %p\n", stack_a->next->next->value, stack_a); */
-	while (stack_a->next->value != -1)
+	/* while (stack_a->next->value != -1)
 	{
 		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);
 		stack_a = stack_a->next;
 		stack_b = stack_b->next;
 	}
-	printf("------\t------\nstackA\tstackB\n");
+	printf("------\t------\nstackA\tstackB\n"); */
 	swap(stack_a);
+	printf("@@@@@@\nvalue of stacka: %d\n", stack_a->value);
 	while (stack_a->next->value != -1)
 	{
 		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);
@@ -98,6 +99,8 @@ void	push_swap(int ac, char **av)
 		stack_b = stack_b->next;
 	}
 	printf("------\t------\nstackA\tstackB\n");
+	printf("'-' '-' '-'\nnext of stacka: %p\nprev of stacka:%p\npoint of stacka: %p\n", stack_a->next, stack_a->prev, stack_a);
+	printf("'-' '-' '-'\nvalue next of stacka: %d\nvalue prev of stacka:%d\nvalue of stacka: %d\n", stack_a->next->value, stack_a->prev->value, stack_a->value);
 
 }
 
