@@ -17,12 +17,10 @@ t_boxes	*search_head(t_boxes *dummy)
 	t_boxes	*ret;
 
 	ret = dummy;
-	printf("::::::::::\nprev of dummy before while: %p\n", dummy->prev);
 	while (ret->prev != dummy)
 	{
 		ret = ret->prev;
 	}
-	printf("point of ret: %p\n", ret);
 	return (ret);
 }
 
@@ -32,7 +30,6 @@ void	add_box(t_boxes *dummy, int num)
 	t_boxes	*tmp;
 	t_boxes	*head;
 
-	printf("********\npoint of dummy before search head: %p\n", dummy);
 	head = search_head(dummy);
 	new = malloc(sizeof(t_boxes));
 	/* if (!new)
@@ -43,8 +40,6 @@ void	add_box(t_boxes *dummy, int num)
 	new->prev = tmp;
 	dummy->prev = new;
 	dummy->next = head;
-	printf("point of head: %p\n", head);
-	printf("prev of dummy: %p\nnext of dummy: %p\npoint of dummy: %p\n", dummy->prev, dummy->next, dummy);
 
 }
 
@@ -57,7 +52,7 @@ t_boxes	*make_dummy(void)
 		return (ps_error()); */
 	dummy->value = -1;//This value it will not be seen, so it's ok whatever I put
 	dummy->next = dummy;
-	dummy->prev = dummy;//This is the dummy box, that 
+	dummy->prev = dummy;//This is the dummy box, that   
 	return (dummy);
 }
 
@@ -92,8 +87,13 @@ void	main(void)
 
 	dummy = make_dummy();
 	add_box(dummy, 123); 
-	add_box(dummy, 234);/*
+	printf(":::::::::\npoint of dummy: %p\nvalue of dummy->prev: %d\nvalue of dummy->next: %d\n", dummy, dummy->prev->value, dummy->next->value);
+	add_box(dummy, 234);
+	printf(":::::::::\npoint of dummy: %p\nvalue of dummy->prev: %d\nvalue of dummy->next: %d\n", dummy, dummy->prev->value, dummy->next->value);
 	add_box(dummy, 345);
+	printf(":::::::::\npoint of dummy: %p\nvalue of dummy->prev: %d\nvalue of dummy->next: %d\n", dummy, dummy->prev->value, dummy->next->value);
+	printf("::::::::\n%d\t \n%d\t \n%d\t \n----\t----\na\tb", dummy->prev->value, dummy->prev->prev->value, dummy->prev->prev->prev->value);
+/*
 	printf("::::::::\nvalue of dummy: %d\npoint of dummy: %p\n", dummy->value, dummy);
 	dummy = dummy->prev;
 	printf("::::::::\nvalue of dummy: %d\npoint of dummy: %p\n", dummy->value, dummy);
