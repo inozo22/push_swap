@@ -30,11 +30,13 @@ void	add_box(t_boxes *dummy, int num)
 	t_boxes	*tmp;
 	t_boxes	*head;
 
+	//printf(":::\npoint of dummy: %p\nnext of dummy: %p\nprev of dummy: %p\n", dummy, dummy->next, dummy->prev);
 	head = search_head(dummy);
 	new = malloc(sizeof(t_boxes));
 	/* if (!new)
 		return (ps_error());//Here, I have to free the dummy too(clearlist?) */
 	tmp = dummy->prev;
+	tmp->next = new;//
 	new->value = num;
 	new->next = dummy;
 	new->prev = tmp;
@@ -56,7 +58,7 @@ t_boxes	*make_dummy(void)
 	return (dummy);
 }
 
-/* t_boxes	put_num(int ac, char **av)
+t_boxes	*put_num(int ac, char **av)
 {
 	t_boxes	*dummy;
 	int		i;
@@ -76,12 +78,21 @@ void	push_swap(int ac, char **av)
 	t_boxes	*stack_a;
 	t_boxes	*stack_b;
 
-	a = put_num(ac, av);
-	b = make_dummy();
+	stack_a = put_num(ac, av);
+	stack_b = make_dummy();
+	/* printf(":::::\nvalue of stacka: %d\npoint of stacka: %p\n", stack_a->value, stack_a);
+	printf("\n:::::\nnext value of stacka: %d\npoint of stacka: %p\n", stack_a->next->value, stack_a);
+	printf("\n:::::\nnext next value of stacka: %d\npoint of stacka: %p\n", stack_a->next->next->value, stack_a); */
+	while (stack_a->next->value != -1)
+	{
+		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);
+		stack_a = stack_a->next;
+		stack_b = stack_b->next;
+	}
+	printf("------\t------\nstackA\tstackB\n");
+}
 
-} */
-
-void	main(void)
+/* void	main(void)
 {
 	t_boxes *dummy;
 
@@ -97,11 +108,11 @@ void	main(void)
 	printf("::::::::\nvalue of dummy: %d\npoint of dummy: %p\n", dummy->value, dummy);
 	dummy = dummy->prev;
 	printf("::::::::\nvalue of dummy: %d\npoint of dummy: %p\n", dummy->value, dummy);
- */
+ 
 	/* while (dummy->next->value != -1)
 	{
 		printf("value is %d, pointer is %p\n", dummy->value, dummy);
 		dummy = dummy->prev;
 	}
- */
-}
+ 
+} */
