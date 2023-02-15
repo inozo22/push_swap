@@ -103,8 +103,41 @@ void	push_swap(int ac, char **av)
 	printf("------\t------\nstackA\tstackB\n");
 	//search_head(stack_a);
 	stack_a = search_head(stack_a);
+	stack_b = search_head(stack_b);
 	printf("1+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
+	printf("1+++++++\nbhead value: %d\nbhead pointer: %p\n\n", stack_b->value, stack_b);
 	stack_a = stack_a->prev;
+	stack_b = stack_b->prev;
+	printf("2+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
+	cmd_push(stack_b, stack_a);
+	while (stack_a->next->value != -1)
+	{
+		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);
+		stack_a = stack_a->next;
+		stack_b = stack_b->next;
+	}
+	printf("------\t------\nstackA\tstackB\n");
+	stack_a = search_head(stack_a);
+	stack_b = search_head(stack_b);
+	printf("1+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
+	printf("1+++++++\nbhead value: %d\nbhead pointer: %p\n\n", stack_b->value, stack_b);
+	stack_a = stack_a->prev;
+	stack_b = stack_b->prev;
+	printf("2+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
+	cmd_push(stack_b, stack_a);
+	while (stack_a->next->value != -1)
+	{
+		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);
+		stack_a = stack_a->next;
+		stack_b = stack_b->next;
+	}
+	printf("------\t------\nstackA\tstackB\n");
+	stack_a = search_head(stack_a);
+	stack_b = search_head(stack_b);
+	printf("1+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
+	printf("1+++++++\nbhead value: %d\nbhead pointer: %p\n\n", stack_b->value, stack_b);
+	stack_a = stack_a->prev;
+	stack_b = stack_b->prev;
 	printf("2+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
 	cmd_push(stack_b, stack_a);
 	while (stack_a->next->value != -1)
@@ -115,6 +148,15 @@ void	push_swap(int ac, char **av)
 	}
 	printf("------\t------\nstackA\tstackB\n");
 
+	stack_b = search_head(stack_b);
+	printf("check b+++++++\nbhead value: %d\nbhead pointer: %p\n\n", stack_b->value, stack_b);
+	stack_b = stack_b->prev;
+	printf("2+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_b->value, stack_b);
+	while (stack_b->next->value != -1)
+	{
+		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);
+		stack_b = stack_b->next;
+	}
 }
 
 /* void	main(void)
