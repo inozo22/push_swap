@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-t_boxes	*search_head(t_boxes *dummy)//20230214疑義有。要確認！
+t_boxes	*search_head(t_boxes *dummy)//look for the first box that is not a dummy
 {
 	t_boxes	*ret;
 
 	ret = dummy;
-	while (ret->prev != dummy)
+	while (ret->prev->value != -1)
 	{
 		ret = ret->prev;
 	}
@@ -79,9 +79,6 @@ void	push_swap(int ac, char **av)
 
 	stack_a = put_num(ac, av);
 	stack_b = make_dummy();
-	printf(":::::\nvalue of stacka: %d\npoint of stacka: %p\n", stack_a->value, stack_a);
-	printf("\n:::::\nnext value of stacka: %d\npoint of stacka: %p\n", stack_a->next->value, stack_a);
-	printf("\n:::::\nnext next value of stacka: %d\npoint of stacka: %p\n", stack_a->next->next->value, stack_a);
 	while (stack_a->next->value != -1)
 	{
 		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);
@@ -90,6 +87,10 @@ void	push_swap(int ac, char **av)
 	}
 	printf("------\t------\nstackA\tstackB\n");
 	search_head(stack_a);
+	stack_a = stack_a->prev;
+	printf("+++++++\nstakca value: %d\nstacka pointer: %p\n\n", stack_a->value, stack_a);
+	while (stack_a->value != -1)
+		stack_a = stack_a->next;
 	printf("+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
 	swap(stack_a);
 	printf("@@@@@@\nvalue of stacka: %d\n", stack_a->value);
@@ -100,8 +101,19 @@ void	push_swap(int ac, char **av)
 		stack_b = stack_b->next;
 	}
 	printf("------\t------\nstackA\tstackB\n");
-	printf("'-' '-' '-'\nnext of stacka: %p\nprev of stacka:%p\npoint of stacka: %p\n", stack_a->next, stack_a->prev, stack_a);
-	printf("'-' '-' '-'\nvalue next of stacka: %d\nvalue prev of stacka:%d\nvalue of stacka: %d\n", stack_a->next->value, stack_a->prev->value, stack_a->value);
+	//search_head(stack_a);
+	stack_a = search_head(stack_a);
+	printf("1+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
+	stack_a = stack_a->prev;
+	printf("2+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
+	rotate(stack_a);
+	while (stack_a->next->value != -1)
+	{
+		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);
+		stack_a = stack_a->next;
+		stack_b = stack_b->next;
+	}
+	printf("------\t------\nstackA\tstackB\n");
 
 }
 
