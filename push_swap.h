@@ -69,5 +69,9 @@ bool	cmd_swap(t_boxes *box);
 bool	cmd_rotate(t_boxes *box);
 bool	cmd_reverse(t_boxes *box);
 bool	cmd_push(t_boxes *dst, t_boxes *src);
+bool	cmd_ss(t_boxes *stack_a, t_boxes *stack_b);
+bool	cmd_rr(t_boxes *stack_a, t_boxes *stack_b);
+bool	cmd_rrr(t_boxes *stack_a, t_boxes *stack_b);
+
 
 #endif
