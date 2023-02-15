@@ -92,7 +92,7 @@ void	push_swap(int ac, char **av)
 	while (stack_a->value != -1)
 		stack_a = stack_a->next;
 	printf("+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
-	swap(stack_a);
+	cmd_swap(stack_a);
 	printf("@@@@@@\nvalue of stacka: %d\n", stack_a->value);
 	while (stack_a->next->value != -1)
 	{
@@ -106,7 +106,7 @@ void	push_swap(int ac, char **av)
 	printf("1+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
 	stack_a = stack_a->prev;
 	printf("2+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
-	reverse(stack_a);
+	cmd_push(stack_b, stack_a);
 	while (stack_a->next->value != -1)
 	{
 		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-bool	swap(t_boxes *box)
+bool	cmd_swap(t_boxes *box)
 {
 	t_boxes	*tmp1;
 	t_boxes	*tmp2;
@@ -32,7 +32,7 @@ bool	swap(t_boxes *box)
 	return (false);
 }
 
-bool	rotate(t_boxes *box)
+bool	cmd_rotate(t_boxes *box)
 {
 	t_boxes	*tmp1;
 	t_boxes	*tmp2;
@@ -52,7 +52,7 @@ bool	rotate(t_boxes *box)
 	return (false);
 }
 
-bool	reverse(t_boxes *box)
+bool	cmd_reverse(t_boxes *box)
 {
 	t_boxes	*tmp1;
 	t_boxes	*tmp2;
@@ -69,5 +69,25 @@ bool	reverse(t_boxes *box)
 	tmp2->prev = tmp1;
 	tmp1->next = tmp2;
 	tmp3->next = box;
+	return (false);
+}
+
+bool	cmd_push(t_boxes *dst, t_boxes *src)
+{
+	t_boxes	*dst_tmp;
+	t_boxes	*src_tmp1;
+	t_boxes	*src_tmp2;
+
+	if (src->next->value == -1)
+		return (true);
+	dst_tmp = dst->next;
+	src_tmp1 = src->next;
+	src_tmp2 = src->next->next;
+	src->next = src_tmp2;
+	src_tmp2->prev = src;
+	dst->next = src_tmp1;
+	src_tmp1->next = dst_tmp;
+	dst_tmp->prev = src_tmp1;
+	src_tmp1->prev = dst;
 	return (false);
 }

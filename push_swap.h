@@ -65,8 +65,9 @@ typedef struct s_sorting//structure to sort
 
 void	push_swap(int ac, char **av);
 int		ps_atoi(char *str);
-bool	swap(t_boxes *box);
-bool	rotate(t_boxes *box);
-bool	reverse(t_boxes *box);
+bool	cmd_swap(t_boxes *box);
+bool	cmd_rotate(t_boxes *box);
+bool	cmd_reverse(t_boxes *box);
+bool	cmd_push(t_boxes *dst, t_boxes *src);
 
 #endif
