@@ -106,7 +106,7 @@ void	push_swap(int ac, char **av)
 	printf("1+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
 	stack_a = stack_a->prev;
 	printf("2+++++++\nhead value: %d\nhead pointer: %p\n\n", stack_a->value, stack_a);
-	rotate(stack_a);
+	reverse(stack_a);
 	while (stack_a->next->value != -1)
 	{
 		printf("%d\t%d\n", stack_a->next->value, stack_b->next->value);

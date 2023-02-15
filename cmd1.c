@@ -51,3 +51,23 @@ bool	rotate(t_boxes *box)
 	tmp2->next = box;
 	return (false);
 }
+
+bool	reverse(t_boxes *box)
+{
+	t_boxes	*tmp1;
+	t_boxes	*tmp2;
+	t_boxes	*tmp3;
+
+	if (box->next->next->value == -1)
+		return (true);
+	tmp1 = box->prev;
+	tmp2 = box->next;
+	tmp3 = box->prev->prev;
+	box->next = tmp1;
+	tmp1->prev = box;
+	box->prev = tmp3;
+	tmp2->prev = tmp1;
+	tmp1->next = tmp2;
+	tmp3->next = box;
+	return (false);
+}
