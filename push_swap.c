@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/16 15:45:54 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/16 16:22:06 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_boxes	*make_dummy(void)
 
 	dummy = malloc(sizeof(t_boxes));
 	if (!dummy)
-		exit(ps_error("fail allocate dummy"));
+		exit(ps_error("fail allocate dummy"));//It should be freed
 	dummy->value = -1;//This value it will not be seen, so it's ok whatever I put
 	dummy->next = dummy;
 	dummy->prev = dummy;//This is the dummy box, that   
@@ -100,6 +100,7 @@ void	push_swap(int ac, char **av)
 	t_boxes	*stack_b;
 	t_boxes	*ps;
 
+	init_ps(ac, av);
 	stack_a = put_num(ac, av);
 	check_dub_number(stack_a);
 	stack_b = make_dummy();

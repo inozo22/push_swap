@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/16 15:46:08 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/16 16:30:52 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ typedef struct s_boxes// try to use doubly-circularly-linked list
 }	t_boxes;
 // Do not forget put a dummy pointer at the beginning 
 
-/* typedef struct s_pair
+typedef struct s_pair
 {
-	int	value;
-	int	id;
-}	t_pair; */
+	long	value;
+	long	id;
+}	t_pair;
 
 typedef struct s_pushswap//structure to control in generarl
 {
-	int			size;
+	long		size;
 	t_boxes		*answer;
-	//t_pair		n[ARGLIMIT];
+	t_pair		n[ARGLIMIT];
 }	t_pushswap;
 
 typedef struct s_sorting//structure to sort
@@ -65,6 +65,7 @@ typedef struct s_sorting//structure to sort
 }	t_sorting;
 
 void	push_swap(int ac, char **av);
+void	init_ps(int ac, char **av);
 long	ps_error(char *str);//I have to change to void, for now its ok 
 void	all_free(t_boxes *stack_a, t_boxes *stack_b);
 long	ps_atoi(char *str);
