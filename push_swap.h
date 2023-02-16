@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/16 16:30:52 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/16 17:10:22 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,18 @@ typedef struct s_sorting//structure to sort
 	int	size;
 }	t_sorting;
 
-void	push_swap(int ac, char **av);
-void	init_ps(int ac, char **av);
-long	ps_error(char *str);//I have to change to void, for now its ok 
-void	all_free(t_boxes *stack_a, t_boxes *stack_b);
-long	ps_atoi(char *str);
-bool	cmd_swap(t_boxes *box);
-bool	cmd_rotate(t_boxes *box);
-bool	cmd_reverse(t_boxes *box);
-bool	cmd_push(t_boxes *dst, t_boxes *src);
-bool	cmd_ss(t_boxes *stack_a, t_boxes *stack_b);//Verification required
-bool	cmd_rr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
-bool	cmd_rrr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
+void		push_swap(int ac, char **av);
+t_pushswap	*init_ps(int ac, char **av);
+long		ps_error(char *str);//I have to change to void, for now its ok 
+void		all_free(t_boxes *stack_a, t_boxes *stack_b);
+void		list_clear(t_boxes *box);
+long		ps_atoi(char *str);
+bool		cmd_swap(t_boxes *box);
+bool		cmd_rotate(t_boxes *box);
+bool		cmd_reverse(t_boxes *box);
+bool		cmd_push(t_boxes *dst, t_boxes *src);
+bool		cmd_ss(t_boxes *stack_a, t_boxes *stack_b);//Verification required
+bool		cmd_rr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
+bool		cmd_rrr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
 
 #endif
