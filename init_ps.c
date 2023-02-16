@@ -30,27 +30,21 @@ void	check_dub_number(t_pushswap *ps)
 {
 	long	i;
 	long	j;
-	long	k;
-	long	tmp;
 
-	i = 0;
-	j = 1;
-	k = ps->size;
-	while (i < ps->size)
+	i = 1;
+	j = 2;
+	while (i <= ps->size)
 	{
-		if (ps->n[i] == ps->n[j])
-			exit(ps_error("error, dubbed number '-'"));
-
-
-
-		tmp = ps->n[k--].value;
-		while (j < i - 1)
+		j = i + 1;
+		while (j <= ps->size)
 		{
-			if (tmp == ps->n[j].value)
+			printf(":::::::\nvalue of i: %ld\n", ps->n[i].value);
+			printf("value of j: %ld\n", ps->n[j].value);
+			if (ps->n[i].value == ps->n[j].value)
 				exit(ps_error("error, dubbed number '-'"));
-			j++;
+			j++;			
 		}
-		j = 0;
+		i++;
 	}
 }
 
