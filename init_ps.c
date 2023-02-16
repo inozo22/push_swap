@@ -6,11 +6,48 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/16 17:20:28 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/16 18:38:34 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+//I can use this after sort
+//So, before this function, better sort ::>_<::
+/* void	check_dub_number(t_pushswap *ps)
+{
+	long	i;
+
+	i = 0;
+	while (i++ < ps->size - 1)
+	{
+		if (ps->n[i].value == ps->n[i + 1].value)
+			exit(ps_error("error, dubbed number '-'"));//Delete comments after adjust
+	}
+} */
+
+void	check_dub_number(t_pushswap *ps)
+{
+	long	i;
+	long	j;
+	long	k;
+	long	tmp;
+
+	i = 0;
+	j = 0;
+	k = ps->size;
+	while (++i < ps->size)
+	{
+		tmp = ps->n[k--].value;
+		while (j < i - 1)
+		{
+			if (tmp == ps->n[j].value)
+				exit(ps_error("error, dubbed number '-'"));
+			j++;
+		}
+		j = 0;
+	}
+}
 
 t_boxes	*make_dummy(void)//ato de kesu
 {
@@ -44,11 +81,12 @@ t_pushswap	*init_ps(int ac, char **av)
 		ps->n[i].id = i;
 		strs++;
 	}
+	check_dub_number(ps);
 	i = 0;
 	while (i++ < ps->size)
 	{
 		printf("value\t: %ld\n", ps->n[i].value);
-		printf("id\t: %ld\n", ps->n[i].id);
+		printf("id %ld\t: %ld\n", i, ps->n[i].id);
 	}
 	return (ps);
 }

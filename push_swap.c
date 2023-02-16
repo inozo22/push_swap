@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/16 16:22:06 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/16 17:55:21 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,16 @@ t_boxes	*make_dummy(void)
 	return (dummy);
 }
 
-t_boxes	*put_num(int ac, char **av)
+t_boxes	*put_num(t_pushswap *ps)
 {
 	t_boxes	*dummy;
-	int		i;
+	long	i;
 
 	dummy = make_dummy();
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (i < ps->size)
 	{
-		add_box(dummy, ps_atoi(av[i]));//is it necessary to check out of int?
+		add_box(dummy, ps->n[i].value);//is it necessary to check out of int?
 		i++;
 	}
 	return (dummy);
@@ -101,7 +101,7 @@ void	push_swap(int ac, char **av)
 	t_boxes	*ps;
 
 	init_ps(ac, av);
-	stack_a = put_num(ac, av);
+	stack_a = put_num(ps);
 	check_dub_number(stack_a);
 	stack_b = make_dummy();
 	while (stack_a->next->value != -1)
@@ -114,37 +114,5 @@ void	push_swap(int ac, char **av)
 		stack_a = stack_a->next;
 		stack_b = stack_b->next;
 	}
- 	printf("------\t------\nstackA\tstackB\n");/*
-	search_head(stack_a);
-	stack_a = stack_a->prev;
-	printf("+++++++\nstakca value: %ld\nstacka pointer: %p\n\n", stack_a->value, stack_a);
-	while (stack_a->value != -1)
-		stack_a = stack_a->next;
-	printf("+++++++\nhead value: %ld\nhead pointer: %p\n\n", stack_a->value, stack_a);
-	cmd_push(stack_b, stack_a);
-	printf("@@@@@@\nvalue of stacka: %ld\n", stack_a->value);
-	while (stack_a->next->value != -1)
-	{
-		printf("%ld\t", stack_a->next->value);
-		if (stack_b->next->value != -1)
-			printf("%ld\n", stack_b->next->value);
-		else
-			printf(" \n");
-		stack_a = stack_a->next;
-		stack_b = stack_b->next;
-	}
-	printf("------\t------\nstackA\tstackB\n");
-	all_free(stack_a, stack_b);
-	printf("\n:::::::::excuted all_free:::::::::\n");
-	while (stack_a->next->value != -1)
-	{
-		printf("%ld\t", stack_a->next->value);
-		if (stack_b->next->value != -1)
-			printf("%ld\n", stack_b->next->value);
-		else
-			printf(" \n");
-		stack_a = stack_a->next;
-		stack_b = stack_b->next;
-	}
-	printf("------\t------\nstackA\tstackB\n"); */
+ 	printf("------\t------\nstackA\tstackB\n");
 }
