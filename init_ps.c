@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/16 18:38:34 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/16 18:51:58 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,15 @@ void	check_dub_number(t_pushswap *ps)
 	long	tmp;
 
 	i = 0;
-	j = 0;
+	j = 1;
 	k = ps->size;
-	while (++i < ps->size)
+	while (i < ps->size)
 	{
+		if (ps->n[i] == ps->n[j])
+			exit(ps_error("error, dubbed number '-'"));
+
+
+
 		tmp = ps->n[k--].value;
 		while (j < i - 1)
 		{
