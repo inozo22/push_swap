@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/13 13:03:26 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/16 15:46:08 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdbool.h>
 
 # define ARGLIMIT 501
+# define STDERR 2
 
 typedef enum e_cmd// to control commands
 {
@@ -38,7 +39,7 @@ typedef enum e_cmd// to control commands
 
 typedef struct s_boxes// try to use doubly-circularly-linked list
 {
-	int				value;//maybe long? to avoid error
+	long			value;//maybe long? to avoid error
 	struct s_boxes	*next;
 	struct s_boxes	*prev;
 }	t_boxes;
@@ -64,14 +65,15 @@ typedef struct s_sorting//structure to sort
 }	t_sorting;
 
 void	push_swap(int ac, char **av);
-int		ps_atoi(char *str);
+long	ps_error(char *str);//I have to change to void, for now its ok 
+void	all_free(t_boxes *stack_a, t_boxes *stack_b);
+long	ps_atoi(char *str);
 bool	cmd_swap(t_boxes *box);
 bool	cmd_rotate(t_boxes *box);
 bool	cmd_reverse(t_boxes *box);
 bool	cmd_push(t_boxes *dst, t_boxes *src);
-bool	cmd_ss(t_boxes *stack_a, t_boxes *stack_b);
-bool	cmd_rr(t_boxes *stack_a, t_boxes *stack_b);
-bool	cmd_rrr(t_boxes *stack_a, t_boxes *stack_b);
-
+bool	cmd_ss(t_boxes *stack_a, t_boxes *stack_b);//Verification required
+bool	cmd_rr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
+bool	cmd_rrr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
 
 #endif

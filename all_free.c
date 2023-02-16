@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   all_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 13:33:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/16 13:35:08 by nimai            ###   ########.fr       */
+/*   Created: 2023/02/16 12:34:34 by nimai             #+#    #+#             */
+/*   Updated: 2023/02/16 12:51:39 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ps_error(char *str)//At the end, I have to change to void, but for now, I put str to see where I give error
+void	list_clear(t_boxes *box)
 {
-	ft_putstr_fd(str, STDERR);
-	exit (1);
+	t_boxes	*tmp;
+
+	box->prev->next = NULL;
+	while (box)
+	{
+		tmp = box->next;
+		box->prev = NULL;
+		free(box);
+		box = tmp;
+	}
+}
+
+void	all_free(t_boxes *stack_a, t_boxes *stack_b)
+{
+	list_clear(stack_a);
+	list_clear(stack_b);
 }
