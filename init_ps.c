@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 15:13:56 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 15:17:23 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ t_pushswap	*init_ps(int ac, char **av)
 	//I have to get ID to see where it should go
 	//quick_sort(ps->n, 0, ps->size - 1, SORT_ID);//2times sort to 2. to make as an initial
 	i = 0;
+	printf(":::::::::\nafter first sort\n");
 	while (i++ < ps->size)
 	{
 		printf("value\t: %ld\n", ps->n[i].value);

@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:07:55 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 14:58:53 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 15:50:11 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ void	swap_pairs(t_pair *first, t_pair *second)
 	long	tmp_id;
 	long	tmp_value;
 
+	printf("///////\nfirst id: %ld\n", first->id);
+	printf("fist value: %ld\n", first->value);
+	printf("second id: %ld\n", second->id);
+	printf("second value: %ld\n///////\n", second->value);
 	tmp_id = first->id;
 	tmp_value = first->value;
 	first->id = second->id;
@@ -37,10 +41,10 @@ long	get_pivot_value(t_pair n[], long left, long right)
 
 	while (i < j)
 	{
-		while (i < j && n[i].value < n[pivot].value)
-			i++;
-		while (j && n[pivot].value > n[j].value)
-			j--;
+		while (i < j && n[++i].value < n[pivot].value)
+			;
+		while (j && n[pivot].value > n[--j].value)
+			;
 		if (i < j)
 			swap_pairs(&n[i], &n[j]);
 	}
@@ -48,7 +52,7 @@ long	get_pivot_value(t_pair n[], long left, long right)
 	return (j);
 }
 
-long	get_pivot_id(t_pair n[], long left, long right)
+long	get_pivot_id(t_pair n[], long left, long right)//this is a value's copy 
 {
 	long	pivot;
 	long	i;
@@ -60,10 +64,10 @@ long	get_pivot_id(t_pair n[], long left, long right)
 
 	while (i < j)
 	{
-		while (i < j && n[i].value < n[pivot].value)
-			i++;
-		while (j && n[pivot].value > n[j].value)
-			j--;
+		while (i < j && n[++i].value < n[pivot].value)
+			;
+		while (j && n[pivot].value > n[--j].value)
+			;
 		if (i < j)
 			swap_pairs(&n[i], &n[j]);
 	}
@@ -81,12 +85,11 @@ void	quick_sort(t_pair n[], long left, long right, long flag)
 		{
 			pivot = get_pivot_value(n, left, right);
 		}
-		if (flag == SORT_ID)
+		else if (flag == SORT_ID)
 		{
 			pivot = get_pivot_id(n, left, right);
-
 		}
-		quick_sort(n, left, pivot, flag);
-		quick_sort(n, pivot, right, flag);
+		quick_sort(n, left, pivot - 1, flag);
+		quick_sort(n, pivot + 1, right, flag);
 	}
 }
