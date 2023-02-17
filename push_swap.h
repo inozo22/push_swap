@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/16 17:10:22 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 15:00:14 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 # define ARGLIMIT 501
 # define STDERR 2
+# define SORT_ID 0
+# define SORT_VALUE 1
 
 typedef enum e_cmd// to control commands
 {
@@ -37,9 +39,9 @@ typedef enum e_cmd// to control commands
 	RRR,
 }	t_cmd;
 
-typedef struct s_boxes// try to use doubly-circularly-linked list
+typedef struct s_boxes
 {
-	long			value;//maybe long? to avoid error
+	long			value;
 	struct s_boxes	*next;
 	struct s_boxes	*prev;
 }	t_boxes;
@@ -56,6 +58,7 @@ typedef struct s_pushswap//structure to control in generarl
 	long		size;
 	t_boxes		*answer;
 	t_pair		n[ARGLIMIT];
+	long		init[ARGLIMIT];
 }	t_pushswap;
 
 typedef struct s_sorting//structure to sort
@@ -64,12 +67,22 @@ typedef struct s_sorting//structure to sort
 	int	size;
 }	t_sorting;
 
+//main functions
 void		push_swap(int ac, char **av);
 t_pushswap	*init_ps(int ac, char **av);
+t_boxes		*make_dummy(void);
+long		ps_atoi(char *str);
+
+//sorting
+void		quick_sort(t_pair n[], long left, long right, long flag);
+
+//error control and free
 long		ps_error(char *str);//I have to change to void, for now its ok 
 void		all_free(t_boxes *stack_a, t_boxes *stack_b);
 void		list_clear(t_boxes *box);
-long		ps_atoi(char *str);
+
+
+//commands
 bool		cmd_swap(t_boxes *box);
 bool		cmd_rotate(t_boxes *box);
 bool		cmd_reverse(t_boxes *box);
