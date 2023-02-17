@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 10:28:38 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 12:00:46 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_dub_number(t_pushswap *ps)
 	}
 }
 
-t_boxes	*make_dummy(void)//ato de kesu
+/* t_boxes	*make_dummy(void)//ato de kesu
 {
 	t_boxes	*dummy;
 
@@ -57,7 +57,7 @@ t_boxes	*make_dummy(void)//ato de kesu
 	dummy->next = dummy;
 	dummy->prev = dummy;//This is the dummy box, that   
 	return (dummy);
-}
+} */
 
 t_pushswap	*init_ps(int ac, char **av)
 {
@@ -79,6 +79,15 @@ t_pushswap	*init_ps(int ac, char **av)
 		strs++;
 	}
 	check_dub_number(ps);
+	i = 0;
+	while (i++ < ps->size)
+	{
+		printf("value\t: %ld\n", ps->n[i].value);
+		printf("id %ld\t: %ld\n", i, ps->n[i].id);
+	}
+	quick_sort(ps->n, 0, ps->size - 1, SORT_VALUE);//2times sort to 1. sort to see the correct position
+	//I have to get ID to see where it should go
+	//quick_sort(ps->n, 0, ps->size - 1, SORT_ID);//2times sort to 2. to make as an initial
 	i = 0;
 	while (i++ < ps->size)
 	{
