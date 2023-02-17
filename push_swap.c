@@ -6,34 +6,13 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/16 17:55:21 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 10:19:02 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_dub_number(t_boxes *stack_a)
-{
-	t_boxes	*tmp;
-	int	i = 0;
-	int j = 0;
 
-	tmp = stack_a;
-	while (tmp->next->value != -1)
-	{
-		while (stack_a->next->value != -1)
-		{
-			printf("i: %d\nj: %d\ntmp: %ld\nstack_a: %ld\n", i, j, tmp->next->value, stack_a->next->next->value);
-			if (tmp->next->value == stack_a->next->next->value)
-				exit (ps_error("error, there is dubbed number"));
-			stack_a = stack_a->next;
-			i++;
-		}
-		stack_a = stack_a->next;
-		tmp = tmp->next;
-		j++;
-	}
-}
 
 t_boxes	*search_head(t_boxes *dummy)//look for the first box that is not a dummy
 {
@@ -96,13 +75,12 @@ t_boxes	*put_num(t_pushswap *ps)
 
 void	push_swap(int ac, char **av)
 {
-	t_boxes	*stack_a;
-	t_boxes	*stack_b;
-	t_boxes	*ps;
+	t_boxes		*stack_a;
+	t_boxes		*stack_b;
+	t_pushswap	*ps;
 
-	init_ps(ac, av);
+	ps = init_ps(ac, av);
 	stack_a = put_num(ps);
-	check_dub_number(stack_a);
 	stack_b = make_dummy();
 	while (stack_a->next->value != -1)
 	{

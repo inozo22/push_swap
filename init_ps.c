@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/16 18:51:58 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 10:28:38 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ void	check_dub_number(t_pushswap *ps)
 		j = i + 1;
 		while (j <= ps->size)
 		{
-			printf(":::::::\nvalue of i: %ld\n", ps->n[i].value);
-			printf("value of j: %ld\n", ps->n[j].value);
 			if (ps->n[i].value == ps->n[j].value)
 				exit(ps_error("error, dubbed number '-'"));
-			j++;			
+			j++;
 		}
 		i++;
 	}
@@ -90,11 +88,11 @@ t_pushswap	*init_ps(int ac, char **av)
 	return (ps);
 }
 
-int	main(int ac, char **av)
+/* int	main(int ac, char **av)
 {
 	t_pushswap	*ps;
 
 	ps = init_ps(ac, av);
 	printf("ps size: %ld\n", ps->size);
 	//list_clear(ps);
-}
+} */
