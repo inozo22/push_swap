@@ -80,6 +80,12 @@ t_pushswap	*init_ps(int ac, char **av)
 		ps->n[i].id = i;
 		strs++;
 	}
+	--i;
+	while (++i < ARGLIMIT)
+	{
+		ps->n[i].id = i;
+		ps->n[i].value = 0;
+	}
 	check_dub_number(ps);
 	i = 0;
 	while (i++ < ps->size)
