@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 12:00:46 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 15:13:56 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,6 @@ void	check_dub_number(t_pushswap *ps)
 	}
 }
 
-/* t_boxes	*make_dummy(void)//ato de kesu
-{
-	t_boxes	*dummy;
-
-	dummy = malloc(sizeof(t_boxes));
-	if (!dummy)
-		exit(ps_error("fail allocate dummy"));//It should be freed
-	dummy->value = -1;//This value it will not be seen, so it's ok whatever I put
-	dummy->next = dummy;
-	dummy->prev = dummy;//This is the dummy box, that   
-	return (dummy);
-} */
-
 t_pushswap	*init_ps(int ac, char **av)
 {
 	t_pushswap	*ps;
@@ -85,6 +72,7 @@ t_pushswap	*init_ps(int ac, char **av)
 		printf("value\t: %ld\n", ps->n[i].value);
 		printf("id %ld\t: %ld\n", i, ps->n[i].id);
 	}
+	printf("kokomade\n");
 	quick_sort(ps->n, 0, ps->size - 1, SORT_VALUE);//2times sort to 1. sort to see the correct position
 	//I have to get ID to see where it should go
 	//quick_sort(ps->n, 0, ps->size - 1, SORT_ID);//2times sort to 2. to make as an initial
@@ -97,11 +85,20 @@ t_pushswap	*init_ps(int ac, char **av)
 	return (ps);
 }
 
-/* int	main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_pushswap	*ps;
+	long		i;
 
+	i = 0;
 	ps = init_ps(ac, av);
-	printf("ps size: %ld\n", ps->size);
+
+	printf(":::::\nps size: %ld\n", ps->size);
+	while (++i < ps->size + 1)
+	{
+		printf("%ld\t\n", ps->n[i].value);
+	}
+ 	printf("------\t\nstackA\t\n");
 	//list_clear(ps);
-} */
+	return (0);
+}

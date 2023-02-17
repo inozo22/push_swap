@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:07:55 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 13:01:00 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 14:58:53 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,49 @@ void	swap_pairs(t_pair *first, t_pair *second)
 
 long	get_pivot_value(t_pair n[], long left, long right)
 {
-	long	ret;
+	long	pivot;
 	long	i;
 	long	j;
 
 	i = left;
 	j = right + 1;
-	ret = left;
+	pivot = left;
 
 	while (i < j)
 	{
-		while (i < j && n[i].value < n[ret].value)
+		while (i < j && n[i].value < n[pivot].value)
 			i++;
-		while (j && n[ret].value > n[j].value)
+		while (j && n[pivot].value > n[j].value)
 			j--;
-		i++;
+		if (i < j)
+			swap_pairs(&n[i], &n[j]);
 	}
-	while (i <)
-
-
-
+	swap_pairs(&n[pivot], &n[j]);
+	return (j);
 }
 
+long	get_pivot_id(t_pair n[], long left, long right)
+{
+	long	pivot;
+	long	i;
+	long	j;
+
+	i = left;
+	j = right + 1;
+	pivot = left;
+
+	while (i < j)
+	{
+		while (i < j && n[i].value < n[pivot].value)
+			i++;
+		while (j && n[pivot].value > n[j].value)
+			j--;
+		if (i < j)
+			swap_pairs(&n[i], &n[j]);
+	}
+	swap_pairs(&n[pivot], &n[j]);
+	return (j);
+}
 
 void	quick_sort(t_pair n[], long left, long right, long flag)
 {
@@ -68,5 +89,4 @@ void	quick_sort(t_pair n[], long left, long right, long flag)
 		quick_sort(n, left, pivot, flag);
 		quick_sort(n, pivot, right, flag);
 	}
-
 }

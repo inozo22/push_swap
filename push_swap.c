@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 11:04:16 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 15:02:28 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	push_swap(int ac, char **av)
 	ps = init_ps(ac, av);
 	stack_a = put_num(ps);
 	stack_b = make_dummy();
-	while (stack_a->next->value != -1)
+	/* while (stack_a->next->value != -1)
 	{
 		printf("%ld\t", stack_a->next->value);
 		if (stack_b->next->value != -1)
@@ -90,7 +90,7 @@ void	push_swap(int ac, char **av)
 		stack_a = stack_a->next;
 		stack_b = stack_b->next;
 	}
- 	printf("------\t------\nstackA\tstackB\n");
+ 	printf("------\t------\nstackA\tstackB\n"); */
 /* 	search_head(stack_a);
 	stack_a = stack_a->prev;
 	printf("+++++++\nstakca value: %ld\nstacka pointer: %p\n\n", stack_a->value, stack_a);

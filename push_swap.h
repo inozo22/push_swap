@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 11:15:57 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 15:00:14 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ void		push_swap(int ac, char **av);
 t_pushswap	*init_ps(int ac, char **av);
 t_boxes		*make_dummy(void);
 long		ps_atoi(char *str);
+
+//sorting
+void		quick_sort(t_pair n[], long left, long right, long flag);
 
 //error control and free
 long		ps_error(char *str);//I have to change to void, for now its ok 
