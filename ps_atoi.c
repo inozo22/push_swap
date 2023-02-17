@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:09 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 16:06:09 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 16:08:06 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ long	ps_atoi(char *str)
 	while (*str)
 	{
 		if (is_digit(*str) != 1)
-			exit (ps_error("error, its not digit!"));
+			exit(ps_error("error, its not digit!"));
 		ret = ret * 10 + (*str - 48);
 		str++;
 	}

@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:07:55 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 15:50:11 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/17 16:45:59 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,12 @@ long	get_pivot_value(t_pair n[], long left, long right)
 		while (j && n[pivot].value > n[--j].value)
 			;
 		if (i < j)
+		{
+			printf("···da swap entre i y j\n");
 			swap_pairs(&n[i], &n[j]);
+		}
 	}
+	printf("···da swap entre pivot y j\n");
 	swap_pairs(&n[pivot], &n[j]);
 	return (j);
 }
@@ -87,8 +91,10 @@ void	quick_sort(t_pair n[], long left, long right, long flag)
 		}
 		else if (flag == SORT_ID)
 		{
+			printf("Entrado de ID\n&&&&&&&\n");
 			pivot = get_pivot_id(n, left, right);
 		}
+		printf("■■■■■■■■■■■■■■■■■■\nfin de circle\n■■■■■■■■■■■■■■■■■■\n");
 		quick_sort(n, left, pivot - 1, flag);
 		quick_sort(n, pivot + 1, right, flag);
 	}
