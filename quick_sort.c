@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:07:55 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/18 09:53:55 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/18 10:26:40 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	swap_pairs(t_pair *first, t_pair *second)
 	long	tmp_id;
 	long	tmp_value;
 
-	printf("■■■ ■■■ ■■■ ■■■ ■■■\nfirst id: %ld\n", first->id);
+/* 	printf("■■■ ■■■ ■■■ ■■■ ■■■\nfirst id: %ld\n", first->id);
 	printf("fist value: %ld\n", first->value);
 	printf("second id: %ld\n", second->id);
-	printf("second value: %ld\n■■■ ■■■ ■■■ ■■■ ■■■\n", second->value);
+	printf("second value: %ld\n■■■ ■■■ ■■■ ■■■ ■■■\n", second->value); */
 	tmp_id = first->id;
 	tmp_value = first->value;
 	first->id = second->id;
@@ -46,11 +46,11 @@ long	get_pivot_value(t_pair n[], long left, long right)
 			;
 		if (i < j)
 		{
-			printf("···da swap entre %ld y %ld\n", n[i].value, n[j].value);
+//			printf("···da swap entre %ld y %ld\n", n[i].value, n[j].value);
 			swap_pairs(&n[i], &n[j]);
 		}
 	}
-	printf("···da swap entre %ld y %ld\n", n[pivot].value, n[j].value);
+//	printf("···da swap entre %ld y %ld\n", n[pivot].value, n[j].value);
 	swap_pairs(&n[pivot], &n[j]);
 	return (j);
 }
@@ -89,10 +89,8 @@ void	quick_sort(t_pair n[], long left, long right, long flag)
 		}
 		if (flag == SORT_ID)
 		{
-			printf("Entrado de ID\n&&&&&&&\n");
 			pivot = get_pivot_id(n, left, right);
 		}
-		printf("■■■■■■■■■■■■■■■■■■\nfin de circle\n■■■■■■■■■■■■■■■■■■\n");
 		quick_sort(n, left, pivot - 1, flag);
 		quick_sort(n, pivot + 1, right, flag);
 	}

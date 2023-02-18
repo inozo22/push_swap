@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/18 10:11:11 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/18 10:59:47 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ t_pushswap	*init_ps(int ac, char **av)
 		strs++;
 		i++;
 	}
-	i = 0;//kokkara kesu
+/* 	i = 0;//kokkara kesu
 	printf("00000000\n\n");
 	while (i < ps-> size)
 	{
 		printf("value of n[%ld]: %ld\n", i, ps->n[i].value);
 		i++;
 	}
-	printf("\n00000000\n");
+	printf("\n00000000\n"); */
 	while (i < ARGLIMIT)
 	{
 		ps->n[i].id = i;
@@ -102,16 +102,6 @@ t_pushswap	*init_ps(int ac, char **av)
 		i++;
 	}
 	quick_sort(ps->n, 0, ps->size - 1, SORT_VALUE);//2times sort to 1. sort to see the correct position
-
-	//I have to get ID to see where it should go
-	get_id(ps);
-	i = 0;
-	while (i < ps->size)
-	{
-		printf("init[%ld]: %ld\n", i, ps->init[i]);
-		i++;
-	}
-	quick_sort(ps->n, 0, ps->size - 1, SORT_ID);//2times sort to 2. to make as an initial
 	i = 0;
 	printf(":::::::::\nafter first sort\n");
 	while (i < ps->size)
@@ -120,10 +110,21 @@ t_pushswap	*init_ps(int ac, char **av)
 		printf("id %ld\t: %ld\n", i, ps->n[i].id);
 		i++;
 	}
+	//I have to get ID to see where it should go
+	get_id(ps);
+	quick_sort(ps->n, 0, ps->size - 1, SORT_ID);//2times sort to 2. to make as an initial
+	i = 0;
+	printf(":::::::::\nafter second sort\n");
+	while (i < ps->size)
+	{
+		printf("dummy value\t: %ld\n", ps->n[i].value);
+		printf("id %ld\t\t: %ld\n", i, ps->n[i].id);
+		i++;
+	}
 	return (ps);
 }
 
-int	main(int ac, char **av)
+/* int	main(int ac, char **av)
 {
 	t_pushswap	*ps;
 	long		i;
@@ -131,7 +132,8 @@ int	main(int ac, char **av)
 	i = 0;
 	ps = init_ps(ac, av);
 
-	printf(":::::\nps size: %ld\n", ps->size);
+	printf("::::::::::\nps size: %ld\n", ps->size);
+	printf("This is the list that I have to get\n");
 	while (i < ps->size)
 	{
 		printf("%ld\t\n", ps->init[i]);
@@ -141,3 +143,4 @@ int	main(int ac, char **av)
 	//list_clear(ps);
 	return (0);
 }
+ */

@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 15:00:14 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/18 10:33:50 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ long		ps_atoi(char *str);
 void		quick_sort(t_pair n[], long left, long right, long flag);
 
 //error control and free
-long		ps_error(char *str);//I have to change to void, for now its ok 
-void		all_free(t_boxes *stack_a, t_boxes *stack_b);
+long		ps_error(char *str);//I have to change str to void, for now its ok to check where I got error
+void		all_free(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
 void		list_clear(t_boxes *box);
 
 
