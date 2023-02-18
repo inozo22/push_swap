@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/18 11:15:07 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/18 11:25:56 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_boxes	*put_num(t_pushswap *ps)
 	i = 0;
 	while (i < ps->size)
 	{
-		add_box(dummy, ps->n[i].value);//is it necessary to check out of int?
+		add_box(dummy, ps->n[i].value);
 		i++;
 	}
 	return (dummy);
