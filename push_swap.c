@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/18 11:25:56 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/18 11:26:55 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_boxes	*make_dummy(void)
 	dummy = malloc(sizeof(t_boxes));
 	if (!dummy)
 		exit(ps_error("fail allocate dummy"));//It should be freed
-	dummy->value = -1;//This value it will compare with dummy value
+	dummy->value = -1;//This value it will compare with dummy value, so its ok with -1
 	dummy->next = dummy;
 	dummy->prev = dummy;
 	return (dummy);
