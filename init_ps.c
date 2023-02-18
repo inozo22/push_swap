@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 16:11:22 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/18 10:11:11 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,19 @@ void	check_dub_number(t_pushswap *ps)
 	}
 }
 
+void	get_id(t_pushswap *ps)
+{
+	long	i;
+
+	i = 0;
+	while (i < ps->size)
+	{
+		ps->init[i] = ps->n[i].value;
+		ps->n[i].value = i;
+		i++;
+	}
+}
+
 t_pushswap	*init_ps(int ac, char **av)
 {
 	t_pushswap	*ps;
@@ -59,34 +72,53 @@ t_pushswap	*init_ps(int ac, char **av)
 	ps->size = ac - 1;
 	strs = av + 1;
 	i = 0;
-	while (i++ < ps->size)
+	while (i < ps->size)
 	{
 		ps->n[i].value = ps_atoi(*strs);
 		ps->n[i].id = i;
 		strs++;
+		i++;
 	}
-	--i;
-	while (++i < ARGLIMIT)
+	i = 0;//kokkara kesu
+	printf("00000000\n\n");
+	while (i < ps-> size)
+	{
+		printf("value of n[%ld]: %ld\n", i, ps->n[i].value);
+		i++;
+	}
+	printf("\n00000000\n");
+	while (i < ARGLIMIT)
 	{
 		ps->n[i].id = i;
 		ps->n[i].value = 0;
+		i++;
 	}
 	check_dub_number(ps);
 	i = 0;
-	while (i++ < ps->size)
+	while (i < ps->size)
 	{
 		printf("value\t: %ld\n", ps->n[i].value);
 		printf("id %ld\t: %ld\n", i, ps->n[i].id);
+		i++;
 	}
 	quick_sort(ps->n, 0, ps->size - 1, SORT_VALUE);//2times sort to 1. sort to see the correct position
+
 	//I have to get ID to see where it should go
-	//quick_sort(ps->n, 0, ps->size - 1, SORT_ID);//2times sort to 2. to make as an initial
+	get_id(ps);
+	i = 0;
+	while (i < ps->size)
+	{
+		printf("init[%ld]: %ld\n", i, ps->init[i]);
+		i++;
+	}
+	quick_sort(ps->n, 0, ps->size - 1, SORT_ID);//2times sort to 2. to make as an initial
 	i = 0;
 	printf(":::::::::\nafter first sort\n");
-	while (i++ < ps->size)
+	while (i < ps->size)
 	{
 		printf("value\t: %ld\n", ps->n[i].value);
 		printf("id %ld\t: %ld\n", i, ps->n[i].id);
+		i++;
 	}
 	return (ps);
 }
@@ -100,9 +132,10 @@ int	main(int ac, char **av)
 	ps = init_ps(ac, av);
 
 	printf(":::::\nps size: %ld\n", ps->size);
-	while (++i < ps->size + 1)
+	while (i < ps->size)
 	{
-		printf("%ld\t\n", ps->n[i].value);
+		printf("%ld\t\n", ps->init[i]);
+		i++;
 	}
  	printf("------\t\nstackA\t\n");
 	//list_clear(ps);

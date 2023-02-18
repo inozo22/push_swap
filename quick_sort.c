@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:07:55 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 16:45:59 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/18 09:53:55 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	swap_pairs(t_pair *first, t_pair *second)
 	long	tmp_id;
 	long	tmp_value;
 
-	printf("///////\nfirst id: %ld\n", first->id);
+	printf("■■■ ■■■ ■■■ ■■■ ■■■\nfirst id: %ld\n", first->id);
 	printf("fist value: %ld\n", first->value);
 	printf("second id: %ld\n", second->id);
-	printf("second value: %ld\n///////\n", second->value);
+	printf("second value: %ld\n■■■ ■■■ ■■■ ■■■ ■■■\n", second->value);
 	tmp_id = first->id;
 	tmp_value = first->value;
 	first->id = second->id;
@@ -38,20 +38,19 @@ long	get_pivot_value(t_pair n[], long left, long right)
 	i = left;
 	j = right + 1;
 	pivot = left;
-
 	while (i < j)
 	{
 		while (i < j && n[++i].value < n[pivot].value)
 			;
-		while (j && n[pivot].value > n[--j].value)
+		while (j && n[pivot].value < n[--j].value)
 			;
 		if (i < j)
 		{
-			printf("···da swap entre i y j\n");
+			printf("···da swap entre %ld y %ld\n", n[i].value, n[j].value);
 			swap_pairs(&n[i], &n[j]);
 		}
 	}
-	printf("···da swap entre pivot y j\n");
+	printf("···da swap entre %ld y %ld\n", n[pivot].value, n[j].value);
 	swap_pairs(&n[pivot], &n[j]);
 	return (j);
 }
@@ -65,12 +64,11 @@ long	get_pivot_id(t_pair n[], long left, long right)//this is a value's copy
 	i = left;
 	j = right + 1;
 	pivot = left;
-
 	while (i < j)
 	{
-		while (i < j && n[++i].value < n[pivot].value)
+		while (n[++i].id < n[pivot].id)
 			;
-		while (j && n[pivot].value > n[--j].value)
+		while (n[pivot].id < n[--j].id)
 			;
 		if (i < j)
 			swap_pairs(&n[i], &n[j]);
@@ -89,7 +87,7 @@ void	quick_sort(t_pair n[], long left, long right, long flag)
 		{
 			pivot = get_pivot_value(n, left, right);
 		}
-		else if (flag == SORT_ID)
+		if (flag == SORT_ID)
 		{
 			printf("Entrado de ID\n&&&&&&&\n");
 			pivot = get_pivot_id(n, left, right);
