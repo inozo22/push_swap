@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/18 11:52:13 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/18 11:57:02 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ void	push_swap(int ac, char **av)
 		stack_a = stack_a->next;
 		i++;
 	}
-
 }
 
 int	main(int ac, char **av)

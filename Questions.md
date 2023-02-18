@@ -5,6 +5,8 @@ I will leave here questions and a tedious soliloquy.
 - should I accept more than 1 arguments? Like ./push_swap "1" "2" "3" "4" "5"  Or only I must accept ./push_swap 1 2 3 4 5, and how about spaces and tab
  - solved(2023/02/08): I have to accept ./push_swap "1 2 3 4 5" and ./push_swap 1 2 3 4 5, so it could be both 1 argument or more. (according to document ggl drive)
 - What do I have to show in the evaluation? Only instructions are enough? or also I need to show the sorting? -> only instruction (by Iker)
+- What is $^
+    - $^ is the set of dependent files used to build something else.
 
 ## Questions about programming
 - 

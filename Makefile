@@ -6,7 +6,7 @@
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
-#    Updated: 2023/02/13 13:02:59 by nimai            ###   ########.fr        #
+#    Updated: 2023/02/18 12:28:42 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,26 @@ NAME = push_swap
 
 RM = rm -f
 
+#First of all, I have to compile library, later main program#
 LIBFT_PATH = libft
 
 LIBS = $(LIBFT_PATH)/libft.a
 
-SRC = ft_printf.c ft_printf_utils.c 
+SRC_PATH = src
+
+SRC = \
+		all_free.c \
+		cmd1.c \
+		cmd2.c \
+		cmd3.c \
+		errors.c \
+		init_ps.c \
+		main.c \
+		ps_atoi.c \
+		push_swap.c \
+		quick_sort.c
+
+INCLUDE = $(SRC_PATH)/push_swap.h
 
 OBJS = $(SRC:.c=.o)
 
