@@ -6,57 +6,54 @@
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
-#    Updated: 2023/02/18 12:28:42 by nimai            ###   ########.fr        #
+#    Updated: 2023/02/20 13:15:45 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror -g1
-#if add "-fsanitize=address", give me "0xbebebebebebebebe" instead of null
-
 NAME = push_swap
 
-RM = rm -f
-
-#First of all, I have to compile library, later main program#
-LIBFT_PATH = libft
-
-LIBS = $(LIBFT_PATH)/libft.a
-
-SRC_PATH = src
-
+SRCDIR = ./src/
 SRC = \
 		all_free.c \
 		cmd1.c \
 		cmd2.c \
-		cmd3.c \
 		errors.c \
 		init_ps.c \
-		main.c \
 		ps_atoi.c \
 		push_swap.c \
 		quick_sort.c
 
-INCLUDE = $(SRC_PATH)/push_swap.h
+OBJDIR = ./obj/
+OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
-OBJS = $(SRC:.c=.o)
+LIBDIR = ../libft
 
-all: $(NAME)
+#INCLUDE = $(SRCDIR)push_swap.h
 
-$(NAME):
-	@$(CC) $(CFLAGS) -c $(SRC)
-	@make -C $(LIBFT_PATH)
-	@mv $(LIBS) $(NAME)
-	@ar rcs $(NAME) $(OBJS)
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g1
+#if add "-fsanitize=address", give me "0xbebebebebebebebe" instead of null
+
+all: $(OBJDIR) $(NAME)
+
+$(OBJDIR):
+	@mkdir -p $@
+
+$(OBJDIR)%.o : $(SRCDIR)%.c
+	@$(CC) -c $(CFLAGS) -o $@ $<
+
+$(NAME): $(OBJ)
+	make -C $(LIBDIR)
+	$(CC) $(CFLAGS) -I../includes -L $(LIBDIR) -lutil -lft -o $@ $^
+#	@ar -rc $(NAME) $^
 
 clean:
-	@$(RM) $(OBJS)
-	@make clean --directory $(LIBFT_PATH)
+	@rm -rf $(OBJDIR)
+	@make clean --directory $(LIBDIR)
 
 fclean: clean
-	make fclean --directory $(LIBFT_PATH)
-	@$(RM) $(NAME)
+	make fclean --directory $(LIBDIR)
+	@rm -f $(NAME)
 
 re: fclean all
 

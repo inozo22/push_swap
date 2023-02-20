@@ -6,11 +6,11 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:09 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/17 16:08:06 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/20 13:07:22 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	is_digit(char c)
 {

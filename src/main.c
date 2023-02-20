@@ -6,11 +6,11 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:51 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/16 13:36:16 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/20 13:07:17 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"//add library
+#include "../includes/push_swap.h"
 
 int	main(int ac, char **av)
 {
