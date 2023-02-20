@@ -6,7 +6,7 @@
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
-#    Updated: 2023/02/20 13:15:45 by nimai            ###   ########.fr        #
+#    Updated: 2023/02/20 15:14:29 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,10 @@ OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 LIBDIR = ../libft
 
-#INCLUDE = $(SRCDIR)push_swap.h
-
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g1
 #if add "-fsanitize=address", give me "0xbebebebebebebebe" instead of null
+#-g1 gives me a message like "Nothing to be done for 'all'"
 
 all: $(OBJDIR) $(NAME)
 
@@ -43,16 +42,17 @@ $(OBJDIR)%.o : $(SRCDIR)%.c
 	@$(CC) -c $(CFLAGS) -o $@ $<
 
 $(NAME): $(OBJ)
-	make -C $(LIBDIR)
-	$(CC) $(CFLAGS) -I../includes -L $(LIBDIR) -lutil -lft -o $@ $^
-#	@ar -rc $(NAME) $^
+	@make --directory $(LIBDIR)
+	@$(CC) $(CFLAGS) -I../includes -L $(LIBDIR) -lft -o $@ $^
+#Name the static library with -lft#
 
 clean:
 	@rm -rf $(OBJDIR)
 	@make clean --directory $(LIBDIR)
 
 fclean: clean
-	make fclean --directory $(LIBDIR)
+	@make fclean --directory $(LIBDIR)
+	@rm -rf ./push_swap.dSYM
 	@rm -f $(NAME)
 
 re: fclean all
