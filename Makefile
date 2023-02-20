@@ -6,7 +6,7 @@
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
-#    Updated: 2023/02/20 15:14:29 by nimai            ###   ########.fr        #
+#    Updated: 2023/02/20 16:51:07 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ SRC = \
 		init_ps.c \
 		ps_atoi.c \
 		push_swap.c \
-		quick_sort.c
+		quick_sort.c \
+		sort_less6.c \
+		order_cmd.c
 
 OBJDIR = ./obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))

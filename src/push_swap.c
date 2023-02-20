@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/20 15:36:39 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/20 17:14:12 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ void	add_box(t_boxes *dummy, long num)
 {
 	t_boxes	*new;
 	t_boxes	*tmp;
-//	t_boxes	*head;
 
-//	head = search_head(dummy);
 	new = malloc(sizeof(t_boxes));
 	if (!new)
 		exit (ps_error("fail allocate new"));//later I have to omid this str
@@ -53,7 +51,6 @@ void	add_box(t_boxes *dummy, long num)
 	new->value = num;
 	new->next = dummy;
 	dummy->prev = new;
-//	dummy->next = head;
 	new->prev = tmp;
 }
 
@@ -100,9 +97,13 @@ void	push_swap(int ac, char **av)
 	else if (is_sorted(stack_a))
 		printf("is sorted!\n");
 	else if (ps->size < 6)
+	{
+		printf("enter sort_less6!\n");
 		sort_less6(stack_a, stack_b, ps);
+	}
 	else
-		sort_over5(stack_a, stack_b, ps);
+		printf("bye\n");
+		//sort_over5(stack_a, stack_b, ps);
 	printf("stack_a->value: %ld\n", stack_a->value);
 	while (stack_a->next->value == -1)
 	{
