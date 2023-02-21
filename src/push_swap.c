@@ -6,11 +6,25 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 13:41:16 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 15:25:37 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	print_stacka(t_boxes *stack)
+{
+	t_boxes *tmp;
+
+	tmp = stack;
+	printf("\n###stack A###\n");
+	while (tmp->next->value != -1)
+	{
+		printf("%ld\n", tmp->next->value);
+		tmp = tmp->next;
+	}
+	printf("###stack A###\n");
+}
 
 bool	is_sorted(t_boxes *stack_a)
 {
@@ -105,6 +119,7 @@ void	push_swap(int ac, char **av)
 		printf("***bye***\n");
 		//sort_over5(stack_a, stack_b, ps);
 	print_answer(ps->answer);
+	print_stacka(stack_a);
 	all_free(stack_a, stack_b, ps);
 }
 

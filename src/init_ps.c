@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 13:42:32 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 15:19:52 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,6 @@ t_pushswap	*init_ps(int ac, char **av)
 		strs++;
 		i++;
 	}
-/* 	i = 0;//kokkara kesu
-	printf("00000000\n\n");
-	while (i < ps-> size)
-	{
-		printf("value of n[%ld]: %ld\n", i, ps->n[i].value);
-		i++;
-	}
-	printf("\n00000000\n"); */
 	while (i < ARGLIMIT)
 	{
 		ps->n[i].id = i;
@@ -101,26 +93,11 @@ t_pushswap	*init_ps(int ac, char **av)
 		printf("%ld\t%ld\n", ps->n[i].value, ps->n[i].id);
 		i++;
 	}
-	quick_sort(ps->n, 0, ps->size - 1, SORT_VALUE);//2times sort to 1. sort to see the correct position
+	quick_sort(ps->n, 0, ps->size - 1, SORT_VALUE);
 	i = 0;
-/* 	printf(":::::::::\nafter first sort\n");
-	while (i < ps->size)
-	{
-		printf("value\t: %ld\n", ps->n[i].value);
-		printf("id %ld\t: %ld\n", i, ps->n[i].id);
-		i++;
-	} */
-	//I have to get ID to see where it should go
 	get_id(ps);
-	quick_sort(ps->n, 0, ps->size - 1, SORT_ID);//2times sort to 2. to make as an initial
+	quick_sort(ps->n, 0, ps->size - 1, SORT_ID);
 	i = 0;
-/* 	printf(":::::::::\nafter second sort\n");
-	while (i < ps->size)
-	{
-		printf("dummy value\t: %ld\n", ps->n[i].value);
-		printf("id %ld\t\t: %ld\n", i, ps->n[i].id);
-		i++;
-	} */
 	return (ps);
 }
 

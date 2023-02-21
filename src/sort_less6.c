@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:38:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 12:50:38 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 15:37:26 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ void	add_answer(long turn, t_sorting *sort)
 
 	sort->max_turn = turn;
 	i = 0;
+	printf("-------------\n");
 	while (i < turn)
 	{
 		sort->ans[i] = sort->tmp[i];
+		printf("sort->ans[%ld]: %ld\n", i, sort->ans[i]);
 		i++;
 	}
 }
@@ -55,9 +57,9 @@ void	update_stack(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort)
 
 bool	check_futility(t_sorting *sort, long command)
 {
-	if (command == SA && (sort->pre == SA || sort->pre == SS))
+	if (command == SA && (sort->pre == SA || sort->pre == SB ||sort->pre == SS))
 		return (true);
-	if (command == SB && (sort->pre == SB || sort->pre == SS))
+	if (command == SB && (sort->pre == SA || sort->pre == SB || sort->pre == SS))
 		return (true);
 	if (command == SS && (sort->pre == SA || sort->pre == SB || sort->pre == SS))
 		return (true);
@@ -88,7 +90,9 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 	if (turn >= sort->max_turn)
 		return ;//de repente si es igual que el límite, termina la función
 	if (stack_b->next->value == -1 && is_sorted(stack_a))
+	{
 		return (add_answer(turn, sort));
+	}
 	command = -1;
 	while (++command < 11)
 	{
@@ -119,7 +123,7 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	sort.pre = -1;
 	dfs(stack_a, stack_b, &sort, 0);
 	get_answer(ps, &sort);
-	update_stack(stack_a, stack_b, &sort);//iru?
+//	update_stack(stack_a, stack_b, &sort);//iru?
 /* 	printf("print sort.tmp:\n");
 	i = 0;
 	while (i < sort.max_turn - 1)

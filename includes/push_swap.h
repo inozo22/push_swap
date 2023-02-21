@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 13:56:09 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 14:58:41 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ bool		cmd_push(t_boxes *dst, t_boxes *src);
 bool		cmd_ss(t_boxes *stack_a, t_boxes *stack_b);//Verification required
 bool		cmd_rr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
 bool		cmd_rrr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
+
+//ato de kesu
+void		print_stacka(t_boxes *stack);
 
 
 #endif

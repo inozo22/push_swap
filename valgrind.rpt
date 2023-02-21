@@ -1,27 +1,28 @@
-==8490== Memcheck, a memory error detector
-==8490== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==8490== Using Valgrind-3.21.0.GIT-lbmacos and LibVEX; rerun with -h for copyright info
-==8490== Command: ./push_swap 789 456 123
-==8490== Parent PID: 73772
-==8490== 
-==8490== 
-==8490== HEAP SUMMARY:
-==8490==     in use at exit: 18,192 bytes in 167 blocks
-==8490==   total heap usage: 187 allocs, 20 frees, 35,096 bytes allocated
-==8490== 
-==8490== 120 (24 direct, 96 indirect) bytes in 1 blocks are definitely lost in loss record 22 of 39
-==8490==    at 0x100124545: malloc (in /System/Volumes/Data/sgoinfre/goinfre/Perso/nimai/homebrew/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==8490==    by 0x100002E01: make_dummy (push_swap.c:61)
-==8490==    by 0x10000292F: init_ps (init_ps.c:71)
-==8490==    by 0x100002EEA: push_swap (push_swap.c:92)
-==8490==    by 0x100002FCA: main (push_swap.c:119)
-==8490== 
-==8490== LEAK SUMMARY:
-==8490==    definitely lost: 24 bytes in 1 blocks
-==8490==    indirectly lost: 96 bytes in 4 blocks
-==8490==      possibly lost: 0 bytes in 0 blocks
-==8490==    still reachable: 0 bytes in 0 blocks
-==8490==         suppressed: 18,072 bytes in 162 blocks
-==8490== 
-==8490== For lists of detected and suppressed errors, rerun with: -s
-==8490== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 7 from 7)
+==42607== Memcheck, a memory error detector
+==42607== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==42607== Using Valgrind-3.21.0.GIT-lbmacos and LibVEX; rerun with -h for copyright info
+==42607== Command: ./push_swap 789 456 123
+==42607== Parent PID: 29944
+==42607== 
+--42607-- run: /usr/bin/dsymutil "./push_swap"
+==42607== 
+==42607== HEAP SUMMARY:
+==42607==     in use at exit: 18,192 bytes in 167 blocks
+==42607==   total heap usage: 187 allocs, 20 frees, 35,096 bytes allocated
+==42607== 
+==42607== 120 (24 direct, 96 indirect) bytes in 1 blocks are definitely lost in loss record 22 of 39
+==42607==    at 0x100124545: malloc (in /System/Volumes/Data/sgoinfre/goinfre/Perso/nimai/homebrew/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==42607==    by 0x100002DD1: make_dummy (push_swap.c:75)
+==42607==    by 0x10000287F: init_ps (init_ps.c:71)
+==42607==    by 0x100002EBA: push_swap (push_swap.c:106)
+==42607==    by 0x100002FAA: main (push_swap.c:128)
+==42607== 
+==42607== LEAK SUMMARY:
+==42607==    definitely lost: 24 bytes in 1 blocks
+==42607==    indirectly lost: 96 bytes in 4 blocks
+==42607==      possibly lost: 0 bytes in 0 blocks
+==42607==    still reachable: 0 bytes in 0 blocks
+==42607==         suppressed: 18,072 bytes in 162 blocks
+==42607== 
+==42607== For lists of detected and suppressed errors, rerun with: -s
+==42607== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 7 from 7)

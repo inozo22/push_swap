@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:45:10 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 14:02:07 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 15:18:40 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	put_command(long command)
 	if (command == SA)
 		ft_putstr_fd("sa\n", 1);
 	if (command == SB)
-		ft_putstr_fd("sb\n", 1);	
+		ft_putstr_fd("sb\n", 1);
 	if (command == SS)
 		ft_putstr_fd("ss\n", 1);
 	if (command == RA)
@@ -27,7 +27,7 @@ void	put_command(long command)
 	if (command == RR)
 		ft_putstr_fd("rr\n", 1);
 	if (command == RRA)
-		ft_putstr_fd("rra\n", 1);	
+		ft_putstr_fd("rra\n", 1);
 	if (command == RRB)
 		ft_putstr_fd("rrb\n", 1);
 	if (command == RRR)

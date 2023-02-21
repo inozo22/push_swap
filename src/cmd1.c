@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:43:42 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/20 13:06:55 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 14:59:49 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool	cmd_swap(t_boxes *box)
 	tmp3->prev = tmp1;
 	tmp1->prev = tmp2;
 	tmp2->prev = box;
+//	printf("* swap between %ld and %ld\n", box->next->value, box->next->next->value);
 	return (false);
 }
 
@@ -49,6 +50,7 @@ bool	cmd_rotate(t_boxes *box)
 	tmp2->prev = tmp1;
 	tmp1->next = tmp2;
 	tmp2->next = box;
+//	printf("* rotate between %ld and %ld\n", box->prev->value, box->next->value);
 	return (false);
 }
 
@@ -69,6 +71,7 @@ bool	cmd_reverse(t_boxes *box)
 	tmp2->prev = tmp1;
 	tmp1->next = tmp2;
 	tmp3->next = box;
+//	printf("* reverse between %ld and %ld\n", box->prev->value, box->next->value);
 	return (false);
 }
 
@@ -89,5 +92,6 @@ bool	cmd_push(t_boxes *dst, t_boxes *src)
 	src_tmp1->next = dst_tmp;
 	dst_tmp->prev = src_tmp1;
 	src_tmp1->prev = dst;
+//	printf("* push between dest:%ld and src:%ld\n", dst->next->value, src->next->value);
 	return (false);
 }
