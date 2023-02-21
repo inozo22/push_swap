@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/20 16:46:36 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 13:10:38 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define SORT_ID 0
 # define SORT_VALUE 1
 # define LIMIT_LESS6 12
-# define LIMIT_OVER5 7000
+# define LIMIT_OVER5 7000//???
 
 typedef enum e_cmd// to control commands
 {
@@ -81,6 +81,7 @@ t_boxes		*make_dummy(void);
 void		add_box(t_boxes *dummy, long num);
 long		ps_atoi(char *str);
 bool		move_stack(t_boxes *stack_a, t_boxes *stack_b, long command, bool ret);
+void		print_answer(t_boxes *answer);
 
 //sorting
 void		quick_sort(t_pair n[], long left, long right, long flag);

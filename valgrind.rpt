@@ -1,39 +1,27 @@
-==75079== Memcheck, a memory error detector
-==75079== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==75079== Using Valgrind-3.21.0.GIT-lbmacos and LibVEX; rerun with -h for copyright info
-==75079== Command: ./push_swap 123 456 789
-==75079== Parent PID: 36061
-==75079== 
-==75079== 
-==75079== HEAP SUMMARY:
-==75079==     in use at exit: 30,256 bytes in 169 blocks
-==75079==   total heap usage: 183 allocs, 14 frees, 35,000 bytes allocated
-==75079== 
-==75079== 24 bytes in 1 blocks are definitely lost in loss record 7 of 42
-==75079==    at 0x100124545: malloc (in /System/Volumes/Data/sgoinfre/goinfre/Perso/nimai/homebrew/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==75079==    by 0x100003831: make_dummy (push_swap.c:64)
-==75079==    by 0x100003938: push_swap (push_swap.c:97)
-==75079==    by 0x100003A2A: main (push_swap.c:115)
-==75079== 
-==75079== 96 (24 direct, 72 indirect) bytes in 1 blocks are definitely lost in loss record 24 of 42
-==75079==    at 0x100124545: malloc (in /System/Volumes/Data/sgoinfre/goinfre/Perso/nimai/homebrew/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==75079==    by 0x100003831: make_dummy (push_swap.c:64)
-==75079==    by 0x1000038A0: put_num (push_swap.c:78)
-==75079==    by 0x10000392F: push_swap (push_swap.c:96)
-==75079==    by 0x100003A2A: main (push_swap.c:115)
-==75079== 
-==75079== 12,064 (12,040 direct, 24 indirect) bytes in 1 blocks are definitely lost in loss record 42 of 42
-==75079==    at 0x100124545: malloc (in /System/Volumes/Data/sgoinfre/goinfre/Perso/nimai/homebrew/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==75079==    by 0x100003228: init_ps (init_ps.c:68)
-==75079==    by 0x100003922: push_swap (push_swap.c:95)
-==75079==    by 0x100003A2A: main (push_swap.c:115)
-==75079== 
-==75079== LEAK SUMMARY:
-==75079==    definitely lost: 12,088 bytes in 3 blocks
-==75079==    indirectly lost: 96 bytes in 4 blocks
-==75079==      possibly lost: 0 bytes in 0 blocks
-==75079==    still reachable: 0 bytes in 0 blocks
-==75079==         suppressed: 18,072 bytes in 162 blocks
-==75079== 
-==75079== For lists of detected and suppressed errors, rerun with: -s
-==75079== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 7 from 7)
+==8490== Memcheck, a memory error detector
+==8490== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==8490== Using Valgrind-3.21.0.GIT-lbmacos and LibVEX; rerun with -h for copyright info
+==8490== Command: ./push_swap 789 456 123
+==8490== Parent PID: 73772
+==8490== 
+==8490== 
+==8490== HEAP SUMMARY:
+==8490==     in use at exit: 18,192 bytes in 167 blocks
+==8490==   total heap usage: 187 allocs, 20 frees, 35,096 bytes allocated
+==8490== 
+==8490== 120 (24 direct, 96 indirect) bytes in 1 blocks are definitely lost in loss record 22 of 39
+==8490==    at 0x100124545: malloc (in /System/Volumes/Data/sgoinfre/goinfre/Perso/nimai/homebrew/Cellar/valgrind/HEAD-4233f2e/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==8490==    by 0x100002E01: make_dummy (push_swap.c:61)
+==8490==    by 0x10000292F: init_ps (init_ps.c:71)
+==8490==    by 0x100002EEA: push_swap (push_swap.c:92)
+==8490==    by 0x100002FCA: main (push_swap.c:119)
+==8490== 
+==8490== LEAK SUMMARY:
+==8490==    definitely lost: 24 bytes in 1 blocks
+==8490==    indirectly lost: 96 bytes in 4 blocks
+==8490==      possibly lost: 0 bytes in 0 blocks
+==8490==    still reachable: 0 bytes in 0 blocks
+==8490==         suppressed: 18,072 bytes in 162 blocks
+==8490== 
+==8490== For lists of detected and suppressed errors, rerun with: -s
+==8490== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 7 from 7)

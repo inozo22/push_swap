@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/20 17:14:12 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 13:10:04 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	push_swap(int ac, char **av)
 	t_boxes		*stack_a;
 	t_boxes		*stack_b;
 	t_pushswap	*ps;
-	long i = 0;
+//	long i = 0;
 
 	ps = init_ps(ac, av);
 	stack_a = put_num(ps);
@@ -98,19 +98,13 @@ void	push_swap(int ac, char **av)
 		printf("is sorted!\n");
 	else if (ps->size < 6)
 	{
-		printf("enter sort_less6!\n");
+//		printf("enter sort_less6!\n");
 		sort_less6(stack_a, stack_b, ps);
 	}
 	else
 		printf("bye\n");
 		//sort_over5(stack_a, stack_b, ps);
-	printf("stack_a->value: %ld\n", stack_a->value);
-	while (stack_a->next->value == -1)
-	{
-		printf("value[%ld]: %ld\n", i, stack_a->next->value);
-		stack_a = stack_a->next;
-		i++;
-	}
+	print_answer(ps->answer);
 	all_free(stack_a, stack_b, ps);
 }
 

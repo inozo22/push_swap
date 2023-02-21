@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/20 13:07:11 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 10:13:10 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,32 +95,32 @@ t_pushswap	*init_ps(int ac, char **av)
 	}
 	check_dub_number(ps);
 	i = 0;
+	printf("value\tid\t\n");
 	while (i < ps->size)
 	{
-		printf("value\t: %ld\n", ps->n[i].value);
-		printf("id %ld\t: %ld\n", i, ps->n[i].id);
+		printf("%ld\t%ld\n", ps->n[i].value, ps->n[i].id);
 		i++;
 	}
 	quick_sort(ps->n, 0, ps->size - 1, SORT_VALUE);//2times sort to 1. sort to see the correct position
 	i = 0;
-	printf(":::::::::\nafter first sort\n");
+/* 	printf(":::::::::\nafter first sort\n");
 	while (i < ps->size)
 	{
 		printf("value\t: %ld\n", ps->n[i].value);
 		printf("id %ld\t: %ld\n", i, ps->n[i].id);
 		i++;
-	}
+	} */
 	//I have to get ID to see where it should go
 	get_id(ps);
 	quick_sort(ps->n, 0, ps->size - 1, SORT_ID);//2times sort to 2. to make as an initial
 	i = 0;
-	printf(":::::::::\nafter second sort\n");
+/* 	printf(":::::::::\nafter second sort\n");
 	while (i < ps->size)
 	{
 		printf("dummy value\t: %ld\n", ps->n[i].value);
 		printf("id %ld\t\t: %ld\n", i, ps->n[i].id);
 		i++;
-	}
+	} */
 	return (ps);
 }
 
