@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 13:10:38 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 13:56:09 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define SORT_ID 0
 # define SORT_VALUE 1
 # define LIMIT_LESS6 12
-# define LIMIT_OVER5 7000//???
+# define LIMIT_OVER5 30//???
 
 typedef enum e_cmd// to control commands
 {
@@ -67,8 +67,8 @@ typedef struct s_sorting//structure to sort
 {
 	long	turn;
 	long	size;
-	long	tmp[LIMIT_OVER5 + 100];
-	long	ans[LIMIT_OVER5 + 100];
+	long	tmp[LIMIT_OVER5 + 10];
+	long	ans[LIMIT_OVER5 + 10];
 	long	max_turn;
 	long	pre;
 

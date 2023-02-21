@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 13:10:04 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 13:41:16 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	push_swap(int ac, char **av)
 		sort_less6(stack_a, stack_b, ps);
 	}
 	else
-		printf("bye\n");
+		printf("***bye***\n");
 		//sort_over5(stack_a, stack_b, ps);
 	print_answer(ps->answer);
 	all_free(stack_a, stack_b, ps);
