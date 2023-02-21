@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:38:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 17:10:57 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 17:34:34 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,11 @@ void	get_answer(t_pushswap *ps, t_sorting *sort)
 	long	i;
 
 	i = 0;
-//	printf("max_turn: %ld\n", sort->max_turn);
 	while (i < sort->max_turn)
 	{
 		add_box(ps->answer, sort->ans[i]);
-//		printf("sort->ans[%ld]: %ld\n", i, sort->ans[i]);
 		i++;
 	}
-/* 	printf("sort->ans[%ld]: %ld\n", i, sort->ans[i]);
-	printf("sort->ans[%d]: %ld\n", 3, sort->ans[3]); */
 }
 
 void	update_stack(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort)
@@ -88,13 +84,9 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 	long	command;
 
 	if (turn >= sort->max_turn)
-		return ;//de repente si es igual que el límite, termina la función
+		return ;
 	if (stack_b->next->value == -1 && is_sorted(stack_a))
 	{
-		printf("is sorted???\n");
-		print_stacka(stack_a);
-		//printf("==========\nsorting :%ld\n==========\n", sort->tmp[0]);
-		//printf("==========\n");
 		return (add_answer(turn, sort));
 	}
 	command = -1;
@@ -127,7 +119,7 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	sort.pre = -1;
 	dfs(stack_a, stack_b, &sort, 0);
 	get_answer(ps, &sort);
-//	update_stack(stack_a, stack_b, &sort);//iru?
+	update_stack(stack_a, stack_b, &sort);//iru?
 /* 	printf("print sort.tmp:\n");
 	i = 0;
 	while (i < sort.max_turn - 1)
