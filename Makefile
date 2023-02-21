@@ -6,7 +6,7 @@
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
-#    Updated: 2023/02/21 13:25:45 by nimai            ###   ########.fr        #
+#    Updated: 2023/02/21 13:34:13 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ $(OBJDIR)%.o : $(SRCDIR)%.c
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 $(NAME): $(OBJ)
-	@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
+	@echo "$(BLUE)--Compiling ${CLR_RMV} ${YELLOW}$(NAME) ${CLR_RMV}..."
 	@make --directory $(LIBDIR)
 	$(CC) $(CFLAGS) -I../includes -L $(LIBDIR) -lft -o $@ $^
 	@echo "$(GREEN)$(NAME) created[0m ✔️"
@@ -61,13 +61,13 @@ $(NAME): $(OBJ)
 clean:
 	@rm -rf $(OBJDIR)
 	@make clean --directory $(LIBDIR)
-	@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
+	@ echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)objs ✔️"
 
 fclean: clean
 	@make fclean --directory $(LIBDIR)
 	@rm -rf ./push_swap.dSYM
 	@rm -f $(NAME)
-	@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
+	@ echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)binary ✔️"
 
 re: fclean all
 
