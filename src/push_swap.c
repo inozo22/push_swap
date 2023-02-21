@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 15:25:37 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/21 15:58:26 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ void	push_swap(int ac, char **av)
 	ps = init_ps(ac, av);
 	stack_a = put_num(ps);
 	stack_b = make_dummy();
+	printf("after the initiation\n");
+	print_stacka(stack_a);
 	if (stack_a->next->value == -1)
 		return (all_free(stack_a, stack_b, ps));
 	else if (is_sorted(stack_a))
