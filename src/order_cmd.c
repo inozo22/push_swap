@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 16:27:31 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 16:57:26 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/22 12:49:39 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ long	recover(long command)
 	return (command);
 }
 
-bool	move_stack(t_boxes *stack_a, t_boxes *stack_b, long command, bool ret)
+bool	move_stack(t_boxes *stack_a, t_boxes *stack_b, long command, bool exe)
 {
-	if (!ret)
+	if (!exe)
 		command = recover(command);
 	if (command == SA)
 		return (cmd_swap(stack_a));

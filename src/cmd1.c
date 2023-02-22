@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:43:42 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 14:59:49 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/22 12:46:17 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@ bool	cmd_reverse(t_boxes *box)
 
 	if (box->next->next->value == -1)
 		return (true);
-	tmp1 = box->prev;
-	tmp2 = box->next;
-	tmp3 = box->prev->prev;
-	box->next = tmp1;
-	tmp1->prev = box;
-	box->prev = tmp3;
-	tmp2->prev = tmp1;
-	tmp1->next = tmp2;
-	tmp3->next = box;
+	tmp1 = box->prev->prev;
+	tmp2 = box->prev;
+	tmp3 = box->next;
+	box->next = tmp2;
+	tmp2->next = tmp3;
+	tmp3->prev = tmp2;
+	tmp2->prev = box;
+	box->prev = tmp1;
+	tmp1->next = box;
 //	printf("* reverse between %ld and %ld\n", box->prev->value, box->next->value);
 	return (false);
 }

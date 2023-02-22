@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/22 09:39:13 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/22 13:13:04 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	is_sorted(t_boxes *stack_a)
 	return (true);
 }
 
-t_boxes	*search_head(t_boxes *dummy)//look for the first box that is not a dummy
+/* t_boxes	*search_head(t_boxes *dummy)//look for the first box that is not a dummy
 {
 	t_boxes	*ret;
 
@@ -50,7 +50,7 @@ t_boxes	*search_head(t_boxes *dummy)//look for the first box that is not a dummy
 		ret = ret->prev;
 	}
 	return (ret);
-}
+} */
 
 void	add_box(t_boxes *dummy, long num)
 {
@@ -120,6 +120,7 @@ void	push_swap(int ac, char **av)
 	else
 		printf("***bye***\n");
 		//sort_over5(stack_a, stack_b, ps);
+	
 	print_answer(ps->answer);
 	print_stacka(stack_a);
 	all_free(stack_a, stack_b, ps);

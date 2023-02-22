@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:03:53 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/20 13:07:00 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/22 12:58:20 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,33 @@
 
 bool	cmd_ss(t_boxes *stack_a, t_boxes *stack_b)
 {
-	bool	ret;
+	return (stack_b->next->next->value == -1 || cmd_swap(stack_a) || cmd_swap(stack_b));
+/* 	bool	ret;
 
 	ret = false;
 	ret |= cmd_swap(stack_a);
 	ret |= cmd_swap(stack_b);
-	return (ret);
+	return (ret); */
 }
 
 bool	cmd_rr(t_boxes *stack_a, t_boxes *stack_b)
 {
-	bool	ret;
+	return (stack_b->next->next->value == -1 || cmd_rotate(stack_a) || cmd_rotate(stack_b));
+/* 	bool	ret;
 
 	ret = false;
 	ret |= cmd_rotate(stack_a);
 	ret |= cmd_rotate(stack_b);
-	return (ret);
+	return (ret); */
 }
 
 bool	cmd_rrr(t_boxes *stack_a, t_boxes *stack_b)
 {
-	bool	ret;
+	return (stack_b->next->next->value == -1 || cmd_reverse(stack_a) || cmd_reverse(stack_b));
+/* 	bool	ret;
 
 	ret = false;
 	ret |= cmd_reverse(stack_a);
 	ret |= cmd_reverse(stack_b);
-	return (ret);
+	return (ret); */
 }

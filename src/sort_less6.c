@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:38:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 17:34:34 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/22 13:58:09 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,27 @@ void	add_answer(long turn, t_sorting *sort)
 
 	sort->max_turn = turn;
 	i = 0;
-	printf("-------------\n");
+	printf("----turn %ld----\n", turn);
 	while (i < turn)
 	{
 		sort->ans[i] = sort->tmp[i];
 		printf("sort->ans[%ld]: %ld\n", i, sort->ans[i]);
 		i++;
 	}
+	printf("----turn %ld----\n\n", turn);
 }
 
 void	get_answer(t_pushswap *ps, t_sorting *sort)
 {
 	long	i;
 
-	i = 0;
-	while (i < sort->max_turn)
+	i = -1;
+	while (++i < sort->max_turn)
 	{
 		add_box(ps->answer, sort->ans[i]);
-		i++;
 	}
+/* 	printf("para ver la situacion GETANSWER\n");
+	print_stacka(stack_a); */
 }
 
 void	update_stack(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort)
@@ -49,31 +51,33 @@ void	update_stack(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort)
 		move_stack(stack_a, stack_b, sort->ans[i], true);
 		i++;
 	}
+/* 	printf("para ver la situacion UPDATE_STACKA\n");
+	print_stacka(stack_a); */
 }
 
-bool	check_futility(t_sorting *sort, long command)
+bool	check_futility(t_sorting *sort, long cmd)
 {
-	if (command == SA && (sort->pre == SA || sort->pre == SB ||sort->pre == SS))
+	if (cmd == SA && (sort->pre == SA || sort->pre == SB || sort->pre == SS))
 		return (true);
-	if (command == SB && (sort->pre == SA || sort->pre == SB || sort->pre == SS))
+	if (cmd == SB && (sort->pre == SA || sort->pre == SB || sort->pre == SS))
 		return (true);
-	if (command == SS && (sort->pre == SA || sort->pre == SB || sort->pre == SS))
+	if (cmd == SS && (sort->pre == SA || sort->pre == SB || sort->pre == SS))
 		return (true);
-	if (command == RA && (sort->pre == RRA || sort->pre == RRR))
+	if (cmd == RA && (sort->pre == RRA || sort->pre == RRR))
 		return (true);
-	if (command == RB && (sort->pre == RRB || sort->pre == RRR))
+	if (cmd == RB && (sort->pre == RRB || sort->pre == RRR))
 		return (true);
-	if (command == RR && (sort->pre == RRA || sort->pre == RRB || sort->pre == RRR))
+	if (cmd == RR && (sort->pre == RRA || sort->pre == RRB || sort->pre == RRR))
 		return (true);
-	if (command == RRA && (sort->pre == RA || sort->pre == RR))
+	if (cmd == RRA && (sort->pre == RA || sort->pre == RR))
 		return (true);
-	if (command == RRB && (sort->pre == RB || sort->pre == RR))
+	if (cmd == RRB && (sort->pre == RB || sort->pre == RR))
 		return (true);
-	if (command == RRR && (sort->pre == RA || sort->pre == RB || sort->pre == RR))
+	if (cmd == RRR && (sort->pre == RA || sort->pre == RB || sort->pre == RR))
 		return (true);
-	if (command == PA && (sort->pre == PB))
+	if (cmd == PA && (sort->pre == PB))
 		return (true);
-	if (command == PB && (sort->pre == PA))
+	if (cmd == PB && (sort->pre == PA))
 		return (true);
 	return (false);
 }
@@ -85,21 +89,27 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 
 	if (turn >= sort->max_turn)
 		return ;
-	if (stack_b->next->value == -1 && is_sorted(stack_a))
+	if (stack_b->next->value == -1)
 	{
-		return (add_answer(turn, sort));
+		if (is_sorted(stack_a))
+		{
+			printf("para ver la situacion IS SORTED???\n");
+			print_stacka(stack_a);
+			return (add_answer(turn, sort));
+		}
 	}
 	command = -1;
-	while (++command < 11)
+	while (++command <= RRR)
 	{
-		if (check_futility(sort, command) || turn >= sort->max_turn)
+		if (check_futility(sort, command) || turn >= sort->max_turn)//cut when these are true
 			continue ;
 		if (move_stack(stack_a, stack_b, command, true))
 			continue ;
 		sort->pre = command;
 		sort->tmp[turn] = command;
 		dfs(stack_a, stack_b, sort, (turn + 1));
-		move_stack(stack_a, stack_b, command, false);
+		move_stack(stack_a, stack_b, command, false);//reset this movement and go to the next cmd
+		printf("command: %ld\n", command);
 	}
 }
 
@@ -118,8 +128,11 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	}
 	sort.pre = -1;
 	dfs(stack_a, stack_b, &sort, 0);
+	printf("para ver la situacion\n");
+	print_stacka(stack_a);
 	get_answer(ps, &sort);
-	update_stack(stack_a, stack_b, &sort);//iru?
+	//update_stack(stack_a, stack_b, &sort);//iru?
+
 /* 	printf("print sort.tmp:\n");
 	i = 0;
 	while (i < sort.max_turn - 1)
