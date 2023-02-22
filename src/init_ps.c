@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 15:19:52 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/22 15:13:21 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,21 @@ t_pushswap	*init_ps(int ac, char **av)
 	}
 	quick_sort(ps->n, 0, ps->size - 1, SORT_VALUE);
 	i = 0;
+	printf("after 1st qsort\nvalue\tid\t\n-------------\n");
+	while (i < ps->size)
+	{
+		printf("%ld\t%ld\n", ps->n[i].value, ps->n[i].id);
+		i++;
+	}
 	get_id(ps);
 	quick_sort(ps->n, 0, ps->size - 1, SORT_ID);
 	i = 0;
+	printf("after 2nd qsort\nvalue\tid\t\n-------------\n");
+	while (i < ps->size)
+	{
+		printf("%ld\t%ld\n", ps->n[i].value, ps->n[i].id);
+		i++;
+	}
 	return (ps);
 }
 

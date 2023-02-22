@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:38:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/22 13:58:09 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/22 15:07:59 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	update_stack(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort)
 
 bool	check_futility(t_sorting *sort, long cmd)
 {
-	if (cmd == SA && (sort->pre == SA || sort->pre == SB || sort->pre == SS))
+	if (cmd == SA && (sort->pre == SA || sort->pre == SS))
 		return (true);
-	if (cmd == SB && (sort->pre == SA || sort->pre == SB || sort->pre == SS))
+	if (cmd == SB && (sort->pre == SB || sort->pre == SS))
 		return (true);
 	if (cmd == SS && (sort->pre == SA || sort->pre == SB || sort->pre == SS))
 		return (true);
@@ -86,13 +86,21 @@ bool	check_futility(t_sorting *sort, long cmd)
 void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 {
 	long	command;
+	long i;
 
+	i = 0;
 	if (turn >= sort->max_turn)
 		return ;
 	if (stack_b->next->value == -1)
 	{
 		if (is_sorted(stack_a))
 		{
+			printf("when is sorted\n");
+			while (i < sort->max_turn)
+			{
+				printf("sort->ans[%ld]: %ld\n", i, sort->ans[i]);
+				i++;
+			}
 			printf("para ver la situacion IS SORTED???\n");
 			print_stacka(stack_a);
 			return (add_answer(turn, sort));
@@ -109,7 +117,7 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 		sort->tmp[turn] = command;
 		dfs(stack_a, stack_b, sort, (turn + 1));
 		move_stack(stack_a, stack_b, command, false);//reset this movement and go to the next cmd
-		printf("command: %ld\n", command);
+//		printf("command: %ld\n", command);
 	}
 }
 
@@ -128,25 +136,26 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	}
 	sort.pre = -1;
 	dfs(stack_a, stack_b, &sort, 0);
-	printf("para ver la situacion\n");
+	printf("para ver la situacion, desupues de dfs\n");
 	print_stacka(stack_a);
 	get_answer(ps, &sort);
-	//update_stack(stack_a, stack_b, &sort);//iru?
-
+	update_stack(stack_a, stack_b, &sort);//iru?
+	printf("para ver la situacion, desupues de update_stack\n");
+	print_stacka(stack_a);
 /* 	printf("print sort.tmp:\n");
 	i = 0;
 	while (i < sort.max_turn - 1)
 	{
 		printf("%ld\n", sort.tmp[i]);
 		i++;
-	}
+	}*/
 	printf("print sort.ans:\n");
 	i = 0;
 	while (sort.ans[i] != -1)
 	{
 		printf("%ld\n", sort.ans[i]);
 		i++;
-	}
+	}/*
 	printf("print ps->answer:\n");
 	i = 1;
 	while (ps->answer->value != -1)
