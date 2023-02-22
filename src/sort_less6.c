@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:38:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/22 15:07:59 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/22 17:37:38 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ bool	check_futility(t_sorting *sort, long cmd)
 void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 {
 	long	command;
-	long i;
+	long i;//ato de kesu
 
 	i = 0;
 	if (turn >= sort->max_turn)
@@ -106,18 +106,24 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 			return (add_answer(turn, sort));
 		}
 	}
-	command = -1;
-	while (++command <= RRR)
+	command = 0;
+	while (command < 11)
 	{
 		if (check_futility(sort, command) || turn >= sort->max_turn)//cut when these are true
+		{
+			command++;
 			continue ;
+		}
 		if (move_stack(stack_a, stack_b, command, true))
+		{
+			command++;
 			continue ;
+		}
 		sort->pre = command;
 		sort->tmp[turn] = command;
 		dfs(stack_a, stack_b, sort, (turn + 1));
 		move_stack(stack_a, stack_b, command, false);//reset this movement and go to the next cmd
-//		printf("command: %ld\n", command);
+		command++;
 	}
 }
 
@@ -136,7 +142,7 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	}
 	sort.pre = -1;
 	dfs(stack_a, stack_b, &sort, 0);
-	printf("para ver la situacion, desupues de dfs\n");
+	printf("para ver la situacion, despues de dfs\n");
 	print_stacka(stack_a);
 	get_answer(ps, &sort);
 	update_stack(stack_a, stack_b, &sort);//iru?
@@ -149,13 +155,13 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		printf("%ld\n", sort.tmp[i]);
 		i++;
 	}*/
-	printf("print sort.ans:\n");
+	/* printf("print sort.ans:\n");
 	i = 0;
 	while (sort.ans[i] != -1)
 	{
 		printf("%ld\n", sort.ans[i]);
 		i++;
-	}/*
+	} *//*
 	printf("print ps->answer:\n");
 	i = 1;
 	while (ps->answer->value != -1)
