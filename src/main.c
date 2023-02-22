@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:51 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/22 10:47:37 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/22 10:51:28 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	main(int ac, char **av)
 {
 	char	**strs;
 	int		len;
-	int		i;
 
 	if (ac > ARGLIMIT)
 		ps_error("error more than arglimit");
@@ -43,7 +42,6 @@ int	main(int ac, char **av)
 		ft_putchar_fd('\n', 1);
 	else if (ac == 2)
 	{
-		i = 0;
 		strs = ft_split(ft_strjoin(ft_strjoin(av[0], " "), av[1]), 32);
 		len = arg_nbr(av[1], 32);
 		push_swap(len + 1, strs);
