@@ -90,7 +90,11 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 
 	i = 0;
 	if (turn >= sort->max_turn)
+	{
+		move_stack(stack_a, stack_b, command, false);//para que llegue hasta el movimiento
 		return ;
+	}
+
 	if (stack_b->next->value == -1)
 	{
 		if (is_sorted(stack_a))
@@ -106,8 +110,8 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 			return (add_answer(turn, sort));
 		}
 	}
-	command = 0;
-	while (command < 11)
+	command = -1;
+	while (++command < 11)
 	{
 		if (check_futility(sort, command) || turn >= sort->max_turn)//cut when these are true
 		{
@@ -122,8 +126,8 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 		sort->pre = command;
 		sort->tmp[turn] = command;
 		dfs(stack_a, stack_b, sort, (turn + 1));
-		move_stack(stack_a, stack_b, command, false);//reset this movement and go to the next cmd
-		command++;
+//		move_stack(stack_a, stack_b, command, false);//reset this movement and go to the next cmd
+		//command++;
 	}
 }
 
