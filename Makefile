@@ -6,7 +6,7 @@
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
-#    Updated: 2023/02/22 09:37:32 by nimai            ###   ########.fr        #
+#    Updated: 2023/02/23 21:27:21 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC = \
 OBJDIR = ./obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
-LIBDIR = ../libft
+LIBDIR = ./libft
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g1
