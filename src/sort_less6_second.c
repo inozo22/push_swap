@@ -14,6 +14,30 @@
 
 #include "../includes/push_swap.h"
 
+void	stack_update(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort)
+{
+	long	i;
+
+	i = 0;
+	while (i < sort->max_turn)
+	{
+		move_stack(stack_a, stack_b, sort->ans[i], true);
+		i++;
+	}
+}
+
+void	ansjoin(t_pushswap *ps, t_sorting *sort)
+{
+	long	i;
+
+	i = 0;
+	while (i < sort->max_turn)
+	{
+		add_box(ps->answer, sort->ans[i]);
+		i++;
+	}
+}
+
 bool	check_futility(long cmd, t_sorting *sort)
 {
 	if (cmd == SA && (sort->pre == SA || sort->pre == SB || sort->pre == SS))
@@ -83,7 +107,9 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 {
 	t_sorting	sort;
 	long		i;
+	long 		turn;
 
+	turn = 0;
 	sort.max_turn = LIMIT_LESS6;
 	i = -1;
 	while (++i < LIMIT_LESS6)
@@ -92,5 +118,15 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		sort.ans[i] = -1;
 	}
 	sort.pre = -1;
-	dfs(stack_a, stack_b, &sort, 0);
+	if (ps->size > 3)
+	{
+		cmd_push(stack_b, stack_a);
+		cmd_push(stack_b, stack_a);
+		turn = 2;
+		sort.tmp[0] = 4;
+		sort.tmp[1] = 4;		
+	}
+	dfs(stack_a, stack_b, &sort, turn);
+	ansjoin(ps, &sort);
+	stack_update(stack_a, stack_b, &sort);
 }
