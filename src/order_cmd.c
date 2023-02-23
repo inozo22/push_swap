@@ -35,7 +35,7 @@ long	recover(long command)
 
 bool	move_stack(t_boxes *stack_a, t_boxes *stack_b, long command, bool exe)
 {
-	if (!exe)
+	if (exe == 0)
 		command = recover(command);
 	if (command == SA)
 		return (cmd_swap(stack_a));

@@ -89,9 +89,9 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 	long i;//ato de kesu
 
 	i = 0;
-	if (turn >= sort->max_turn)
+	if (turn >= sort->max_turn && command != '\0')
 	{
-		move_stack(stack_a, stack_b, command, false);//para que llegue hasta el movimiento
+//		move_stack(stack_a, stack_b, command, false);//para que llegue hasta el movimiento
 		return ;
 	}
 
@@ -126,7 +126,7 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 		sort->pre = command;
 		sort->tmp[turn] = command;
 		dfs(stack_a, stack_b, sort, (turn + 1));
-//		move_stack(stack_a, stack_b, command, false);//reset this movement and go to the next cmd
+		move_stack(stack_a, stack_b, command, false);//reset this movement and go to the next cmd
 		//command++;
 	}
 }

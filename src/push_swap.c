@@ -43,7 +43,7 @@ bool	is_sorted(t_boxes *stack_a)//parece funciona
 		tmp = tmp->next;
 	}
 	tmp = stack_a;
-	printf("sorted...\n");
+	printf("\nsorted...\n");
 	while (tmp->next->value != -1)
 	{
 		printf("tmp->value: %ld\n", tmp->next->value);
