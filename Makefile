@@ -6,7 +6,7 @@
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
-#    Updated: 2023/02/24 11:26:59 by nimai            ###   ########.fr        #
+#    Updated: 2023/02/24 15:56:52 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,18 +55,19 @@ $(OBJDIR)%.o : $(SRCDIR)%.c
 
 $(NAME): $(OBJ)
 	@echo "$(BLUE)--Compiling ${CLR_RMV} ${YELLOW}$(NAME) ${CLR_RMV}..."
-	@make --directory $(LIBDIR)
-	$(CC) $(CFLAGS) -I../includes -L $(LIBDIR) -lft -o $@ $^
+	make --directory $(LIBDIR)
+#	$(CC) $(CFLAGS) -I../includes -L $(LIBDIR) -lft -o $@ $^
+	$(CC) $(CFLAGS) -I../includes -o $@ $^ -L $(LIBDIR) -lft
 	@echo "$(GREEN)$(NAME) created[0m ✔️"
 #Name the static library with -lft#
 
 clean:
 	@rm -rf $(OBJDIR)
-	@make clean --directory $(LIBDIR)
+	make clean --directory $(LIBDIR)
 	@ echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)objs ✔️"
 
 fclean: clean
-	@make fclean --directory $(LIBDIR)
+	make fclean --directory $(LIBDIR)
 	@rm -rf ./push_swap.dSYM
 	@rm -f $(NAME)
 	@ echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)binary ✔️"
