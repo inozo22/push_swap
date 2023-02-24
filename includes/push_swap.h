@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/24 11:26:37 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/24 13:01:22 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@
 
 typedef enum e_cmd// to control commands
 {
-	SA,//[0]
-	SB,//[1]
-	SS,//[2]
-	PA,//[3]
-	PB,//[4]
-	RA,//[5]
-	RB,//[6]
-	RR,//[7]
-	RRA,//[8]
-	RRB,//[9]
-	RRR,//[10]
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
 }	t_cmd;
 
 typedef struct s_boxes
@@ -85,7 +85,7 @@ t_pushswap	*init_ps(int ac, char **av);
 t_boxes		*make_dummy(void);
 void		add_box(t_boxes *dummy, long num);
 long		ps_atoi(char *str);
-bool		move_stack(t_boxes *stack_a, t_boxes *stack_b, long command, bool ret);
+bool		move_stack(t_boxes *stack_a, t_boxes *stack_b, long cmd, bool ret);
 void		print_answer(t_boxes *answer);
 
 //sorting
@@ -99,7 +99,6 @@ long		ps_error(char *str);//I have to change str to void, for now its ok to chec
 void		all_free(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
 void		list_clear(t_boxes *box);
 
-
 //commands
 bool		cmd_swap(t_boxes *box);
 bool		cmd_rotate(t_boxes *box);
@@ -111,6 +110,5 @@ bool		cmd_rrr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
 
 //ato de kesu
 void		print_stacka(t_boxes *stack);
-
 
 #endif

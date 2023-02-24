@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 16:27:31 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/22 12:49:39 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/24 13:07:37 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,31 @@ long	recover(long command)
 	return (command);
 }
 
-bool	move_stack(t_boxes *stack_a, t_boxes *stack_b, long command, bool exe)
+bool	move_stack(t_boxes *stack_a, t_boxes *stack_b, long cmd, bool exe)
 {
 	if (exe == 0)
-		command = recover(command);
-	if (command == SA)
+		cmd = recover(cmd);
+	if (cmd == SA)
 		return (cmd_swap(stack_a));
-	if (command == SB)
+	if (cmd == SB)
 		return (cmd_swap(stack_b));
-	if (command == SS)
+	if (cmd == SS)
 		return (cmd_ss(stack_a, stack_b));
-	if (command == PA)
+	if (cmd == PA)
 		return (cmd_push(stack_a, stack_b));
-	if (command == PB)
+	if (cmd == PB)
 		return (cmd_push(stack_b, stack_a));
-	if (command == RA)
+	if (cmd == RA)
 		return (cmd_rotate(stack_a));
-	if (command == RB)
+	if (cmd == RB)
 		return (cmd_rotate(stack_b));
-	if (command == RR)
+	if (cmd == RR)
 		return (cmd_rr(stack_a, stack_b));
-	if (command == RRA)
+	if (cmd == RRA)
 		return (cmd_reverse(stack_a));
-	if (command == RRB)
+	if (cmd == RRB)
 		return (cmd_reverse(stack_b));
-	if (command == RRR)
+	if (cmd == RRR)
 		return (cmd_rr(stack_a, stack_b));
 	return (true);
 }
