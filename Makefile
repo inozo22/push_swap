@@ -6,7 +6,7 @@
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
-#    Updated: 2023/02/24 15:56:52 by nimai            ###   ########.fr        #
+#    Updated: 2023/02/24 16:40:42 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC = \
 OBJDIR = ./obj/
 OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
-LIBDIR = ../libft
+LIBDIR = ./libft
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g1
@@ -51,26 +51,26 @@ $(OBJDIR):
 	@mkdir -p $@
 
 $(OBJDIR)%.o : $(SRCDIR)%.c
-	$(CC) -c $(CFLAGS) -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJ)
 	@echo "$(BLUE)--Compiling ${CLR_RMV} ${YELLOW}$(NAME) ${CLR_RMV}..."
-	make --directory $(LIBDIR)
-#	$(CC) $(CFLAGS) -I../includes -L $(LIBDIR) -lft -o $@ $^
+	@make --directory $(LIBDIR)
+#	$(CC) $(CFLAGS) -I../includes -L $(LIBDIR) -lft -o $@ $^#with this line, doesn't work in codespase
 	$(CC) $(CFLAGS) -I../includes -o $@ $^ -L $(LIBDIR) -lft
 	@echo "$(GREEN)$(NAME) created[0m ✔️"
 #Name the static library with -lft#
 
 clean:
 	@rm -rf $(OBJDIR)
-	make clean --directory $(LIBDIR)
+	@make clean --directory $(LIBDIR)
 	@ echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)objs ✔️"
 
 fclean: clean
-	make fclean --directory $(LIBDIR)
+	@make fclean --directory $(LIBDIR)
 	@rm -rf ./push_swap.dSYM
 	@rm -f $(NAME)
-	@ echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)binary ✔️"
+	@echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)binary ✔️"
 
 re: fclean all
 
