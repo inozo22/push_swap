@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:38:08 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/22 17:37:38 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/24 09:15:35 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 	long i;//ato de kesu
 
 	i = 0;
-	if (turn >= sort->max_turn && command != '\0')
+	if (turn >= sort->max_turn)
 	{
 //		move_stack(stack_a, stack_b, command, false);//para que llegue hasta el movimiento
 		return ;

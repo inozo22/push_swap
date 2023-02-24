@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:45:10 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 15:18:40 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/24 09:25:46 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ void	print_answer(t_boxes *answer)
 		put_command(tmp->value);
 		tmp = tmp->next;
 	}
-	printf("\ntmp: %ld", tmp->value);
+//	printf("\ntmp: %ld", tmp->value);
 }
