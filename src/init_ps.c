@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/22 15:13:21 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/24 10:43:55 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ t_pushswap	*init_ps(int ac, char **av)
 		ps->n[i].value = 0;
 		i++;
 	}
+	ps->a = 0;
+	ps->b = 0;
 	check_dub_number(ps);
 	i = 0;
 	printf("initial data\nvalue\tid\t\n-------------\n");

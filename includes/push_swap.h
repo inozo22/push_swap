@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/22 13:51:48 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/24 11:26:37 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ typedef struct s_pushswap//structure to control in generarl
 	t_boxes		*answer;
 	t_pair		n[ARGLIMIT];
 	long		init[ARGLIMIT];
+	long		a;
+	long		b;
+	long		ans_ret;
+	long		ans_turn;
+	char		ans_next[5][10];
 }	t_pushswap;
 
 typedef struct s_sorting//structure to sort
@@ -86,6 +91,7 @@ void		print_answer(t_boxes *answer);
 //sorting
 void		quick_sort(t_pair n[], long left, long right, long flag);
 void		sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
+void		sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
 bool		is_sorted(t_boxes *stack_a);
 
 //error control and free

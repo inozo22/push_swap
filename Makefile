@@ -6,7 +6,7 @@
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
-#    Updated: 2023/02/24 09:22:26 by nimai            ###   ########.fr        #
+#    Updated: 2023/02/24 11:26:59 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = \
 		push_swap.c \
 		quick_sort.c \
 		sort_less6.c \
+		sort_over5.c \
 		order_cmd.c \
 		print_answer.c \
 		main.c
