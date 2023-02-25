@@ -6,11 +6,23 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/24 17:25:00 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/25 13:08:28 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+bool	stay_b(t_boxes *stack_b, t_pushswap *ps, long size, t_sorting *sort)
+{
+	ps->b++;
+	if (size == 1)
+		return (true);
+	if (stack_b->prev->value == ps->b)
+		ps->b++;
+	cmd_rotate(stack_b);
+	sort->tmp[i] = RA;	//doesn't work with take i, should change the way to cout
+	
+}
 
 void	settle_top(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, t_sorting *sort)
 {
@@ -54,17 +66,29 @@ void	settle_half(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, t_sorting *
 	long	i;
 	long	size_b;
 	t_boxes	*tmp_a;
+	t_boxes	*tmp_b;
 
 	i = 0;
 	size_b = 0;
 	tmp_a = stack_a;
+	tmp_b = stack_b;
 	while (i < ps->size && size_b < (ps->size / 2))
 	{
+		while (tmp_b->next->value = ps->b)
+		{
+			if (stay_b(tmp_b, ps, size_b, sort))
+				break;
+		}
 		if (tmp_a->next->value < (ps->size / 2))
 		{
 			cmd_push(stack_b, stack_a);
 			sort->tmp[i] = PB;
 			size_b++;
+		}
+		else
+		{
+			cmd_rotate(stack_a);
+			sort->tmp[i] = RA;
 		}
 		i++;
 		tmp_a = tmp_a->next;
@@ -97,12 +121,30 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	printf("--------------------------------\n");
 	printf("■    stackA\tstackB\t\t■\n");
 	printf("--------------------------------\n");
-	while (ps->a != ps->size)
+	settle_top(stack_a, stack_b, ps, &sort);
+/* 	while (ps->a != ps->size)
 	{
-		settle_top(stack_a, stack_b, ps, &sort);
-		return ;
 
+		return ;
+	} */
+	printf("--------------------------------\n");
+	printf("■   print stackA and stackB\t■\n■\tafter settle_top\t■\n");
+	printf("--------------------------------\n");
+	tmp_a = stack_a;
+	tmp_b = stack_b;
+	while (tmp_a->next->value != -1)
+	{
+		printf("\t%ld\t", tmp_a->next->value);
+		if (tmp_b->next->value != -1)
+			printf("%ld\t\n", tmp_b->next->value);
+		else
+			printf("\n");
+		tmp_a = tmp_a->next;
+		tmp_b = tmp_b->next;
 	}
+	printf("--------------------------------\n");
+	printf("■    stackA\tstackB\t\t■\n");
+	printf("--------------------------------\n");
 }
 
 /* int	main(int ac, char **av)
