@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/24 13:12:38 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/25 21:18:17 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_stacka(t_boxes *stack)
 	printf("\n###stack A###\n");
 	while (tmp->next->value != -1)
 	{
-		printf("%ld\n", tmp->next->value);
+		printf("\t%ld\n", tmp->next->value);
 		tmp = tmp->next;
 	}
 	printf("###stack A###\n");
