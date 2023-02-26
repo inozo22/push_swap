@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/26 12:41:16 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/26 16:42:30 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ long	get_a_len(t_boxes *stack_a, t_pushswap *ps)
 	return (ret);
 }
 
-/* void	qsort_a(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
+void	qsort_a(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 {
 	long	i;
 	
@@ -41,6 +41,30 @@ long	get_a_len(t_boxes *stack_a, t_pushswap *ps)
 	while (++i < size)
 	{
 		if (stack_b->prev->value == ps->a)
+		{
+			cmd_reverse(stack_a);
+			add_box(ps->answer, RRA);	
+		}
+		if (stack_b->next->next->value == ps->a)
+		{
+			cmd_swap(stack_b);
+			add_box(ps->answer, SB);	
+		}
+		if (stack_b->next->value == ps->a && (--i || 1))
+		{
+			cmd_push(stack_a, stack_b);
+			add_box(ps->answer, PA);	
+		}
+		if (stack_a->next->next->value == ps->a && stack_a->next->value == ps->a +1)
+		{
+			cmd_swap(stack_a);
+			add_box(ps->answer, SA);	
+		}
+		if (stack_a->next->next->value == ps->a && stack_a->next->value == ps->a +1)
+		{
+			cmd_swap(stack_a);
+			add_box(ps->answer, SA);	
+		}
 
 		
 		if (stack_b->next->value == ps->a && size_b-- && ++ps->a)
@@ -63,7 +87,8 @@ long	get_a_len(t_boxes *stack_a, t_pushswap *ps)
 			add_box(ps->answer, RA);			
 		}
 	}
-} *///sagyou chuu
+}//sagyou chuu
+
 
 void	qsort_b(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 {
