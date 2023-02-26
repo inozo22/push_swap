@@ -6,21 +6,128 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/25 22:02:58 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/26 12:41:16 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+long	get_a_len(t_boxes *stack_a, t_pushswap *ps)
+{
+	long	ret;
+	long	max;
+	t_boxes	*tmp;
+
+	ret = 0;
+	max = -ARGLIMIT - 10;
+	tmp = stack_a->next;
+	while (max - ps->a + 1 != ret && tmp->value)
+	{
+		ret++;
+		if (tmp->value > max)
+		{
+			max = tmp->value;
+		}
+		tmp = tmp->next;
+	}
+	return (ret);
+}
+
+/* void	qsort_a(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
+{
+	long	i;
+	
+	i = -1;
+	while (++i < size)
+	{
+		if (stack_b->prev->value == ps->a)
+
+		
+		if (stack_b->next->value == ps->a && size_b-- && ++ps->a)
+		{
+			cmd_push(stack_a, stack_b);
+			add_box(ps->answer, PA);	
+//			ps->b++;
+			cmd_rotate(stack_a);
+			add_box(ps->answer, RA);
+//			ps->b++;		
+		}
+		else if (stack_b->next->value > pivot && size_b-- && ++size_a)
+		{
+			cmd_push(stack_a, stack_b);
+			add_box(ps->answer, PA);				
+		}
+		else
+		{
+			cmd_rotate(stack_a);
+			add_box(ps->answer, RA);			
+		}
+	}
+} *///sagyou chuu
+
+void	qsort_b(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
+{
+	long	i;
+	long	pivot;
+	long	size_b;
+	long	size_a;
+	
+	i = -1;
+	size_b = size;
+	size_a = 0;
+	pivot = ps->a + (size - 1) / 2;
+	while (++i < size)
+	{
+		if (stack_b->next->value == ps->a && size_b-- && ++ps->a)
+		{
+			cmd_push(stack_a, stack_b);
+			add_box(ps->answer, PA);	
+//			ps->b++;
+			cmd_rotate(stack_a);
+			add_box(ps->answer, RA);
+//			ps->b++;		
+		}
+		else if (stack_b->next->value > pivot && size_b-- && ++size_a)
+		{
+			cmd_push(stack_a, stack_b);
+			add_box(ps->answer, PA);				
+		}
+		else
+		{
+			cmd_rotate(stack_a);
+			add_box(ps->answer, RA);			
+		}
+	}
+}
+
+long	stack_len(t_boxes *stack)
+{
+	long	ret;
+	t_boxes	*tmp;
+
+	ret = 0;
+	tmp = stack;
+	while (tmp->next->value != -1)
+	{
+		ret++;
+		tmp = tmp->next;		
+	}
+	return (ret);	
+}
+
 bool	stay_b(t_boxes *stack_b, t_pushswap *ps, long size)
 {
 	ps->b++;
 	if (size == 1)
-		return (true);
+	{
+		printf("stay_b true!\n");
+		return (true);		
+	}
 	if (stack_b->prev->value == ps->b)
 		ps->b++;
 	cmd_rotate(stack_b);
 	add_box(ps->answer, RB);
+	printf("stay_b add RB!\n");
 	return (false);	
 }
 
@@ -29,8 +136,10 @@ void	settle_top(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	long	i;
 
 	i = -1;
+
 	while ((++i + ps->a) < ps->b)
 	{
+//		printf("Enter settle top\n");
 		if (stack_b->prev->value == ps->b - i - 1)
 		{
 			cmd_reverse(stack_b);
@@ -76,7 +185,7 @@ void	settle_half(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	i = 0;
 	size_b = 0;
 	tmp_a = stack_a;
-	tmp_b = stack_b;
+ 	tmp_b = stack_b;
 	while (i < ps->size && size_b < (ps->size / 2))
 	{
 		while (tmp_b->next->value == ps->b)
@@ -107,6 +216,7 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 //	t_sorting	sort;
 	t_boxes	*tmp_a;
 	t_boxes	*tmp_b;
+	long	size;
 
 
 	settle_half(stack_a, stack_b, ps);//set a half of a to b
@@ -128,12 +238,27 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	printf("--------------------------------\n");
 	printf("■    stackA\tstackB\t\t■\n");
 	printf("--------------------------------\n");
-	settle_top(stack_a, stack_b, ps);
-/* 	while (ps->a != ps->size)
-	{
 
-		return ;
-	} */
+	while (ps->a != ps->size)
+	{
+		settle_top(stack_a, stack_b, ps);
+		while ((size = stack_len(stack_b)) > BSIZE)
+		{
+			qsort_b(stack_a, stack_b, ps, size);			
+		}
+		if (size)
+		{
+			allsort();
+		}
+		while ((size = get_a_len(stack_a, ps)) && size <= BSIZE)
+		{
+			allsort();			
+		}
+		if (size)
+		{
+			qsort_a(stack_a, stack_b, ps, size);
+		}
+	}
 	printf("--------------------------------\n");
 	printf("■   print stackA and stackB\t■\n■\tafter settle_top\t■\n");
 	printf("--------------------------------\n");
