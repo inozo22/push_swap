@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/26 16:42:30 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 09:55:04 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	qsort_a(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 	{
 		if (stack_b->prev->value == ps->a)
 		{
-			cmd_reverse(stack_a);
-			add_box(ps->answer, RRA);	
+			cmd_reverse(stack_b);
+			add_box(ps->answer, RRB);	
 		}
 		if (stack_b->next->next->value == ps->a)
 		{
@@ -60,34 +60,19 @@ void	qsort_a(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 			cmd_swap(stack_a);
 			add_box(ps->answer, SA);	
 		}
-		if (stack_a->next->next->value == ps->a && stack_a->next->value == ps->a +1)
+		if (stack_a->next->value == ps->a)
 		{
-			cmd_swap(stack_a);
-			add_box(ps->answer, SA);	
-		}
-
-		
-		if (stack_b->next->value == ps->a && size_b-- && ++ps->a)
-		{
-			cmd_push(stack_a, stack_b);
-			add_box(ps->answer, PA);	
-//			ps->b++;
 			cmd_rotate(stack_a);
 			add_box(ps->answer, RA);
-//			ps->b++;		
-		}
-		else if (stack_b->next->value > pivot && size_b-- && ++size_a)
-		{
-			cmd_push(stack_a, stack_b);
-			add_box(ps->answer, PA);				
+			++ps->a;
 		}
 		else
 		{
-			cmd_rotate(stack_a);
-			add_box(ps->answer, RA);			
+			cmd_push(stack_a, stack_b);
+			add_box(ps->answer, PA);		
 		}
 	}
-}//sagyou chuu
+}
 
 
 void	qsort_b(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
@@ -273,11 +258,11 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		}
 		if (size)
 		{
-			allsort();
+			allsort(stack_a, stack_b, ps, size);
 		}
 		while ((size = get_a_len(stack_a, ps)) && size <= BSIZE)
 		{
-			allsort();			
+			allsort(stack_a, stack_b, ps, size);			
 		}
 		if (size)
 		{

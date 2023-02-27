@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/25 21:18:17 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 10:30:55 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,8 @@ void	push_swap(int ac, char **av)
 	{
 		printf("***enter to sort_over5***\n");
 		sort_over5(stack_a, stack_b, ps);
-	}	
+		printf("I have been there, after sort_over5\n");
+	}
 	print_answer(ps->answer);
 //	print_stacka(stack_a);
 	all_free(stack_a, stack_b, ps);

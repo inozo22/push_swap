@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/26 12:08:16 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 09:59:56 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ typedef struct s_sorting//structure to sort
 	long	ans[LIMIT_OVER5 + 10];
 	long	max_turn;
 	long	pre;
-
+	long	a;
+	long	tail;
 }	t_sorting;
 
 //main functions
@@ -93,7 +94,13 @@ void		print_answer(t_boxes *answer);
 void		quick_sort(t_pair n[], long left, long right, long flag);
 void		sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
 void		sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
+void		dfs_over5(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn);
+void		allsort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size);
 bool		is_sorted(t_boxes *stack_a);
+void		stack_update(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort);
+void		ansjoin(t_pushswap *ps, t_sorting *sort);
+bool		check_futility(long cmd, t_sorting *sort);
+void		add_answer(long turn, t_sorting *sort);
 
 //error control and free
 long		ps_error(char *str);//I have to change str to void, for now its ok to check where I got error
