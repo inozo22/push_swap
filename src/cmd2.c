@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:03:53 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/22 12:58:20 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 13:57:58 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ bool	cmd_ss(t_boxes *stack_a, t_boxes *stack_b)
 		return (true);
 	if (stack_a->next->next->value == -1)
 		return (true);
+	printf("\nCMD-SS\n");
 	cmd_swap(stack_a);
 	cmd_swap(stack_b);
 	return (false);
@@ -36,6 +37,7 @@ bool	cmd_rr(t_boxes *stack_a, t_boxes *stack_b)
 		return (true);
 	if (stack_a->next->next->value == -1)
 		return (true);
+	printf("\nCMD-RR\n");
 	cmd_rotate(stack_a);
 	cmd_rotate(stack_b);
 	return (false);
@@ -50,14 +52,15 @@ bool	cmd_rr(t_boxes *stack_a, t_boxes *stack_b)
 
 bool	cmd_rrr(t_boxes *stack_a, t_boxes *stack_b)
 {
-	if (stack_b->next->next->value == -1)
+	/* if (stack_b->next->next->value == -1)
 		return (true);
 	if (stack_a->next->next->value == -1)
 		return (true);
+	printf("\nCMD-RRR\n");
 	cmd_reverse(stack_a);
 	cmd_reverse(stack_b);
-	return (false);
-//	return (stack_b->next->next->value == -1 || cmd_reverse(stack_a) || cmd_reverse(stack_b));
+	return (false); */
+	return (stack_b->next->next->value == -1 || cmd_reverse(stack_a) || cmd_reverse(stack_b));
 /* 	bool	ret;
 
 	ret = false;
