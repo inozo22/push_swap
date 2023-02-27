@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 16:27:31 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/27 13:51:15 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 16:49:21 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,46 +16,46 @@ long	recover(long command)
 {
 	if (command == PA)
 	{
-//		printf("do recover: %ld\n", command);
+		printf("do recover: PA\n");
 		return (PB);
 	}
 	if (command == PB)
 	{
-//		printf("do recover: %ld\n", command);
+		printf("do recover: PB\n");
 		return (PA);
 	}
 	if (command == RA)
 	{
-//		printf("do recover: %ld\n", command);
+		printf("do recover: RA\n");
 		return (RRA);
 	}
 
 	if (command == RB)
 	{
-//		printf("do recover: %ld\n", command);
+		printf("do recover: RB\n");
 		return (RRB);
 	}
 	if (command == RR)
 	{
-//		printf("do recover: %ld\n", command);
+		printf("do recover: RR\n");
 		return (RRR);
 	}
 	if (command == RRA)
 	{
-		printf("do recover: %ld\n", command);
+		printf("DO recover:RRA\n");
 		return (RA);
 	}
 	if (command == RRB)
 	{
-		printf("do recover: %ld\n", command);
+		printf("DO recover: RRB\n");
 		return (RB);
 	}
 	if (command == RRR)
 	{
-		printf("do recover: %ld\n", command);
+		printf("DO recover: RRR\n");
 		return (RR);
 	}
-//	printf("do recover: %ld\n", command);
+	printf("do recover: PUSH\n");
 	return (command);
 }
 
@@ -80,10 +80,19 @@ bool	move_stack(t_boxes *stack_a, t_boxes *stack_b, long cmd, bool exe)
 	else if (cmd == RR)
 		return (cmd_rr(stack_a, stack_b));
 	else if (cmd == RRA)
-		return (cmd_reverse(stack_a));
+	{
+		printf("cmd_%ld\n", cmd);
+		return (cmd_reverse(stack_a));			
+	}
 	else if (cmd == RRB)
-		return (cmd_reverse(stack_b));
+	{
+		printf("cmd_%ld\n", cmd);
+		return (cmd_reverse(stack_b));		
+	}
 	else if (cmd == RRR)
-		return (cmd_rr(stack_a, stack_b));
+	{
+		printf("cmd_%ld\n", cmd);
+		return (cmd_rrr(stack_a, stack_b));
+	}
 	return (true);
 }

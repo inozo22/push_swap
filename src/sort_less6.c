@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:47:19 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/27 13:34:58 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 16:39:25 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,10 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 	while (++cmd < 11)//cmd 10 made haitteru
 	{
 //printer
-		if (turn == 20)
+		if (turn == 12)
 		{
 			tmp = stack_a->next;
-			printf("I have turn 5\n");
+			printf("I have turn 12\n");
 			printf("Now, my stack is...\n");
 			while (tmp->value != -1)
 			{
