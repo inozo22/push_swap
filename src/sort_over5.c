@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/27 09:55:04 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 10:52:44 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,11 +258,11 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		}
 		if (size)
 		{
-			allsort(stack_a, stack_b, ps, size);
+			all_sort(stack_a, stack_b, ps, size);
 		}
 		while ((size = get_a_len(stack_a, ps)) && size <= BSIZE)
 		{
-			allsort(stack_a, stack_b, ps, size);			
+			all_sort(stack_a, stack_b, ps, size);			
 		}
 		if (size)
 		{

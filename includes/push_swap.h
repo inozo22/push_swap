@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/27 09:59:56 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 11:03:22 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <stdio.h>
 # include <stdbool.h>
 
-# define ARGLIMIT 501
 # define STDERR 2
+# define ARGLIMIT 501
 # define SORT_ID 0
 # define SORT_VALUE 1
 # define LIMIT_LESS6 12
@@ -95,10 +95,10 @@ void		quick_sort(t_pair n[], long left, long right, long flag);
 void		sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
 void		sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
 void		dfs_over5(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn);
-void		allsort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size);
+void		all_sort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size);
 bool		is_sorted(t_boxes *stack_a);
 void		stack_update(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort);
-void		ansjoin(t_pushswap *ps, t_sorting *sort);
+void		ans_join(t_pushswap *ps, t_sorting *sort);
 bool		check_futility(long cmd, t_sorting *sort);
 void		add_answer(long turn, t_sorting *sort);
 

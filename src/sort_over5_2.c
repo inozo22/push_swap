@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 09:14:02 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/27 10:30:13 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 10:51:15 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ long	get_tail(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	}
 }
 
-void	allsort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size)
+void	all_sort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size)
 {
 	t_sorting	sort;
 	long		i;
@@ -109,13 +109,13 @@ void	allsort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size)
 	else
 		sort.tail = size + ps->a;
 	dfs_over5(stack_a, stack_b, &sort, 0);
-	printf("I have been there, after dfs over5\n");
-	ansjoin(ps, &sort);
-	printf("I have been there, after ansjoin\n");
+	printf("I have been there, after dfs over5\n");//
+	ans_join(ps, &sort);
+	printf("I have been there, after ansjoin\n");//
 	stack_update(stack_a, stack_b, &sort);
-	printf("I have been there, after stackupdate\n");
+	printf("I have been there, after stackupdate\n");//
 	ps->a = sort.tail;
-	printf("I have been there, after change ps A\n");
+	printf("I have been there, after change ps A\n");//
 	ps->b = sort.tail;
-	printf("I have been there, after change ps B\n");
+	printf("I have been there, after change ps B\n");//
 }

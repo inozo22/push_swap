@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_less6_second.c                                :+:      :+:    :+:   */
+/*   sort_less6.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:47:19 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/23 15:47:19 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 11:36:09 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	stack_update(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort)
 	}
 }
 
-void	ansjoin(t_pushswap *ps, t_sorting *sort)
+void	ans_join(t_pushswap *ps, t_sorting *sort)
 {
 	long	i;
 
@@ -72,7 +72,7 @@ void	add_answer(long turn, t_sorting *sort)
 	sort->max_turn = turn;
 	i = 0;
 	printf("-----turn %ld-----\n", turn);
-	while (i < turn)
+	while (i < sort->max_turn)
 	{
 		sort->ans[i] = sort->tmp[i];
 		printf("sort->ans[%ld]: %ld\n", i, sort->ans[i]);
@@ -87,9 +87,20 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 
 	if (turn >= sort->max_turn)
 		return ;
-	if (stack_b->next->value == -1 && is_sorted(stack_a))
+	if (stack_b->next->value == -1 && is_sorted(stack_a))//stackB kara de sorted no toki answer record
 		return (add_answer(turn, sort));
 	cmd = -1;
+	/* for (cmd = 0; cmd < 11; cmd++)
+	{
+		if (check_futility(cmd, sort) || turn >= sort->max_turn)
+			continue;
+		if (move_stack(stack_a, stack_b, cmd, true))
+			continue;
+		sort->pre = cmd;
+		sort->tmp[turn] = cmd;
+		dfs(stack_a, stack_b, sort, turn + 1);
+		move_stack(stack_a, stack_b, cmd, false);	
+	} */
 	while (++cmd < 11)
 	{
 		if (check_futility(cmd, sort) || turn >= sort->max_turn)
@@ -99,7 +110,7 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 		sort->pre = cmd;
 		sort->tmp[turn] = cmd;
 		dfs(stack_a, stack_b, sort, turn + 1);
-		move_stack(stack_a, stack_b, cmd, false);
+		move_stack(stack_a, stack_b, cmd, false);// reset the current movement and move to the next
 	}
 }
 
@@ -118,15 +129,15 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		sort.ans[i] = -1;
 	}
 	sort.pre = -1;
-	if (ps->size > 3)
+	/* if (ps->size > 3)// iranai kesu
 	{
 		cmd_push(stack_b, stack_a);
 		cmd_push(stack_b, stack_a);
 		turn = 2;
 		sort.tmp[0] = 4;
 		sort.tmp[1] = 4;		
-	}
+	} */
 	dfs(stack_a, stack_b, &sort, turn);
-	ansjoin(ps, &sort);
+	ans_join(ps, &sort);
 	stack_update(stack_a, stack_b, &sort);
 }
