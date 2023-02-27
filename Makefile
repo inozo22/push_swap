@@ -6,7 +6,11 @@
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2023/02/24 15:30:38 by nimai            ###   ########.fr        #
+=======
+#    Updated: 2023/02/27 09:56:10 by nimai            ###   ########.fr        #
+>>>>>>> branch0224
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +27,8 @@ SRC = \
 		push_swap.c \
 		quick_sort.c \
 		sort_less6.c \
+		sort_over5.c \
+		sort_over5_2.c \
 		order_cmd.c \
 		print_answer.c \
 		main.c
@@ -55,7 +61,11 @@ $(OBJDIR)%.o : $(SRCDIR)%.c
 $(NAME): $(OBJ)
 	@echo "$(BLUE)--Compiling ${CLR_RMV} ${YELLOW}$(NAME) ${CLR_RMV}..."
 	@make --directory $(LIBDIR)
+<<<<<<< HEAD
 #	$(CC) $(CFLAGS) -I../includes -L $(LIBDIR) -lft -o $@ $^
+=======
+#	$(CC) $(CFLAGS) -I../includes -L $(LIBDIR) -lft -o $@ $^#with this line, doesn't work in codespase
+>>>>>>> branch0224
 	$(CC) $(CFLAGS) -I../includes -o $@ $^ -L $(LIBDIR) -lft
 	@echo "$(GREEN)$(NAME) created[0m ✔️"
 #Name the static library with -lft#

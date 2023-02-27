@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 14:58:41 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 11:03:22 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,27 @@
 # include <stdio.h>
 # include <stdbool.h>
 
-# define ARGLIMIT 501
 # define STDERR 2
+# define ARGLIMIT 501
 # define SORT_ID 0
 # define SORT_VALUE 1
 # define LIMIT_LESS6 12
 # define LIMIT_OVER5 30//???
+# define BSIZE 4
 
 typedef enum e_cmd// to control commands
 {
-	SA,//[0]
-	SB,//[1]
-	SS,//[2]
-	PA,//[3]
-	PB,//[4]
-	RA,//[5]
-	RB,//[6]
-	RR,//[7]
-	RRA,//[8]
-	RRB,//[9]
-	RRR,//[10]
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
 }	t_cmd;
 
 typedef struct s_boxes
@@ -61,6 +62,11 @@ typedef struct s_pushswap//structure to control in generarl
 	t_boxes		*answer;
 	t_pair		n[ARGLIMIT];
 	long		init[ARGLIMIT];
+	long		a;
+	long		b;
+	long		ans_ret;
+	long		ans_turn;
+	char		ans_next[5][10];
 }	t_pushswap;
 
 typedef struct s_sorting//structure to sort
@@ -71,7 +77,8 @@ typedef struct s_sorting//structure to sort
 	long	ans[LIMIT_OVER5 + 10];
 	long	max_turn;
 	long	pre;
-
+	long	a;
+	long	tail;
 }	t_sorting;
 
 //main functions
@@ -80,19 +87,25 @@ t_pushswap	*init_ps(int ac, char **av);
 t_boxes		*make_dummy(void);
 void		add_box(t_boxes *dummy, long num);
 long		ps_atoi(char *str);
-bool		move_stack(t_boxes *stack_a, t_boxes *stack_b, long command, bool ret);
+bool		move_stack(t_boxes *stack_a, t_boxes *stack_b, long cmd, bool ret);
 void		print_answer(t_boxes *answer);
 
 //sorting
 void		quick_sort(t_pair n[], long left, long right, long flag);
 void		sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
+void		sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
+void		dfs_over5(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn);
+void		all_sort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size);
 bool		is_sorted(t_boxes *stack_a);
+void		stack_update(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort);
+void		ans_join(t_pushswap *ps, t_sorting *sort);
+bool		check_futility(long cmd, t_sorting *sort);
+void		add_answer(long turn, t_sorting *sort);
 
 //error control and free
 long		ps_error(char *str);//I have to change str to void, for now its ok to check where I got error
 void		all_free(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
 void		list_clear(t_boxes *box);
-
 
 //commands
 bool		cmd_swap(t_boxes *box);
@@ -105,6 +118,5 @@ bool		cmd_rrr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
 
 //ato de kesu
 void		print_stacka(t_boxes *stack);
-
 
 #endif

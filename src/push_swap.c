@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/22 09:39:13 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/27 11:04:45 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,39 @@ void	print_stacka(t_boxes *stack)
 	printf("\n###stack A###\n");
 	while (tmp->next->value != -1)
 	{
-		printf("%ld\n", tmp->next->value);
+		printf("\t%ld\n", tmp->next->value);
 		tmp = tmp->next;
 	}
 	printf("###stack A###\n");
 }
 
-bool	is_sorted(t_boxes *stack_a)
+bool	is_sorted(t_boxes *stack_a)//parece funciona
 {
 	t_boxes	*tmp;
 
+//	printf("***Im here, in the is sorted***\n");
 	tmp = stack_a;
 	while (tmp->next->value != -1)
 	{
-		if (tmp->value > tmp->next->value)
+		//printf("CUrrent: %ld Next: %ld\n", tmp->value, tmp->next->value);
+		if ((tmp->value) > (tmp->next->value))
+		{
+//			printf("FALSE!!\n");
 			return (false);
+		}
+		tmp = tmp->next;
+	}
+	tmp = stack_a;
+	printf("\nsorted...\n");
+	while (tmp->next->value != -1)
+	{
+		printf("tmp->value: %ld\n", tmp->next->value);
 		tmp = tmp->next;
 	}
 	return (true);
 }
 
-t_boxes	*search_head(t_boxes *dummy)//look for the first box that is not a dummy
+/* t_boxes	*search_head(t_boxes *dummy)//look for the first box that is not a dummy
 {
 	t_boxes	*ret;
 
@@ -50,7 +62,7 @@ t_boxes	*search_head(t_boxes *dummy)//look for the first box that is not a dummy
 		ret = ret->prev;
 	}
 	return (ret);
-}
+} */
 
 void	add_box(t_boxes *dummy, long num)
 {
@@ -60,9 +72,9 @@ void	add_box(t_boxes *dummy, long num)
 	new = malloc(sizeof(t_boxes));
 	if (!new)
 		exit (ps_error("fail allocate new"));//later I have to omid this str
+	new->value = num;
 	tmp = dummy->prev;
 	tmp->next = new;
-	new->value = num;
 	new->next = dummy;
 	dummy->prev = new;
 	new->prev = tmp;
@@ -106,8 +118,9 @@ void	push_swap(int ac, char **av)
 	ps = init_ps(ac, av);
 	stack_a = put_num(ps);
 	stack_b = make_dummy();
-	printf("after the initiation\n");
+	printf("\nafter the initiation\n");
 	print_stacka(stack_a);
+	printf("value of stacka next: %ld\n", stack_a->next->value);
 	if (stack_a->next->value == -1)
 		return (all_free(stack_a, stack_b, ps));
 	else if (is_sorted(stack_a))
@@ -118,10 +131,13 @@ void	push_swap(int ac, char **av)
 		sort_less6(stack_a, stack_b, ps);
 	}
 	else
-		printf("***bye***\n");
-		//sort_over5(stack_a, stack_b, ps);
+	{
+		printf("***enter to sort_over5***\n");
+		sort_over5(stack_a, stack_b, ps);
+		printf("I have been there, after sort_over5\n");
+	}
 	print_answer(ps->answer);
-	print_stacka(stack_a);
+//	print_stacka(stack_a);
 	all_free(stack_a, stack_b, ps);
 }
 
