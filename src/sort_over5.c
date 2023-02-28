@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 13:40:51 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 13:46:17 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -338,9 +338,3 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	printf("--------------------------------\n");
 }
 
-/* int	main(int ac, char **av)
-{
-	push_swap(ac, av);
-	return (0);
-}
- */
