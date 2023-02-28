@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 09:14:02 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 10:12:27 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 12:44:02 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 void	get_head_a(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 {
-	long	cmd;
-	
-	cmd = RA;
 	cmd_rotate(stack_a);
-	sort->pre = cmd;
-	sort->tmp[turn] = cmd;
+	sort->pre = RA;
+	sort->tmp[turn] = RA;
 	sort->a++;
 	dfs_over5(stack_a, stack_b, sort, turn + 1);
 	sort->a--;
@@ -33,7 +30,7 @@ void	get_head_b(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 	sort->tmp[turn] = PA;
 	dfs_over5(stack_a, stack_b, sort, turn + 1);
 	cmd_push(stack_b, stack_a);
-	return ;	
+	return ;
 }
 
 void	dfs_over5(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
@@ -59,6 +56,7 @@ void	dfs_over5(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 		sort->pre = cmd;
 		sort->tmp[turn] = cmd;
 		dfs_over5(stack_a, stack_b, sort, turn + 1);
+	//	printf("how many times do dfs here?\n");
 		move_stack(stack_a, stack_b, cmd, false);
 	}	
 }
@@ -69,14 +67,16 @@ long	get_tail(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	long	ret;
 	
 	ret = ps->a;
-	printf("get_tail\n");
-	while (1)
+	while (1)//infinity loop
 	{
 		tmp = stack_b->next;
 		while (ret != tmp->value && tmp->value != -1)
 			tmp = tmp->next;
 		if (stack_a->next->value != ret && stack_a->next->next->value != ret && tmp->value != ret)
+		{
+			printf("got_tail ====== tail :%ld\n", ret);
 			return (ret);
+		}
 		ret++;
 	}
 }
@@ -106,8 +106,8 @@ void	all_sort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size)
 	sort.a = ps->a;
 	if (stack_a->next->value != -1)
 		sort.tail = get_tail(stack_a, stack_b, ps);
-	else
-		sort.tail = size + ps->a;
+/* 	else
+		sort.tail = size + ps->a; */
 	dfs_over5(stack_a, stack_b, &sort, 0);
 //	printf("I have been there, after dfs over5\n");//
 	ans_join(ps, &sort);

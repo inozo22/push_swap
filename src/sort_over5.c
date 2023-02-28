@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 09:52:28 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 13:40:51 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ long	get_a_len(t_boxes *stack_a, t_pushswap *ps)
 	t_boxes	*tmp;
 
 	ret = 0;
-	max = -ARGLIMIT - 10;
+	max = ARGLIMIT - 10;
 	tmp = stack_a->next;
-	while (max - ps->a + 1 != ret && tmp->value)
+	while ((max - ps->a + 1) != ret && tmp->value)
 	{
 		ret++;
 		if (tmp->value > max)
@@ -80,15 +80,15 @@ void	b_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 	long	i;
 	long	pivot;
 	long	size_b;
-	long	size_a;
+//	long	size_a;
 	
 	i = -1;
 	size_b = size;
-	size_a = 0;
+//	size_a = 0;
 	pivot = ps->a + (size - 1) / 2;
 	while (++i < size)
 	{
-		if (stack_b->next->value == ps->a && size_b-- && ++ps->a)
+		if (stack_b->next->value == ps->a && size_b-- && ++ps->a)//if the value of next stack_b is same as ps->a, add it to the end of stackA
 		{
 			cmd_push(stack_a, stack_b);
 			add_box(ps->answer, PA);	
@@ -97,15 +97,15 @@ void	b_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 			add_box(ps->answer, RA);
 //			ps->b++;		
 		}
-		else if (stack_b->next->value > pivot && size_b-- && ++size_a)
+		else if (stack_b->next->value > pivot && size_b--/*  && ++size_a */)//if is grater than pivot, add it to stackA
 		{
 			cmd_push(stack_a, stack_b);
 			add_box(ps->answer, PA);				
 		}
-		else
+		else//neither above, rotate stackB and continue loop
 		{
-			cmd_rotate(stack_a);
-			add_box(ps->answer, RA);			
+			cmd_rotate(stack_b);
+			add_box(ps->answer, RB);
 		}
 	}
 }
@@ -144,35 +144,33 @@ bool	stay_b(t_boxes *stack_b, t_pushswap *ps, long size)
 void	settle_top(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 {
 	long	i;
+	t_boxes *tmp_a;
+	t_boxes *tmp_b;
 
 	i = -1;
-
+	printf("ps->b: %ld\n", ps->b);
 	while ((++i + ps->a) < ps->b)
 	{
-//		printf("Enter settle top\n");
+
 		if (stack_b->prev->value == ps->b - i - 1)
 		{
 			cmd_reverse(stack_b);
-//			sort->tmp[i] = RRB;
 			add_box(ps->answer, RRB);
-			ps->b++;
+//			ps->b++;
 		}
 		else if (stack_b->prev->prev->value == ps->b - i - 1)
 		{
 			cmd_reverse(stack_b);
-//			sort->tmp[i] = RRB;
 			add_box(ps->answer, RRB);
-			ps->b++;
+//			ps->b++;
 			cmd_reverse(stack_b);
-//			sort->tmp[i] = RRB;
 			add_box(ps->answer, RRB);
-			ps->b++;
+//			ps->b++;
 		}
 		if (stack_b->next->value == ps->b - i - 1)
 		{
 			cmd_push(stack_a, stack_b);
 			add_box(ps->answer, PA);
-//			sort->tmp[i] = PA;	
 			ps->a++;
 		}
 	}
@@ -180,12 +178,31 @@ void	settle_top(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	{
 		cmd_rotate(stack_a);
 		add_box(ps->answer, RA);
-//		sort->tmp[i] = RA;	
 		ps->a++;
 	}
+	printf("--------------------------------\n");
+	printf("■   print stackA and stackB\t■\n■\tin settle_top\t■\n");
+	printf("--------------------------------\n");
+	tmp_a = stack_a;
+	tmp_b = stack_b;
+	while (tmp_a->next->value != -1)
+	{
+		printf("\t%ld\t", tmp_a->next->value);
+		if (tmp_b->next->value != -1)
+			printf("%ld\t\n", tmp_b->next->value);
+		else
+			printf("\n");
+		tmp_a = tmp_a->next;
+		tmp_b = tmp_b->next;
+	}
+	printf("--------------------------------\n");
+	printf("■    stackA\tstackB\t\t■\n");
+	printf("--------------------------------\n");
+	printf("ps->size: %ld\nps->a: %ld\n", ps->size, ps->a);
+//	exit (ps_error("escape\n"));
 }
 
-void	settle_half(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
+void	settle_half(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)//looks fine this function2023/02/28
 {
 	long	i;
 	long	size_b;
@@ -230,6 +247,7 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 
 
 	settle_half(stack_a, stack_b, ps);//set a half of a to b
+//printer
 	printf("--------------------------------\n");
 	printf("■   print stackA and stackB\t■\n■\tafter settle_half\t■\n");
 	printf("--------------------------------\n");
@@ -249,25 +267,56 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	printf("■    stackA\tstackB\t\t■\n");
 	printf("--------------------------------\n");
 
+	printf("ps->a: %ld\n", ps->a);
+	printf("ps->size: %ld\n", ps->size);
 	while (ps->a != ps->size)
 	{
+//		printf("where am I\n");//here I am! prenty of times...
 		settle_top(stack_a, stack_b, ps);
-		while ((size = stack_len(stack_b)) > BSIZE)
+		while ((size = stack_len(stack_b)) > SORT_SIZE)
 		{
+			printf("where am I? in while qsortB\n");
 			b_qsort(stack_a, stack_b, ps, size);
 		}
 		if (size)
 		{
 			all_sort(stack_a, stack_b, ps, size);
+//			exit (ps_error("in the first allsort: quit here\n"));
 		}
-		while ((size = get_a_len(stack_a, ps)) && size <= BSIZE)
+		printf("--------------------------------\n");
+		printf("■   print stackA and stackB\t■\n■\tafter first_allsort\t■\n");
+		printf("--------------------------------\n");
+		tmp_a = stack_a;
+		tmp_b = stack_b;
+		while (tmp_a->next->value != -1)
+		{
+			printf("\t%ld\t", tmp_a->next->value);
+			if (tmp_b->next->value != -1)
+				printf("%ld\t\n", tmp_b->next->value);
+			else
+				printf("\n");
+			tmp_a = tmp_a->next;
+			tmp_b = tmp_b->next;
+		}
+		printf("--------------------------------\n");
+		printf("■    stackA\tstackB\t\t■\n");
+		printf("--------------------------------\n");
+//I have problem with second all_sort, first one looks working well
+ 		size = get_a_len(stack_a, ps);
+		printf("size = %ld\n", size);
+//		exit (ps_error("after the first allsort: quit here\n"));
+		while ((size = get_a_len(stack_a, ps)) && size <= SORT_SIZE)
 		{
 			all_sort(stack_a, stack_b, ps, size);
+			printf("size: %ld\n", size);
+			exit (ps_error("in the second allsort: quit here\n"));
 		}
 		if (size)
 		{
 			a_qsort(stack_a, stack_b, ps, size);
 		}
+//printer to check ps->size and ps->a
+		printf("while owariiii   \nps->size: %ld\nps->a: %ld\n", ps->size, ps->a);
 	}
 	printf("--------------------------------\n");
 	printf("■   print stackA and stackB\t■\n■\tafter settle_top\t■\n");
@@ -287,7 +336,6 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	printf("--------------------------------\n");
 	printf("■    stackA\tstackB\t\t■\n");
 	printf("--------------------------------\n");
-	
 }
 
 /* int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/27 11:03:22 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 11:33:31 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define SORT_VALUE 1
 # define LIMIT_LESS6 12
 # define LIMIT_OVER5 30//???
-# define BSIZE 4
+# define SORT_SIZE 4
 
 typedef enum e_cmd// to control commands
 {
