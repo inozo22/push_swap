@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 13:46:17 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 18:25:23 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ long	get_a_len(t_boxes *stack_a, t_pushswap *ps)
 	t_boxes	*tmp;
 
 	ret = 0;
-	max = ARGLIMIT - 10;
+	max = -ARGLIMIT - 10;
 	tmp = stack_a->next;
-	while ((max - ps->a + 1) != ret && tmp->value)
+	while (max - ps->a + 1 != ret && tmp->value)
 	{
+		printf("he entrado a get a len\n");
 		ret++;
 		if (tmp->value > max)
-		{
 			max = tmp->value;
-		}
 		tmp = tmp->next;
 	}
 	return (ret);
@@ -36,7 +35,7 @@ long	get_a_len(t_boxes *stack_a, t_pushswap *ps)
 void	a_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 {
 	long	i;
-	
+
 	i = -1;
 	while (++i < size)
 	{
@@ -55,7 +54,7 @@ void	a_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 			cmd_push(stack_a, stack_b);
 			add_box(ps->answer, PA);	
 		}
-		if (stack_a->next->next->value == ps->a && stack_a->next->value == ps->a +1)
+		if (stack_a->next->next->value == ps->a && stack_a->next->value == ps->a + 1)
 		{
 			cmd_swap(stack_a);
 			add_box(ps->answer, SA);	
@@ -68,8 +67,8 @@ void	a_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 		}
 		else
 		{
-			cmd_push(stack_a, stack_b);
-			add_box(ps->answer, PA);		
+			cmd_push(stack_b, stack_a);
+			add_box(ps->answer, PB);	
 		}
 	}
 }
@@ -102,7 +101,7 @@ void	b_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 			cmd_push(stack_a, stack_b);
 			add_box(ps->answer, PA);				
 		}
-		else//neither above, rotate stackB and continue loop
+		else//if neither above, rotate stackB and continue loop
 		{
 			cmd_rotate(stack_b);
 			add_box(ps->answer, RB);
@@ -148,10 +147,9 @@ void	settle_top(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	t_boxes *tmp_b;
 
 	i = -1;
-	printf("ps->b: %ld\n", ps->b);
+	printf("ps->b in settle_top: %ld\n", ps->b);
 	while ((++i + ps->a) < ps->b)
 	{
-
 		if (stack_b->prev->value == ps->b - i - 1)
 		{
 			cmd_reverse(stack_b);
@@ -167,7 +165,7 @@ void	settle_top(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 			add_box(ps->answer, RRB);
 //			ps->b++;
 		}
-		if (stack_b->next->value == ps->b - i - 1)
+		else if (stack_b->next->value == ps->b - i - 1)//
 		{
 			cmd_push(stack_a, stack_b);
 			add_box(ps->answer, PA);
@@ -245,7 +243,6 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	t_boxes	*tmp_b;
 	long	size;
 
-
 	settle_half(stack_a, stack_b, ps);//set a half of a to b
 //printer
 	printf("--------------------------------\n");
@@ -271,16 +268,29 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	printf("ps->size: %ld\n", ps->size);
 	while (ps->a != ps->size)
 	{
-//		printf("where am I\n");//here I am! prenty of times...
+		//ps->a isn't become more than 4
+		if (ps->a != 0)
+		{
+			if (ps->a != 4)
+			{
+				printf("ps->a: %ld\nps->size: %ld\n", ps->a, ps->size);
+				exit (ps_error("444§(￣▽￣)hola hola(￣▽￣)§\n"));
+			}
+			printf("ps->a: %ld\nps->size: %ld\n", ps->a, ps->size);
+			exit (ps_error("000§(￣▽￣)hola hola(￣▽￣)§\n"));
+		}
+		//ps->a isn't become more than 4
 		settle_top(stack_a, stack_b, ps);
-		while ((size = stack_len(stack_b)) > SORT_SIZE)
+		size = stack_len(stack_b);
+		while (size > SORT_SIZE)
 		{
 			printf("where am I? in while qsortB\n");
 			b_qsort(stack_a, stack_b, ps, size);
 		}
 		if (size)
 		{
-			all_sort(stack_a, stack_b, ps, size);
+			printf("I do firtst allsort!\n");
+			all_sort(stack_a, stack_b, ps, size);//imakoko
 //			exit (ps_error("in the first allsort: quit here\n"));
 		}
 		printf("--------------------------------\n");
@@ -301,25 +311,29 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		printf("--------------------------------\n");
 		printf("■    stackA\tstackB\t\t■\n");
 		printf("--------------------------------\n");
-//I have problem with second all_sort, first one looks working well
  		size = get_a_len(stack_a, ps);
-		printf("size = %ld\n", size);
+		printf("get a len!!! size = %ld\n", size);
 //		exit (ps_error("after the first allsort: quit here\n"));
-		while ((size = get_a_len(stack_a, ps)) && size <= SORT_SIZE)
+		while (size && size <= SORT_SIZE)
 		{
+			printf("I do second allsort\n");
 			all_sort(stack_a, stack_b, ps, size);
-			printf("size: %ld\n", size);
-			exit (ps_error("in the second allsort: quit here\n"));
+			printf("ALL_SORT size: %ld\n", size);
+//			exit (ps_error("in the second allsort: quit here\n"));
 		}
+		printf("ps->a: %ld\nsize: %ld\n", ps->a, size);
+//		exit (ps_error("after the second allsort: quit here\n"));// kokomade ikeru
 		if (size)
 		{
+			exit (ps_error("after the a_qsort: quit here\n"));
 			a_qsort(stack_a, stack_b, ps, size);
 		}
+//		exit (ps_error("hola hola\n"));
 //printer to check ps->size and ps->a
-		printf("while owariiii   \nps->size: %ld\nps->a: %ld\n", ps->size, ps->a);
 	}
+	printf("while owariiii   \nps->size: %ld\nps->a: %ld\n", ps->size, ps->a);
 	printf("--------------------------------\n");
-	printf("■   print stackA and stackB\t■\n■\tafter settle_top\t■\n");
+	printf("■   print stackA and stackB\t■\n■\tafter everything\t■\n");
 	printf("--------------------------------\n");
 	tmp_a = stack_a;
 	tmp_b = stack_b;

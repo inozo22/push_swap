@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/27 11:04:45 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 18:18:58 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,20 @@ t_boxes	*put_num(t_pushswap *ps)
 	return (dummy);
 }
 
+char	**free_argv(char **av, t_pushswap *ps)
+{
+	long	i;
+
+	i = 0;
+	while (i < ps->size)
+	{
+		i++;
+		free(av[i]);
+	}
+	free(av);
+	return (NULL);
+}
+
 void	push_swap(int ac, char **av)
 {
 	t_boxes		*stack_a;
@@ -122,7 +136,10 @@ void	push_swap(int ac, char **av)
 	print_stacka(stack_a);
 	printf("value of stacka next: %ld\n", stack_a->next->value);
 	if (stack_a->next->value == -1)
-		return (all_free(stack_a, stack_b, ps));
+	{
+		free_argv(av, ps);//free av
+		return (all_free(stack_a, stack_b, ps));//and free all boxes
+	}
 	else if (is_sorted(stack_a))
 		printf("is sorted!\n");
 	else if (ps->size < 6)
@@ -138,6 +155,8 @@ void	push_swap(int ac, char **av)
 	}
 	print_answer(ps->answer);
 //	print_stacka(stack_a);
+	printf("execting all_free\n");
+	free_argv(av, ps);
 	all_free(stack_a, stack_b, ps);
 }
 

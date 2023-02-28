@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:47:19 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 10:07:39 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 16:00:31 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ void	add_answer(long turn, t_sorting *sort)
 
 	sort->max_turn = turn;
 	i = 0;
-	printf("-----turn %ld-----\n", turn);
+	printf("------turn %ld------\n", turn);
 	while (i < sort->max_turn)
 	{
 		sort->ans[i] = sort->tmp[i];
 		printf("sort->ans[%ld]: %ld\n", i, sort->ans[i]);
 		i++;
 	}
-	printf("-----turn %ld-----\n", turn);
+	printf("------turn %ld------\n", turn);
 }
 
 void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
