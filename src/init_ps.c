@@ -6,15 +6,13 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/24 10:43:55 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 19:08:02 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-//I can use this after sort
-//So, before this function, better sort ::>_<::
-/* void	check_dub_number(t_pushswap *ps)
+void	check_dub_number(t_pushswap *ps)
 {
 	long	i;
 
@@ -23,26 +21,6 @@
 	{
 		if (ps->n[i].value == ps->n[i + 1].value)
 			exit(ps_error("error, dubbed number '-'"));//Delete comments after adjust
-	}
-} */
-
-void	check_dub_number(t_pushswap *ps)
-{
-	long	i;
-	long	j;
-
-	i = 1;
-	j = 2;
-	while (i <= ps->size)
-	{
-		j = i + 1;
-		while (j <= ps->size)
-		{
-			if (ps->n[i].value == ps->n[j].value)
-				exit(ps_error("error, dubbed number '-'"));
-			j++;
-		}
-		i++;
 	}
 }
 
@@ -87,7 +65,6 @@ t_pushswap	*init_ps(int ac, char **av)
 	}
 	ps->a = 0;
 	ps->b = 0;
-	check_dub_number(ps);
 	i = 0;
 	printf("initial data\nvalue\tid\t\n-------------\n");
 	while (i < ps->size)
@@ -103,6 +80,7 @@ t_pushswap	*init_ps(int ac, char **av)
 		printf("%ld\t%ld\n", ps->n[i].value, ps->n[i].id);
 		i++;
 	}
+	check_dub_number(ps);
 	get_id(ps);
 	quick_sort(ps->n, 0, ps->size - 1, SORT_ID);
 	i = 0;

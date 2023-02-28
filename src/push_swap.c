@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 18:18:58 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 19:01:09 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,16 +137,13 @@ void	push_swap(int ac, char **av)
 	printf("value of stacka next: %ld\n", stack_a->next->value);
 	if (stack_a->next->value == -1)
 	{
-		free_argv(av, ps);//free av
+		free_argv(av, ps);//free argv
 		return (all_free(stack_a, stack_b, ps));//and free all boxes
 	}
 	else if (is_sorted(stack_a))
-		printf("is sorted!\n");
+		;
 	else if (ps->size < 6)
-	{
-//		printf("enter sort_less6!\n");
 		sort_less6(stack_a, stack_b, ps);
-	}
 	else
 	{
 		printf("***enter to sort_over5***\n");
@@ -156,7 +153,7 @@ void	push_swap(int ac, char **av)
 	print_answer(ps->answer);
 //	print_stacka(stack_a);
 	printf("execting all_free\n");
-	free_argv(av, ps);
+//	free_argv(av, ps);
 	all_free(stack_a, stack_b, ps);
 }
 

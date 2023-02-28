@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:47:19 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 16:00:31 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 18:58:50 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,14 +141,6 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		sort.ans[i] = -1;
 	}
 	sort.pre = -1;
-	/* if (ps->size > 3)// iranai kesu
-	{
-		cmd_push(stack_b, stack_a);
-		cmd_push(stack_b, stack_a);
-		turn = 2;
-		sort.tmp[0] = 4;
-		sort.tmp[1] = 4;		
-	} */
 //depth first search
 	dfs(stack_a, stack_b, &sort, turn);
 //put answer to ps

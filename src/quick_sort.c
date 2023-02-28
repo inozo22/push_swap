@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:07:55 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/21 14:41:24 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 18:59:50 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ long	get_pivot_value(t_pair n[], long left, long right)
 	return (j);
 }
 
-long	get_pivot_id(t_pair n[], long left, long right)//this is a value's copy 
+long	get_pivot_id(t_pair n[], long left, long right)
 {
 	long	pivot;
 	long	i;
