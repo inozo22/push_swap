@@ -6,11 +6,27 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 18:25:23 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 21:52:20 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+bool	b_left(t_boxes *stack_b, t_pushswap *ps)
+{
+	t_boxes	*tmp;
+	long	start;
+	
+	start = stack_b->value;
+	tmp = stack_b->next;
+	while (tmp->value != start)
+	{
+		if (tmp->value == ps->b)
+			return (true);
+		tmp = tmp->next;
+	}
+	return (false);
+}
 
 long	get_a_len(t_boxes *stack_a, t_pushswap *ps)
 {
@@ -204,21 +220,26 @@ void	settle_half(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)//looks fine
 {
 	long	i;
 	long	size_b;
-	t_boxes	*tmp_a;
-	t_boxes	*tmp_b;
+//	t_boxes	*tmp_a;
+//	t_boxes	*tmp_b;
 
-	i = 0;
+	i = -1;
 	size_b = 0;
-	tmp_a = stack_a;
- 	tmp_b = stack_b;
-	while (i < ps->size && size_b < (ps->size / 2))
+//	tmp_a = stack_a;
+ //	tmp_b = stack_b;
+	while (++i < ps->size && size_b < (ps->size / 2))
 	{
-		while (tmp_b->next->value == ps->b)
+		while (stack_b->next->value == ps->b)
 		{
-			if (stay_b(tmp_b, ps, size_b))
+			if (stay_b(stack_b, ps, size_b))
 				break;
 		}
-		if (tmp_a->next->value < (ps->size / 2))
+		if (stack_b->next->value == ps->b + 1 && !b_left(stack_b, ps) && size_b > 1)
+		{
+			cmd_rotate(stack_b);
+			add_box(ps->answer, RB);			
+		}
+		if (stack_a->next->value < (ps->size / 2))
 		{
 			cmd_push(stack_b, stack_a);
 			add_box(ps->answer, PB);
@@ -231,8 +252,6 @@ void	settle_half(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)//looks fine
 			add_box(ps->answer, RA);
 //			sort->tmp[i] = RA;
 		}
-		i++;
-		tmp_a = tmp_a->next;
 	}
 }
 
@@ -266,10 +285,11 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 
 	printf("ps->a: %ld\n", ps->a);
 	printf("ps->size: %ld\n", ps->size);
+//printer
 	while (ps->a != ps->size)
 	{
 		//ps->a isn't become more than 4
-		if (ps->a != 0)
+		/* if (ps->a != 0)
 		{
 			if (ps->a != 4)
 			{
@@ -278,13 +298,13 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 			}
 			printf("ps->a: %ld\nps->size: %ld\n", ps->a, ps->size);
 			exit (ps_error("000§(￣▽￣)hola hola(￣▽￣)§\n"));
-		}
+		} */
 		//ps->a isn't become more than 4
 		settle_top(stack_a, stack_b, ps);
 		size = stack_len(stack_b);
 		while (size > SORT_SIZE)
 		{
-			printf("where am I? in while qsortB\n");
+//			printf("where am I? in while qsortB\n");
 			b_qsort(stack_a, stack_b, ps, size);
 		}
 		if (size)
@@ -293,6 +313,7 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 			all_sort(stack_a, stack_b, ps, size);//imakoko
 //			exit (ps_error("in the first allsort: quit here\n"));
 		}
+//printer
 		printf("--------------------------------\n");
 		printf("■   print stackA and stackB\t■\n■\tafter first_allsort\t■\n");
 		printf("--------------------------------\n");
@@ -311,10 +332,11 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		printf("--------------------------------\n");
 		printf("■    stackA\tstackB\t\t■\n");
 		printf("--------------------------------\n");
- 		size = get_a_len(stack_a, ps);
-		printf("get a len!!! size = %ld\n", size);
+//printer
+// 		size = get_a_len(stack_a, ps);
+//		printf("get a len!!! size = %ld\n", size);
 //		exit (ps_error("after the first allsort: quit here\n"));
-		while (size && size <= SORT_SIZE)
+		while ((size = get_a_len(stack_a, ps)) && size <= SORT_SIZE)//20230228KOKO DATTAAAAAAAAA
 		{
 			printf("I do second allsort\n");
 			all_sort(stack_a, stack_b, ps, size);
@@ -325,7 +347,7 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 //		exit (ps_error("after the second allsort: quit here\n"));// kokomade ikeru
 		if (size)
 		{
-			exit (ps_error("after the a_qsort: quit here\n"));
+//			exit (ps_error("after the a_qsort: quit here\n"));
 			a_qsort(stack_a, stack_b, ps, size);
 		}
 //		exit (ps_error("hola hola\n"));
