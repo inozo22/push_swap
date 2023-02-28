@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:47:19 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/27 16:39:25 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 10:07:39 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,28 +84,18 @@ void	add_answer(long turn, t_sorting *sort)
 void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 {
 	long	cmd;
-	t_boxes *tmp;
+//	t_boxes *tmp;
 
 	if (turn >= sort->max_turn)
 		return ;
-	if (stack_b->next->value == -1 && is_sorted(stack_a))//stackB kara de sorted no toki answer record
+//record the answer when the conditions are met
+	if (stack_b->next->value == -1 && is_sorted(stack_a))
 		return (add_answer(turn, sort));
 	cmd = -1;
-	/* for (cmd = 0; cmd < 11; cmd++)
-	{
-		if (check_futility(cmd, sort) || turn >= sort->max_turn)
-			continue;
-		if (move_stack(stack_a, stack_b, cmd, true))
-			continue;
-		sort->pre = cmd;
-		sort->tmp[turn] = cmd;
-		dfs(stack_a, stack_b, sort, turn + 1);
-		move_stack(stack_a, stack_b, cmd, false);	
-	} */
-	while (++cmd < 11)//cmd 10 made haitteru
+	while (++cmd < 11)
 	{
 //printer
-		if (turn == 12)
+/* 		if (turn == 12)
 		{
 			tmp = stack_a->next;
 			printf("I have turn 12\n");
@@ -122,16 +112,17 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 				stack_b = stack_b->next;			
 			}
 			exit (ps_error("report!\n"));
-		}
-
+		} */
+	//check cmd's dubbed or futilited to optimize
 		if (check_futility(cmd, sort) || turn >= sort->max_turn)
-			continue;
+			continue ;
 		if (move_stack(stack_a, stack_b, cmd, true))
-			continue;
+			continue ;
 		sort->pre = cmd;
 		sort->tmp[turn] = cmd;
 		dfs(stack_a, stack_b, sort, turn + 1);
-		move_stack(stack_a, stack_b, cmd, false);// reset the current movement and move to the next
+	//after dfs, reset this movement and move to the next command
+		move_stack(stack_a, stack_b, cmd, false);
 	}
 }
 
@@ -139,7 +130,7 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 {
 	t_sorting	sort;
 	long		i;
-	long 		turn;
+	long		turn;
 
 	turn = 0;
 	sort.max_turn = LIMIT_LESS6;
@@ -158,7 +149,9 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		sort.tmp[0] = 4;
 		sort.tmp[1] = 4;		
 	} */
+//depth first search
 	dfs(stack_a, stack_b, &sort, turn);
+//put answer to ps
 	ans_join(ps, &sort);
 	stack_update(stack_a, stack_b, &sort);
 }

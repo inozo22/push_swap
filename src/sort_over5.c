@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/27 10:52:44 by nimai            ###   ########.fr       */
+/*   Updated: 2023/02/28 09:52:28 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ long	get_a_len(t_boxes *stack_a, t_pushswap *ps)
 	return (ret);
 }
 
-void	qsort_a(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
+void	a_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 {
 	long	i;
 	
@@ -75,7 +75,7 @@ void	qsort_a(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 }
 
 
-void	qsort_b(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
+void	b_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 {
 	long	i;
 	long	pivot;
@@ -254,7 +254,7 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		settle_top(stack_a, stack_b, ps);
 		while ((size = stack_len(stack_b)) > BSIZE)
 		{
-			qsort_b(stack_a, stack_b, ps, size);			
+			b_qsort(stack_a, stack_b, ps, size);
 		}
 		if (size)
 		{
@@ -262,11 +262,11 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		}
 		while ((size = get_a_len(stack_a, ps)) && size <= BSIZE)
 		{
-			all_sort(stack_a, stack_b, ps, size);			
+			all_sort(stack_a, stack_b, ps, size);
 		}
 		if (size)
 		{
-			qsort_a(stack_a, stack_b, ps, size);
+			a_qsort(stack_a, stack_b, ps, size);
 		}
 	}
 	printf("--------------------------------\n");
