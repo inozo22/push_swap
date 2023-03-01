@@ -6,11 +6,9 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:47:19 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 18:58:50 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 07:12:28 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//for test(it's the same as another, but rewrite)
 
 #include "../includes/push_swap.h"
 
@@ -71,49 +69,24 @@ void	add_answer(long turn, t_sorting *sort)
 
 	sort->max_turn = turn;
 	i = 0;
-	printf("------turn %ld------\n", turn);
 	while (i < sort->max_turn)
 	{
 		sort->ans[i] = sort->tmp[i];
-		printf("sort->ans[%ld]: %ld\n", i, sort->ans[i]);
 		i++;
 	}
-	printf("------turn %ld------\n", turn);
 }
 
 void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 {
 	long	cmd;
-//	t_boxes *tmp;
 
 	if (turn >= sort->max_turn)
 		return ;
-//record the answer when the conditions are met
 	if (stack_b->next->value == -1 && is_sorted(stack_a))
 		return (add_answer(turn, sort));
 	cmd = -1;
 	while (++cmd < 11)
 	{
-//printer
-/* 		if (turn == 12)
-		{
-			tmp = stack_a->next;
-			printf("I have turn 12\n");
-			printf("Now, my stack is...\n");
-			while (tmp->value != -1)
-			{
-				printf("%ld\n", tmp->value);
-				tmp = tmp->next;				
-			}
-			printf("---StackB---\n");
-			while (stack_b->next->value != -1)
-			{
-				printf("%ld\n", stack_b->next->value);
-				stack_b = stack_b->next;			
-			}
-			exit (ps_error("report!\n"));
-		} */
-	//check cmd's dubbed or futilited to optimize
 		if (check_futility(cmd, sort) || turn >= sort->max_turn)
 			continue ;
 		if (move_stack(stack_a, stack_b, cmd, true))
@@ -121,7 +94,6 @@ void	dfs(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 		sort->pre = cmd;
 		sort->tmp[turn] = cmd;
 		dfs(stack_a, stack_b, sort, turn + 1);
-	//after dfs, reset this movement and move to the next command
 		move_stack(stack_a, stack_b, cmd, false);
 	}
 }
@@ -141,9 +113,7 @@ void	sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		sort.ans[i] = -1;
 	}
 	sort.pre = -1;
-//depth first search
 	dfs(stack_a, stack_b, &sort, turn);
-//put answer to ps
 	ans_join(ps, &sort);
 	stack_update(stack_a, stack_b, &sort);
 }

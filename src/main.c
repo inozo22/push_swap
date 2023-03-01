@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:51 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/24 16:34:19 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 15:21:33 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,28 @@ int	arg_nbr(char const *str, char c)
 
 int	main(int ac, char **av)
 {
-	char	**strs;
-	int		len;
+	t_pushswap	*ps;
 
 	if (ac > ARGLIMIT)
-		ps_error("error more than arglimit");
-	else if (ac < 2)
-		ft_putchar_fd('\n', 1);
-	else if (ac == 2)
 	{
-		strs = ft_split(ft_strjoin(ft_strjoin(av[0], " "), av[1]), 32);
-		len = arg_nbr(av[1], 32);
-		push_swap(len + 1, strs);
+		ft_putstr_fd("Error\n", STDERR);
+		return (0);
 	}
-	else if (ac > 2 && ac < 7)//5 numbers
-		push_swap(ac, av);
+	if (ac < 2)
+	{
+		return (0);
+		ft_putchar_fd('\n', 1);		
+	}
+	ps = (t_pushswap *)malloc(sizeof(t_pushswap));
+	if (!ps)
+		exit(ps_error());
+	if (ac == 2)
+	{
+		ps->strs = ft_split(av[1], 32);
+		ps->len = arg_nbr(av[1], 32);
+		push_swap(ps->len + 1, ps->strs, ps);
+	}
 	else
-	{
-		printf("ENTER! sort_over5!!\n");
-		push_swap(ac, av);//for test
-	}
+		push_swap(ac, av, ps);
 	return (0);
 }

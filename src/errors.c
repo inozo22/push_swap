@@ -6,15 +6,23 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:33:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 18:27:30 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 15:22:54 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-long	ps_error(char *str)//At the end, I have to change to void, but for now, I put str to see where I give error
+long	ps_error(void)
 {
-	ft_putstr_fd(str, STDERR);
-	//FREE
+	ft_putstr_fd("Error\n", STDERR);
+	return (1);
+}
+
+long	ps_error1(t_pushswap *ps)
+{
+	strs_clear(ps->strs, ps->len);
+	list_clear(ps->answer);
+	free(ps);
+	ft_putstr_fd("Error\n", STDERR);
 	return (1);
 }

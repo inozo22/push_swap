@@ -6,63 +6,59 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 19:01:09 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 15:19:35 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	print_stacka(t_boxes *stack)
+void	converge_box(t_boxes *answer, long cmd)
 {
-	t_boxes *tmp;
-
-	tmp = stack;
-	printf("\n###stack A###\n");
-	while (tmp->next->value != -1)
-	{
-		printf("\t%ld\n", tmp->next->value);
-		tmp = tmp->next;
-	}
-	printf("###stack A###\n");
+	t_boxes	*tmp;
+	tmp = answer->next->next;
+	free(answer->next);
+	answer->next = NULL;
+	answer->value = cmd;
+	answer->next = tmp;
+	tmp->prev = answer;	
 }
 
-bool	is_sorted(t_boxes *stack_a)//parece funciona
+void	combine_cmd(t_boxes *answer)
 {
 	t_boxes	*tmp;
 
-//	printf("***Im here, in the is sorted***\n");
-	tmp = stack_a;
-	while (tmp->next->value != -1)
+	tmp = answer->next;
+	while (tmp->value != -1)
 	{
-		//printf("CUrrent: %ld Next: %ld\n", tmp->value, tmp->next->value);
-		if ((tmp->value) > (tmp->next->value))
-		{
-//			printf("FALSE!!\n");
-			return (false);
-		}
+		if (tmp->value == RA && tmp->next->value == RB)
+			converge_box(tmp, RR);		
+		if (tmp->value == RB && tmp->next->value == RA)
+			converge_box(tmp, RR);
+		if (tmp->value == SA && tmp->next->value == SB)
+			converge_box(tmp, SS);	
+		if (tmp->value == SB && tmp->next->value == SA)
+			converge_box(tmp, SS);
+		if (tmp->value == RRA && tmp->next->value == RRB)
+			converge_box(tmp, RRR);	
+		if (tmp->value == RRB && tmp->next->value == RRA)
+			converge_box(tmp, RRR);
 		tmp = tmp->next;
-	}
+	}	
+}
+
+bool	is_sorted(t_boxes *stack_a)
+{
+	t_boxes	*tmp;
+
 	tmp = stack_a;
-	printf("\nsorted...\n");
 	while (tmp->next->value != -1)
 	{
-		printf("tmp->value: %ld\n", tmp->next->value);
+		if ((tmp->value) > (tmp->next->value))
+			return (false);
 		tmp = tmp->next;
 	}
 	return (true);
 }
-
-/* t_boxes	*search_head(t_boxes *dummy)//look for the first box that is not a dummy
-{
-	t_boxes	*ret;
-
-	ret = dummy;
-	while (ret->prev->value != -1)
-	{
-		ret = ret->prev;
-	}
-	return (ret);
-} */
 
 void	add_box(t_boxes *dummy, long num)
 {
@@ -71,7 +67,7 @@ void	add_box(t_boxes *dummy, long num)
 
 	new = malloc(sizeof(t_boxes));
 	if (!new)
-		exit (ps_error("fail allocate new"));//later I have to omid this str
+		exit (ps_error());
 	new->value = num;
 	tmp = dummy->prev;
 	tmp->next = new;
@@ -86,8 +82,8 @@ t_boxes	*make_dummy(void)
 
 	dummy = malloc(sizeof(t_boxes));
 	if (!dummy)
-		exit(ps_error("fail allocate dummy"));//It should be freed
-	dummy->value = -1;//This value it will compare with dummy value, so its ok with -1
+		exit(ps_error());
+	dummy->value = -1;
 	dummy->next = dummy;
 	dummy->prev = dummy;
 	return (dummy);
@@ -108,37 +104,18 @@ t_boxes	*put_num(t_pushswap *ps)
 	return (dummy);
 }
 
-char	**free_argv(char **av, t_pushswap *ps)
-{
-	long	i;
-
-	i = 0;
-	while (i < ps->size)
-	{
-		i++;
-		free(av[i]);
-	}
-	free(av);
-	return (NULL);
-}
-
-void	push_swap(int ac, char **av)
+void	push_swap(int ac, char **av, t_pushswap *ps)
 {
 	t_boxes		*stack_a;
 	t_boxes		*stack_b;
-	t_pushswap	*ps;
-//	long i = 0;
 
-	ps = init_ps(ac, av);
+	ps = init_ps(ac, av, ps);
 	stack_a = put_num(ps);
 	stack_b = make_dummy();
-	printf("\nafter the initiation\n");
-	print_stacka(stack_a);
-	printf("value of stacka next: %ld\n", stack_a->next->value);
 	if (stack_a->next->value == -1)
 	{
-		free_argv(av, ps);//free argv
-		return (all_free(stack_a, stack_b, ps));//and free all boxes
+/* 		free_argv(av, ps); */
+		return (all_free(stack_a, stack_b, ps));
 	}
 	else if (is_sorted(stack_a))
 		;
@@ -146,19 +123,9 @@ void	push_swap(int ac, char **av)
 		sort_less6(stack_a, stack_b, ps);
 	else
 	{
-		printf("***enter to sort_over5***\n");
 		sort_over5(stack_a, stack_b, ps);
-		printf("I have been there, after sort_over5\n");
 	}
+	combine_cmd(ps->answer);
 	print_answer(ps->answer);
-//	print_stacka(stack_a);
-	printf("execting all_free\n");
-//	free_argv(av, ps);
 	all_free(stack_a, stack_b, ps);
 }
-
-/* int	main(int ac, char **av)
-{
-	push_swap(ac, av);
-}
- */
