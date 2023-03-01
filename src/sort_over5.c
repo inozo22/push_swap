@@ -47,6 +47,27 @@ long	get_a_len(t_boxes *stack_a, t_pushswap *ps)
 	return (ret);
 }
 
+void	move_add_box(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long cmd)
+{
+	if (cmd == SA)
+		cmd_swap(stack_a);
+	else if (cmd == SB)
+		cmd_swap(stack_b);
+	else if (cmd == PA)
+		cmd_push(stack_a, stack_b);
+	else if (cmd == PB)
+		cmd_push(stack_b, stack_a);
+	else if (cmd == RA)
+		cmd_rotate(stack_a);
+	else if (cmd == RB)
+		cmd_rotate(stack_b);
+	else if (cmd == RRA)
+		cmd_reverse(stack_a);
+	else if (cmd == RRB)
+		cmd_reverse(stack_b);
+	add_box(ps->ans, cmd);
+}
+
 /* I have to reduce the lines(ノД`)・゜・。 */
 void	a_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 {
@@ -56,36 +77,42 @@ void	a_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 	while (++i < size)
 	{
 		if (stack_b->prev->value == ps->a)
-		{
+			move_add_box(stack_a, stack_b, ps, RRB);
+/* 		{
 			cmd_reverse(stack_b);
 			add_box(ps->answer, RRB);	
-		}
+		} */
 		if (stack_b->next->next->value == ps->a)
-		{
+			move_add_box(stack_a, stack_b, ps, SB);
+/* 		{
 			cmd_swap(stack_b);
 			add_box(ps->answer, SB);	
-		}
+		} */
 		if (stack_b->next->value == ps->a && (--i || 1))
-		{
+			move_add_box(stack_a, stack_b, ps, PA);
+		/* {
 			cmd_push(stack_a, stack_b);
 			add_box(ps->answer, PA);	
-		}
+		} */
 		if (stack_a->next->next->value == ps->a && stack_a->next->value == ps->a + 1)
-		{
+			move_add_box(stack_a, stack_b, ps, SA);
+		/* {
 			cmd_swap(stack_a);
 			add_box(ps->answer, SA);	
-		}
+		} */
 		if (stack_a->next->value == ps->a)
 		{
-			cmd_rotate(stack_a);
-			add_box(ps->answer, RA);
+			move_add_box(stack_a, stack_b, ps, RA);
+/* 			cmd_rotate(stack_a);
+			add_box(ps->answer, RA); */
 			++ps->a;
 		}
 		else
-		{
+			move_add_box(stack_a, stack_b, ps, PB);
+/* 		{
 			cmd_push(stack_b, stack_a);
 			add_box(ps->answer, PB);	
-		}
+		} */
 	}
 }
 
@@ -103,21 +130,27 @@ void	b_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 	{
 		if (stack_b->next->value == ps->a && size_b-- && ++ps->a)
 		{
+			move_add_box(stack_a, stack_b, ps, PA);
+			move_add_box(stack_a, stack_b, ps, RA);
+		}
+		/* {
 			cmd_push(stack_a, stack_b);
 			add_box(ps->answer, PA);	
 			cmd_rotate(stack_a);
 			add_box(ps->answer, RA);
-		}
+		} */
 		else if (stack_b->next->value > pivot && size_b--)
-		{
+			move_add_box(stack_a, stack_b, ps, PA);
+		/* {
 			cmd_push(stack_a, stack_b);
 			add_box(ps->answer, PA);				
-		}
+		} */
 		else
-		{
+			move_add_box(stack_a, stack_b, ps, RB);
+		/* {
 			cmd_rotate(stack_b);
 			add_box(ps->answer, RB);
-		}
+		} */
 	}
 }
 
