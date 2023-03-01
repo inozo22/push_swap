@@ -6,11 +6,95 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 07:11:23 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 10:18:09 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	converge_box(t_boxes *answer, long cmd)
+{
+	t_boxes	*tmp;
+	tmp = answer->next->next;
+	free(answer->next);
+	answer->next = NULL;
+	answer->value = cmd;
+	answer->next = tmp;
+	tmp->prev = answer;	
+}
+
+void	combine_cmd(t_boxes *answer)
+{
+	t_boxes	*tmp;
+//	t_boxes	*tmp2;
+//	t_boxes	*tmp3;
+
+	tmp = answer->next;
+	while (tmp->value != -1)
+	{
+		if (tmp->value == RA && tmp->next->value == RB)
+		{
+			converge_box(tmp, RR);
+			/* tmp2 = tmp->next->next;
+			free(tmp->next);
+			tmp->next = NULL;
+			tmp->value = RR;
+			tmp->next = tmp2;
+			tmp2->prev = tmp; */		
+		}
+		if (tmp->value == RB && tmp->next->value == RA)
+		{
+			converge_box(tmp, RR);
+			/* tmp2 = tmp->next->next;
+			free(tmp->next);
+			tmp->next = NULL;
+			tmp->value = RR;
+			tmp->next = tmp2;
+			tmp2->prev = tmp; */
+		}
+		if (tmp->value == SA && tmp->next->value == SB)
+		{
+			converge_box(tmp, SS);
+			/* tmp2 = tmp->next->next;
+			free(tmp->next);
+			tmp->next = NULL;
+			tmp->value = SS;
+			tmp->next = tmp2;
+			tmp2->prev = tmp; */		
+		}
+		if (tmp->value == SB && tmp->next->value == SA)
+		{
+			converge_box(tmp, SS);
+			/* tmp2 = tmp->next->next;
+			free(tmp->next);
+			tmp->next = NULL;
+			tmp->value = SS;
+			tmp->next = tmp2;
+			tmp2->prev = tmp; */
+		}
+		if (tmp->value == RRA && tmp->next->value == RRB)
+		{
+			converge_box(tmp, RRR);
+			/* tmp2 = tmp->next->next;
+			free(tmp->next);
+			tmp->next = NULL;
+			tmp->value = RRR;
+			tmp->next = tmp2;
+			tmp2->prev = tmp; */		
+		}
+		if (tmp->value == RRB && tmp->next->value == RRA)
+		{
+			converge_box(tmp, RRR);
+			/* tmp2 = tmp->next->next;
+			free(tmp->next);
+			tmp->next = NULL;
+			tmp->value = RRR;
+			tmp->next = tmp2;
+			tmp2->prev = tmp; */
+		}
+		tmp = tmp->next;
+	}	
+}
 
 bool	is_sorted(t_boxes *stack_a)
 {
@@ -108,6 +192,7 @@ void	push_swap(int ac, char **av)
 	{
 		sort_over5(stack_a, stack_b, ps);
 	}
+	combine_cmd(ps->answer);
 	print_answer(ps->answer);
 	all_free(stack_a, stack_b, ps);
 }
