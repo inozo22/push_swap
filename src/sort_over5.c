@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 15:28:54 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 16:00:40 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,9 @@ void	move_add_box(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long cmd)
 		cmd_reverse(stack_a);
 	else if (cmd == RRB)
 		cmd_reverse(stack_b);
-	add_box(ps->ans, cmd);
+	add_box(ps->answer, cmd);
 }
 
-/* I have to reduce the lines(ノД`)・゜・。 */
 void	a_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 {
 	long	i;
@@ -78,45 +77,22 @@ void	a_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 	{
 		if (stack_b->prev->value == ps->a)
 			move_add_box(stack_a, stack_b, ps, RRB);
-/* 		{
-			cmd_reverse(stack_b);
-			add_box(ps->answer, RRB);	
-		} */
 		if (stack_b->next->next->value == ps->a)
 			move_add_box(stack_a, stack_b, ps, SB);
-/* 		{
-			cmd_swap(stack_b);
-			add_box(ps->answer, SB);	
-		} */
 		if (stack_b->next->value == ps->a && (--i || 1))
 			move_add_box(stack_a, stack_b, ps, PA);
-		/* {
-			cmd_push(stack_a, stack_b);
-			add_box(ps->answer, PA);	
-		} */
 		if (stack_a->next->next->value == ps->a && stack_a->next->value == ps->a + 1)
 			move_add_box(stack_a, stack_b, ps, SA);
-		/* {
-			cmd_swap(stack_a);
-			add_box(ps->answer, SA);	
-		} */
 		if (stack_a->next->value == ps->a)
 		{
 			move_add_box(stack_a, stack_b, ps, RA);
-/* 			cmd_rotate(stack_a);
-			add_box(ps->answer, RA); */
 			++ps->a;
 		}
 		else
 			move_add_box(stack_a, stack_b, ps, PB);
-/* 		{
-			cmd_push(stack_b, stack_a);
-			add_box(ps->answer, PB);	
-		} */
 	}
 }
 
-/* I have to reduce the lines(ノД`)・゜・。 */
 void	b_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 {
 	long	i;
@@ -133,24 +109,10 @@ void	b_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 			move_add_box(stack_a, stack_b, ps, PA);
 			move_add_box(stack_a, stack_b, ps, RA);
 		}
-		/* {
-			cmd_push(stack_a, stack_b);
-			add_box(ps->answer, PA);	
-			cmd_rotate(stack_a);
-			add_box(ps->answer, RA);
-		} */
 		else if (stack_b->next->value > pivot && size_b--)
 			move_add_box(stack_a, stack_b, ps, PA);
-		/* {
-			cmd_push(stack_a, stack_b);
-			add_box(ps->answer, PA);				
-		} */
 		else
 			move_add_box(stack_a, stack_b, ps, RB);
-		/* {
-			cmd_rotate(stack_b);
-			add_box(ps->answer, RB);
-		} */
 	}
 }
 
@@ -183,7 +145,6 @@ bool	stay_b(t_boxes *stack_b, t_pushswap *ps, long size)
 	return (false);	
 }
 
-/* I have to reduce the lines(ノД`)・゜・。 */
 void	settle_top(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 {
 	long	i;
@@ -192,33 +153,25 @@ void	settle_top(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	while ((++i + ps->a) < ps->b)
 	{
 		if (stack_b->prev->value == ps->b - i - 1)
-		{
-			cmd_reverse(stack_b);
-			add_box(ps->answer, RRB);
-		}
+			move_add_box(stack_a, stack_b, ps, RRB);
 		else if (stack_b->prev->prev->value == ps->b - i - 1)
 		{
-			cmd_reverse(stack_b);
-			add_box(ps->answer, RRB);
-			cmd_reverse(stack_b);
-			add_box(ps->answer, RRB);
+			move_add_box(stack_a, stack_b, ps, RRB);
+			move_add_box(stack_a, stack_b, ps, RRB);			
 		}
-		else if (stack_b->next->value == ps->b - i - 1)//
+		else if (stack_b->next->value == ps->b - i - 1)
 		{
-			cmd_push(stack_a, stack_b);
-			add_box(ps->answer, PA);
+			move_add_box(stack_a, stack_b, ps, PA);
 			ps->a++;
 		}
 	}
 	while (stack_a->next->value == ps->a)
 	{
-		cmd_rotate(stack_a);
-		add_box(ps->answer, RA);
+		move_add_box(stack_a, stack_b, ps, RA);
 		ps->a++;
 	}
 }
 
-/* I have to reduce the lines(ノД`)・゜・。 */
 void	settle_half(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 {
 	long	i;
@@ -234,21 +187,14 @@ void	settle_half(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 				break;
 		}
 		if (stack_b->next->value == ps->b + 1 && !b_left(stack_b, ps) && size_b > 1)
-		{
-			cmd_rotate(stack_b);
-			add_box(ps->answer, RB);			
-		}
+			move_add_box(stack_a, stack_b, ps, RB);
 		if (stack_a->next->value < (ps->size / 2))
 		{
-			cmd_push(stack_b, stack_a);
-			add_box(ps->answer, PB);
+			move_add_box(stack_a, stack_b, ps, PB);
 			size_b++;
 		}
 		else
-		{
-			cmd_rotate(stack_a);
-			add_box(ps->answer, RA);
-		}
+			move_add_box(stack_a, stack_b, ps, RA);
 	}
 }
 
