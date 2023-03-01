@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 09:14:02 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 08:29:56 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 11:50:31 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	get_head_a(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 	sort->a++;
 	dfs_over5(stack_a, stack_b, sort, turn + 1);
 	sort->a--;
-	cmd_reverse(stack_a);//reset rotate
+	cmd_reverse(stack_a);
 	return ;
 }
 
@@ -42,7 +42,7 @@ void	get_head_b(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 	cmd_push(stack_a, stack_b);
 	sort->tmp[turn] = PA;
 	dfs_over5(stack_a, stack_b, sort, turn + 1);
-	cmd_push(stack_b, stack_a);//reset push
+	cmd_push(stack_b, stack_a);
 	return ;
 }
 
@@ -80,7 +80,7 @@ long	get_btail(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	long	ret;
 
 	ret = ps->a;
-	while (1)//infinity loop
+	while (1)
 	{
 		tmp = stack_b->next;
 		while (ret != tmp->value && tmp->value != -1)

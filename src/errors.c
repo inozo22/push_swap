@@ -6,15 +6,46 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:33:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 18:27:30 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 11:52:47 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-long	ps_error(char *str)//At the end, I have to change to void, but for now, I put str to see where I give error
+
+/* void	list_clear(t_boxes *box)
 {
-	ft_putstr_fd(str, STDERR);
-	//FREE
+	t_boxes	*tmp;
+
+	box->prev->next = NULL;
+	while (box)
+	{
+		tmp = box->next;
+		box->prev = NULL;
+		free(box);
+		box = tmp;
+	}
+}
+
+void	all_free(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
+{
+	list_clear(ps->answer);
+	free(ps);
+	list_clear(stack_a);
+	list_clear(stack_b);
+} */
+
+long	ps_error(void)
+{
+/* 	all_free(stack_a, stack_b, ps); */
+	ft_putstr_fd("Error\n", STDERR);
+	return (1);
+}
+
+long	ps_error1(t_pushswap *ps)
+{
+	list_clear(ps->answer);
+	free(ps);
+	ft_putstr_fd("Error\n", STDERR);
 	return (1);
 }

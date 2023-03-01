@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:51 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 07:08:20 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 11:34:47 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,23 @@ int	arg_nbr(char const *str, char c)
 
 int	main(int ac, char **av)
 {
-	char	**strs;
-	int		len;
+	t_pushswap	ps;
 
 	if (ac > ARGLIMIT)
-		ps_error("error more than arglimit");
+	{
+		ft_putstr_fd("Error\n", STDERR);
+/* 		return (ps_error()); */	
+	}
 	else if (ac < 2)
 		ft_putchar_fd('\n', 1);
 	else if (ac == 2)
 	{
-		strs = ft_split(ft_strjoin(ft_strjoin(av[0], " "), av[1]), 32);
-		len = arg_nbr(av[1], 32);
-		push_swap(len + 1, strs);
+		ps.strs = ft_split(ft_strjoin(ft_strjoin(av[0], " "), av[1]), 32);
+		// kokode check?
+		ps.len = arg_nbr(av[1], 32);
+		push_swap(ps.len + 1, ps.strs);
 	}
-	else if (ac > 2 && ac < 7)//5 numbers
-		push_swap(ac, av);
 	else
-	{
-		push_swap(ac, av);//for test
-	}
+		push_swap(ac, av);
 	return (0);
 }

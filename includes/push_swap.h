@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 11:33:31 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 11:48:32 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 # define SORT_ID 0
 # define SORT_VALUE 1
 # define LIMIT_LESS6 12
-# define LIMIT_OVER5 30//???
+# define LIMIT_OVER5 30
 # define SORT_SIZE 4
 
-typedef enum e_cmd// to control commands
+typedef enum e_cmd
 {
 	SA,
 	SB,
@@ -48,7 +48,6 @@ typedef struct s_boxes
 	struct s_boxes	*next;
 	struct s_boxes	*prev;
 }	t_boxes;
-// Do not forget put a dummy pointer at the beginning 
 
 typedef struct s_pair
 {
@@ -56,7 +55,7 @@ typedef struct s_pair
 	long	id;
 }	t_pair;
 
-typedef struct s_pushswap//structure to control in generarl
+typedef struct s_pushswap
 {
 	long		size;
 	t_boxes		*answer;
@@ -67,9 +66,11 @@ typedef struct s_pushswap//structure to control in generarl
 	long		ans_ret;
 	long		ans_turn;
 	char		ans_next[5][10];
+	char		**strs;//ato de ikki ni kesu tame
+	long		len;
 }	t_pushswap;
 
-typedef struct s_sorting//structure to sort
+typedef struct s_sorting
 {
 	long	turn;
 	long	size;
@@ -86,7 +87,8 @@ void		push_swap(int ac, char **av);
 t_pushswap	*init_ps(int ac, char **av);
 t_boxes		*make_dummy(void);
 void		add_box(t_boxes *dummy, long num);
-long		ps_atoi(char *str);
+/* long		ps_atoi(char *str); */
+long		ps_atoi(char *str, t_pushswap *ps);
 bool		move_stack(t_boxes *stack_a, t_boxes *stack_b, long cmd, bool ret);
 void		print_answer(t_boxes *answer);
 
@@ -103,7 +105,9 @@ bool		check_futility(long cmd, t_sorting *sort);
 void		add_answer(long turn, t_sorting *sort);
 
 //error control and free
-long		ps_error(char *str);//I have to change str to void, for now its ok to check where I got error
+long		ps_error(void);
+long		ps_error1(t_pushswap *ps);
+//long		ps_error(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
 void		all_free(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
 void		list_clear(t_boxes *box);
 
@@ -112,11 +116,8 @@ bool		cmd_swap(t_boxes *box);
 bool		cmd_rotate(t_boxes *box);
 bool		cmd_reverse(t_boxes *box);
 bool		cmd_push(t_boxes *dst, t_boxes *src);
-bool		cmd_ss(t_boxes *stack_a, t_boxes *stack_b);//Verification required
-bool		cmd_rr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
-bool		cmd_rrr(t_boxes *stack_a, t_boxes *stack_b);//Verification required
-
-//ato de kesu
-void		print_stacka(t_boxes *stack);
+bool		cmd_ss(t_boxes *stack_a, t_boxes *stack_b);
+bool		cmd_rr(t_boxes *stack_a, t_boxes *stack_b);
+bool		cmd_rrr(t_boxes *stack_a, t_boxes *stack_b);
 
 #endif
