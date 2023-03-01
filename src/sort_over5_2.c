@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 09:14:02 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/28 21:43:24 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 07:16:09 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	dfs_over5(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn)
 		sort->pre = cmd;
 		sort->tmp[turn] = cmd;
 		dfs_over5(stack_a, stack_b, sort, turn + 1);
-	//	printf("how many times do dfs here?\n");
 		move_stack(stack_a, stack_b, cmd, false);
 	}	
 }
@@ -80,7 +79,6 @@ long	get_btail(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	t_boxes	*tmp;
 	long	ret;
 
-	printf("ps->a in the get tail: %ld\n", ps->a);
 	ret = ps->a;
 	while (1)//infinity loop
 	{
@@ -89,7 +87,6 @@ long	get_btail(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 			tmp = tmp->next;
 		if (stack_a->next->value != ret && stack_a->next->next->value != ret && tmp->value != ret)
 		{
-			printf("got_tail ====== tail :%ld\n", ret);
 			return (ret);
 		}
 		ret++;
@@ -108,14 +105,6 @@ void	all_sort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size)
 		sort.tmp[i] = -1;
 		sort.ans[i] = -1;
 	}
-// koko kara kesu
-/* 	i = 0;
-	while (i < LIMIT_OVER5)
-	{
-		printf("sort.tmp[%ld]: %ld\n", i, sort.tmp[i]);
-		i++;		
-	} */
-// koko made kesu
 	sort.pre = ps->answer->prev->value;
 	sort.size = size;
 	sort.a = ps->a;
@@ -123,18 +112,12 @@ void	all_sort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size)
 		sort.tail = get_btail(stack_a, stack_b, ps);
 	else
 	{
-		printf("I'm here, stackB next -1 \n");
 		sort.tail = size + ps->a;
 	}
 
 	dfs_over5(stack_a, stack_b, &sort, 0);
-//	printf("I have been there, after dfs over5\n");//
 	ans_join(ps, &sort);
-//	printf("I have been there, after ansjoin\n");//
 	stack_update(stack_a, stack_b, &sort);
-//	printf("I have been there, after stackupdate\n");//
 	ps->a = sort.tail;
-//	printf("I have been there, after change ps A\n");//
 	ps->b = sort.tail;
-//	printf("I have been there, after change ps B\n");//
 }

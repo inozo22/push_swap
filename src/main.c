@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:51 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/24 16:34:19 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 07:08:20 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	main(int ac, char **av)
 		push_swap(ac, av);
 	else
 	{
-		printf("ENTER! sort_over5!!\n");
 		push_swap(ac, av);//for test
 	}
 	return (0);

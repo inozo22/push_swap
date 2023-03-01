@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:09 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/20 13:07:22 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 07:08:45 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_digit(char c)
 
 long	ps_atoi(char *str)
 {
-	long	ret;//better use long to avoid error
+	long	ret;
 	long	sign;
 
 	ret = 0;

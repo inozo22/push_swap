@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:45:10 by nimai             #+#    #+#             */
-/*   Updated: 2023/02/25 21:19:46 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 07:08:32 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,9 @@ void	print_answer(t_boxes *answer)
 	t_boxes	*tmp;
 
 	tmp = answer->next;
-	printf("\n==== demo ====\n");
 	while (tmp->value != -1)
 	{
 		put_command(tmp->value);
 		tmp = tmp->next;
 	}
-//	printf("\ntmp: %ld", tmp->value);
 }
