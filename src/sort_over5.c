@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 06:20:35 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 06:29:05 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,7 +302,7 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		//ps->a isn't become more than 4
 		settle_top(stack_a, stack_b, ps);
 		size = stack_len(stack_b);
-		while (size > SORT_SIZE)
+		while ((size = stack_len(stack_b)) && size > SORT_SIZE)
 		{
 //			printf("where am I? in while qsortB\n");
 			b_qsort(stack_a, stack_b, ps, size);
