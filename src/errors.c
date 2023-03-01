@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:33:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 11:52:47 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 15:02:10 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ long	ps_error(void)
 
 long	ps_error1(t_pushswap *ps)
 {
+	strs_clear(ps->strs, ps->len);
 	list_clear(ps->answer);
 	free(ps);
 	ft_putstr_fd("Error\n", STDERR);

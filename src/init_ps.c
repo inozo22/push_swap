@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 11:48:05 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 14:47:05 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,24 +74,25 @@ void	get_id(t_pushswap *ps)
 }
  */
 
-t_pushswap	*init_ps(int ac, char **av)
+t_pushswap	*init_ps(int ac, char **av, t_pushswap *ps)
 {
-	t_pushswap	*ps;
+//	t_pushswap	*ps;
 	long		i;
-	char		**strs;
+//	char		**strs;
 
-	ps = (t_pushswap *)malloc(sizeof(t_pushswap));
+/* 	ps = (t_pushswap *)malloc(sizeof(t_pushswap));
 	if (!ps)
-		exit(ps_error());
+		exit(ps_error()); */
+	if (!ps->strs)
+		ps->strs = av + 1;
 	ps->answer = make_dummy();
 	ps->size = ac - 1;
-	strs = av + 1;
 	i = 0;
 	while (i < ps->size)
 	{
-		ps->n[i].value = ps_atoi(*strs, ps);
+		ps->n[i].value = ps_atoi(ps->strs[i], ps);
 		ps->n[i].id = i;
-		strs++;
+//		strs++;
 		i++;
 	}
 	while (i < ARGLIMIT)

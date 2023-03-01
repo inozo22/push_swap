@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 11:48:32 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/01 15:01:30 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ typedef struct s_sorting
 }	t_sorting;
 
 //main functions
-void		push_swap(int ac, char **av);
-t_pushswap	*init_ps(int ac, char **av);
+void		push_swap(int ac, char **av, t_pushswap *ps);
+t_pushswap	*init_ps(int ac, char **av, t_pushswap *ps);
 t_boxes		*make_dummy(void);
 void		add_box(t_boxes *dummy, long num);
 /* long		ps_atoi(char *str); */
@@ -110,6 +110,7 @@ long		ps_error1(t_pushswap *ps);
 //long		ps_error(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
 void		all_free(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
 void		list_clear(t_boxes *box);
+char		**strs_clear(char **tab, long i);
 
 //commands
 bool		cmd_swap(t_boxes *box);
