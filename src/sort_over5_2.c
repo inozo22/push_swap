@@ -6,24 +6,11 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 09:14:02 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 16:50:50 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 16:57:41 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/* bool	disturb_check(t_box *stack_a, long cmd, t_sorting *sort)
-{
-	if (cmd == SA && (stack_a->next->next->value >= sort->tail))
-		return (true);
-	if (cmd == SS && (stack_a->next->next->value >= sort->tail))
-		return (true);
-	if (cmd == RA && (stack_a->next->value >= sort->tail))
-		return (true);
-	if (cmd == RR && (stack_a->next->value >= sort->tail))
-		return (true);
-	return (false);
-} */
 
 void	get_head_a(t_box *stack_a, t_box *stack_b, t_sorting *sort, long turn)
 {
