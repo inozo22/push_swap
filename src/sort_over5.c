@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 16:00:40 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 09:50:44 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	b_left(t_boxes *stack_b, t_pushswap *ps)
 {
 	t_boxes	*tmp;
 	long	start;
-	
+
 	start = stack_b->value;
 	tmp = stack_b->next;
 	while (tmp->value != start)
@@ -68,7 +68,7 @@ void	move_add_box(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long cmd)
 	add_box(ps->answer, cmd);
 }
 
-void	a_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
+void	a_qsort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size)
 {
 	long	i;
 
@@ -81,8 +81,11 @@ void	a_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 			move_add_box(stack_a, stack_b, ps, SB);
 		if (stack_b->next->value == ps->a && (--i || 1))
 			move_add_box(stack_a, stack_b, ps, PA);
-		if (stack_a->next->next->value == ps->a && stack_a->next->value == ps->a + 1)
-			move_add_box(stack_a, stack_b, ps, SA);
+		if (stack_a->next->next->value == ps->a)
+		{
+			if (stack_a->next->value == ps->a + 1)
+				move_add_box(stack_a, stack_b, ps, SA);
+		}
 		if (stack_a->next->value == ps->a)
 		{
 			move_add_box(stack_a, stack_b, ps, RA);
@@ -93,12 +96,12 @@ void	a_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
 	}
 }
 
-void	b_qsort(t_boxes *stack_a, t_boxes * stack_b, t_pushswap *ps, long size)
+void	b_qsort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size)
 {
 	long	i;
 	long	pivot;
 	long	size_b;
-	
+
 	i = -1;
 	size_b = size;
 	pivot = ps->a + (size - 1) / 2;
@@ -126,9 +129,9 @@ long	stack_len(t_boxes *stack)
 	while (tmp->next->value != -1)
 	{
 		ret++;
-		tmp = tmp->next;		
+		tmp = tmp->next;
 	}
-	return (ret);	
+	return (ret);
 }
 
 bool	stay_b(t_boxes *stack_b, t_pushswap *ps, long size)
@@ -136,13 +139,13 @@ bool	stay_b(t_boxes *stack_b, t_pushswap *ps, long size)
 	ps->b++;
 	if (size == 1)
 	{
-		return (true);		
+		return (true);
 	}
 	if (stack_b->prev->value == ps->b)
 		ps->b++;
 	cmd_rotate(stack_b);
 	add_box(ps->answer, RB);
-	return (false);	
+	return (false);
 }
 
 void	settle_top(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
@@ -184,10 +187,13 @@ void	settle_half(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		while (stack_b->next->value == ps->b)
 		{
 			if (stay_b(stack_b, ps, size_b))
-				break;
+				break ;
 		}
-		if (stack_b->next->value == ps->b + 1 && !b_left(stack_b, ps) && size_b > 1)
-			move_add_box(stack_a, stack_b, ps, RB);
+		if (stack_b->next->value == ps->b + 1)
+		{
+			if (!b_left(stack_b, ps) && size_b > 1)
+				move_add_box(stack_a, stack_b, ps, RB);
+		}
 		if (stack_a->next->value < (ps->size / 2))
 		{
 			move_add_box(stack_a, stack_b, ps, PB);
@@ -205,12 +211,20 @@ void	sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 	settle_half(stack_a, stack_b, ps);
 	while (ps->a != ps->size)
 	{
-		while ((size = stack_len(stack_b)) > SORT_SIZE)
+		size = stack_len(stack_b);
+		while (size > SORT_SIZE)
+		{
 			b_qsort(stack_a, stack_b, ps, size);
+			size = stack_len(stack_b);
+		}
 		if (size)
 			all_sort(stack_a, stack_b, ps, size);
-		while ((size = get_a_len(stack_a, ps)) && size <= SORT_SIZE)
+		size = get_a_len(stack_a, ps);
+		while (size && size <= SORT_SIZE)
+		{
 			all_sort(stack_a, stack_b, ps, size);
+			size = get_a_len(stack_a, ps);
+		}
 		if (size)
 			a_qsort(stack_a, stack_b, ps, size);
 	}

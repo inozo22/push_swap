@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:09 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 11:49:25 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 14:50:28 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,19 @@ long	ps_atoi(char *str, t_pushswap *ps)
 	if (ft_strlen(str) > 11)
 		exit(ps_error1(ps));
 	if (*str == '-')
-		sign = -1;
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str)
 	{
-		if (is_digit(*str) != 1)
-			exit(ps_error1(ps));
+		sign = -1;
+		str++;
+	}
+	if (!is_digit(*str))
+		exit(ps_error1(ps));
+	while (is_digit(*str))
+	{
 		ret = ret * 10 + (*str - 48);
 		str++;
 	}
+	if (*str)
+		ps_error1(ps);
 	if (ret < -2147483648 || ret > 2147483647)
 		exit(ps_error1(ps));
 	return (ret * sign);

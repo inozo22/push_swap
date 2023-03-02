@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 09:14:02 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 15:18:33 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 09:54:28 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,11 @@ long	get_btail(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
 		tmp = stack_b->next;
 		while (ret != tmp->value && tmp->value != -1)
 			tmp = tmp->next;
-		if (stack_a->next->value != ret && stack_a->next->next->value != ret && tmp->value != ret)
-			return (ret);
+		if (stack_a->next->value != ret)
+		{
+			if (stack_a->next->next->value != ret && tmp->value != ret)
+				return (ret);
+		}
 		ret++;
 	}
 }

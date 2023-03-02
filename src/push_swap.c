@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 15:19:35 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 09:56:01 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 void	converge_box(t_boxes *answer, long cmd)
 {
 	t_boxes	*tmp;
+
 	tmp = answer->next->next;
 	free(answer->next);
 	answer->next = NULL;
 	answer->value = cmd;
 	answer->next = tmp;
-	tmp->prev = answer;	
+	tmp->prev = answer;
 }
 
 void	combine_cmd(t_boxes *answer)
@@ -31,15 +32,15 @@ void	combine_cmd(t_boxes *answer)
 	while (tmp->value != -1)
 	{
 		if (tmp->value == RA && tmp->next->value == RB)
-			converge_box(tmp, RR);		
+			converge_box(tmp, RR);
 		if (tmp->value == RB && tmp->next->value == RA)
 			converge_box(tmp, RR);
 		if (tmp->value == SA && tmp->next->value == SB)
-			converge_box(tmp, SS);	
+			converge_box(tmp, SS);
 		if (tmp->value == SB && tmp->next->value == SA)
 			converge_box(tmp, SS);
 		if (tmp->value == RRA && tmp->next->value == RRB)
-			converge_box(tmp, RRR);	
+			converge_box(tmp, RRR);
 		if (tmp->value == RRB && tmp->next->value == RRA)
 			converge_box(tmp, RRR);
 		tmp = tmp->next;
@@ -113,18 +114,13 @@ void	push_swap(int ac, char **av, t_pushswap *ps)
 	stack_a = put_num(ps);
 	stack_b = make_dummy();
 	if (stack_a->next->value == -1)
-	{
-/* 		free_argv(av, ps); */
 		return (all_free(stack_a, stack_b, ps));
-	}
 	else if (is_sorted(stack_a))
 		;
 	else if (ps->size < 6)
 		sort_less6(stack_a, stack_b, ps);
 	else
-	{
 		sort_over5(stack_a, stack_b, ps);
-	}
 	combine_cmd(ps->answer);
 	print_answer(ps->answer);
 	all_free(stack_a, stack_b, ps);
