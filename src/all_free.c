@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:34:34 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 15:57:36 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 17:37:07 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ char	**strs_clear(char **tab, long i)
 
 void	all_free(t_box *stack_a, t_box *stack_b, t_pushswap *ps)
 {
-	strs_clear(ps->strs, ps->len);
+	if (ps->len)
+		strs_clear(ps->strs, ps->len);
 	list_clear(ps->answer);
 	free(ps);
 	list_clear(stack_a);

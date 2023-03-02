@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 16:16:29 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 17:47:54 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,18 @@ long	ps_atoi(char *str, t_pushswap *ps)
 	}
 	if (*str)
 		ps_error(ps);
+	ret = ret * sign;
 	if (ret < -2147483648 || ret > 2147483647)
 		exit(ps_error(ps));
-	return (ret * sign);
+	return (ret);
 }
 
 void	check_dub_number(t_pushswap *ps)
 {
 	long	i;
 
-	i = 0;
-	while (i++ < ps->size - 1)
+	i = -1;
+	while (++i < ps->size - 1)
 	{
 		if (ps->n[i].value == ps->n[i + 1].value)
 			exit(ps_error(ps));
