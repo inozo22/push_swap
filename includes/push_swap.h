@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 15:01:30 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 16:52:12 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ typedef enum e_cmd
 	RRR,
 }	t_cmd;
 
-typedef struct s_boxes
+typedef struct s_box
 {
 	long			value;
-	struct s_boxes	*next;
-	struct s_boxes	*prev;
-}	t_boxes;
+	struct s_box	*next;
+	struct s_box	*prev;
+}	t_box;
 
 typedef struct s_pair
 {
@@ -58,7 +58,7 @@ typedef struct s_pair
 typedef struct s_pushswap
 {
 	long		size;
-	t_boxes		*answer;
+	t_box		*answer;
 	t_pair		n[ARGLIMIT];
 	long		init[ARGLIMIT];
 	long		a;
@@ -66,7 +66,7 @@ typedef struct s_pushswap
 	long		ans_ret;
 	long		ans_turn;
 	char		ans_next[5][10];
-	char		**strs;//ato de ikki ni kesu tame
+	char		**strs;
 	long		len;
 }	t_pushswap;
 
@@ -85,40 +85,49 @@ typedef struct s_sorting
 //main functions
 void		push_swap(int ac, char **av, t_pushswap *ps);
 t_pushswap	*init_ps(int ac, char **av, t_pushswap *ps);
-t_boxes		*make_dummy(void);
-void		add_box(t_boxes *dummy, long num);
-/* long		ps_atoi(char *str); */
+t_box		*make_dummy(void);
+void		add_box(t_box *dummy, long num);
 long		ps_atoi(char *str, t_pushswap *ps);
-bool		move_stack(t_boxes *stack_a, t_boxes *stack_b, long cmd, bool ret);
-void		print_answer(t_boxes *answer);
+void		print_answer(t_box *answer);
+int			is_digit(char c);
 
 //sorting
 void		quick_sort(t_pair n[], long left, long right, long flag);
-void		sort_less6(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
-void		sort_over5(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
-void		dfs_over5(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort, long turn);
-void		all_sort(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps, long size);
-bool		is_sorted(t_boxes *stack_a);
-void		stack_update(t_boxes *stack_a, t_boxes *stack_b, t_sorting *sort);
+void		sort_less6(t_box *stack_a, t_box *stack_b, t_pushswap *ps);
+void		sort_over5(t_box *stack_a, t_box *stack_b, t_pushswap *ps);
+void		dfs_over5(t_box *stack_a, t_box *stack_b, t_sorting *sort, long t);
+void		all_sort(t_box *stack_a, t_box *stack_b, t_pushswap *ps, long size);
+bool		is_sorted(t_box *stack_a);
+bool		move_stack(t_box *stack_a, t_box *stack_b, long cmd, bool ret);
+void		move_add_box(t_box *stack_a, t_box *stack_b, t_pushswap *ps, long cmd);
+void		combine_cmd(t_box *answer);
+void		converge_box(t_box *answer, long cmd);
+void		stack_update(t_box *stack_a, t_box *stack_b, t_sorting *sort);
 void		ans_join(t_pushswap *ps, t_sorting *sort);
 bool		check_futility(long cmd, t_sorting *sort);
 void		add_answer(long turn, t_sorting *sort);
+//sort over5
+bool		b_left(t_box *stack_b, t_pushswap *ps);
+void		a_qsort(t_box *stack_a, t_box *stack_b, t_pushswap *ps, long size);
+void		b_qsort(t_box *stack_a, t_box *stack_b, t_pushswap *ps, long size);
+long		stack_len(t_box *stack);
+bool		disturb_check(t_box *stack_a, long cmd, t_sorting *sort);
 
 //error control and free
-long		ps_error(void);
-long		ps_error1(t_pushswap *ps);
-//long		ps_error(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
-void		all_free(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps);
-void		list_clear(t_boxes *box);
+long		hollow_error(void);
+long		ps_error(t_pushswap *ps);
+//long		ps_error(t_box *stack_a, t_box *stack_b, t_pushswap *ps);
+void		all_free(t_box *stack_a, t_box *stack_b, t_pushswap *ps);
+void		list_clear(t_box *box);
 char		**strs_clear(char **tab, long i);
 
 //commands
-bool		cmd_swap(t_boxes *box);
-bool		cmd_rotate(t_boxes *box);
-bool		cmd_reverse(t_boxes *box);
-bool		cmd_push(t_boxes *dst, t_boxes *src);
-bool		cmd_ss(t_boxes *stack_a, t_boxes *stack_b);
-bool		cmd_rr(t_boxes *stack_a, t_boxes *stack_b);
-bool		cmd_rrr(t_boxes *stack_a, t_boxes *stack_b);
+bool		cmd_swap(t_box *box);
+bool		cmd_rotate(t_box *box);
+bool		cmd_reverse(t_box *box);
+bool		cmd_push(t_box *dst, t_box *src);
+bool		cmd_ss(t_box *stack_a, t_box *stack_b);
+bool		cmd_rr(t_box *stack_a, t_box *stack_b);
+bool		cmd_rrr(t_box *stack_a, t_box *stack_b);
 
 #endif

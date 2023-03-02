@@ -6,15 +6,15 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 12:34:34 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 15:00:43 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 15:57:36 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	list_clear(t_boxes *box)
+void	list_clear(t_box *box)
 {
-	t_boxes	*tmp;
+	t_box	*tmp;
 
 	box->prev->next = NULL;
 	while (box)
@@ -37,7 +37,7 @@ char	**strs_clear(char **tab, long i)
 	return (NULL);
 }
 
-void	all_free(t_boxes *stack_a, t_boxes *stack_b, t_pushswap *ps)
+void	all_free(t_box *stack_a, t_box *stack_b, t_pushswap *ps)
 {
 	strs_clear(ps->strs, ps->len);
 	list_clear(ps->answer);

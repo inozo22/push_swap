@@ -6,17 +6,17 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:43:42 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 07:06:43 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 16:49:23 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool	cmd_swap(t_boxes *box)
+bool	cmd_swap(t_box *box)
 {
-	t_boxes	*tmp1;
-	t_boxes	*tmp2;
-	t_boxes	*tmp3;
+	t_box	*tmp1;
+	t_box	*tmp2;
+	t_box	*tmp3;
 
 	if (box->next->next->value == -1)
 		return (true);
@@ -32,11 +32,11 @@ bool	cmd_swap(t_boxes *box)
 	return (false);
 }
 
-bool	cmd_rotate(t_boxes *box)
+bool	cmd_rotate(t_box *box)
 {
-	t_boxes	*tmp1;
-	t_boxes	*tmp2;
-	t_boxes	*tmp3;
+	t_box	*tmp1;
+	t_box	*tmp2;
+	t_box	*tmp3;
 
 	if (box->next->next->value == -1)
 		return (true);
@@ -52,11 +52,11 @@ bool	cmd_rotate(t_boxes *box)
 	return (false);
 }
 
-bool	cmd_reverse(t_boxes *box)
+bool	cmd_reverse(t_box *box)
 {
-	t_boxes	*tmp1;
-	t_boxes	*tmp2;
-	t_boxes	*tmp3;
+	t_box	*tmp1;
+	t_box	*tmp2;
+	t_box	*tmp3;
 
 	if (box->next->next->value == -1)
 	{
@@ -74,11 +74,11 @@ bool	cmd_reverse(t_boxes *box)
 	return (false);
 }
 
-bool	cmd_push(t_boxes *dst, t_boxes *src)
+bool	cmd_push(t_box *dst, t_box *src)
 {
-	t_boxes	*dst_tmp;
-	t_boxes	*src_tmp1;
-	t_boxes	*src_tmp2;
+	t_box	*dst_tmp;
+	t_box	*src_tmp1;
+	t_box	*src_tmp2;
 
 	if (src->next->value == -1)
 		return (true);
@@ -91,6 +91,5 @@ bool	cmd_push(t_boxes *dst, t_boxes *src)
 	src_tmp1->next = dst_tmp;
 	dst_tmp->prev = src_tmp1;
 	src_tmp1->prev = dst;
-
 	return (false);
 }

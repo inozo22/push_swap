@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:45:10 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/01 07:08:32 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 15:57:59 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	put_command(long command)
 		ft_putstr_fd("pb\n", 1);
 }
 
-void	print_answer(t_boxes *answer)
+void	print_answer(t_box *answer)
 {
-	t_boxes	*tmp;
+	t_box	*tmp;
 
 	tmp = answer->next;
 	while (tmp->value != -1)

@@ -6,7 +6,7 @@
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
-#    Updated: 2023/02/27 16:54:59 by nimai            ###   ########.fr        #
+#    Updated: 2023/03/02 16:48:25 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,13 @@ SRC = \
 		cmd2.c \
 		errors.c \
 		init_ps.c \
-		ps_atoi.c \
 		push_swap.c \
 		quick_sort.c \
 		sort_less6.c \
 		sort_over5.c \
 		sort_over5_2.c \
+		sort_over5_util.c \
+		sort_util.c \
 		order_cmd.c \
 		print_answer.c \
 		main.c
