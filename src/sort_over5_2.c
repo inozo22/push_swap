@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 09:14:02 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 16:57:41 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 18:21:37 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	dfs_over5(t_box *stack_a, t_box *stack_b, t_sorting *sort, long t)
 	}	
 }
 
-long	get_btail(t_box *stack_a, t_box *stack_b, t_pushswap *ps)
+long	get_btail(t_box *stack_a, t_box *stack_b, t_bunch *ps)
 {
 	t_box	*tmp;
 	long	ret;
@@ -81,7 +81,7 @@ long	get_btail(t_box *stack_a, t_box *stack_b, t_pushswap *ps)
 	}
 }
 
-void	all_sort(t_box *stack_a, t_box *stack_b, t_pushswap *ps, long size)
+void	all_sort(t_box *stack_a, t_box *stack_b, t_bunch *ps, long size)
 {
 	t_sorting	sort;
 	long		i;

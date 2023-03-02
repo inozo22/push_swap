@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:47:19 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 16:28:03 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 18:21:31 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	dfs(t_box *stack_a, t_box *stack_b, t_sorting *sort, long turn)
 	}
 }
 
-void	sort_less6(t_box *stack_a, t_box *stack_b, t_pushswap *ps)
+void	sort_less6(t_box *stack_a, t_box *stack_b, t_bunch *ps)
 {
 	t_sorting	sort;
 	long		i;

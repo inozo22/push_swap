@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 16:21:05 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 18:21:26 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_box	*make_dummy(void)
 	return (dummy);
 }
 
-t_box	*put_num(t_pushswap *ps)
+t_box	*put_num(t_bunch *ps)
 {
 	t_box	*dummy;
 	long	i;
@@ -70,7 +70,7 @@ t_box	*put_num(t_pushswap *ps)
 	return (dummy);
 }
 
-void	push_swap(int ac, char **av, t_pushswap *ps)
+void	push_swap(int ac, char **av, t_bunch *ps)
 {
 	t_box		*stack_a;
 	t_box		*stack_b;

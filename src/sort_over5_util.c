@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 16:51:10 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 18:21:41 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	disturb_check(t_box *stack_a, long cmd, t_sorting *sort)
 	return (false);
 }
 
-bool	b_left(t_box *stack_b, t_pushswap *ps)
+bool	b_left(t_box *stack_b, t_bunch *ps)
 {
 	t_box	*tmp;
 	long	start;
@@ -41,7 +41,7 @@ bool	b_left(t_box *stack_b, t_pushswap *ps)
 	return (false);
 }
 
-void	a_qsort(t_box *stack_a, t_box *stack_b, t_pushswap *ps, long size)
+void	a_qsort(t_box *stack_a, t_box *stack_b, t_bunch *ps, long size)
 {
 	long	i;
 
@@ -69,7 +69,7 @@ void	a_qsort(t_box *stack_a, t_box *stack_b, t_pushswap *ps, long size)
 	}
 }
 
-void	b_qsort(t_box *stack_a, t_box *stack_b, t_pushswap *ps, long size)
+void	b_qsort(t_box *stack_a, t_box *stack_b, t_bunch *ps, long size)
 {
 	long	i;
 	long	pivot;

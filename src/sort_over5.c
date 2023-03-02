@@ -6,13 +6,13 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 16:51:40 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 18:21:44 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-long	get_a_len(t_box *stack_a, t_pushswap *ps)
+long	get_a_len(t_box *stack_a, t_bunch *ps)
 {
 	long	ret;
 	long	max;
@@ -31,7 +31,7 @@ long	get_a_len(t_box *stack_a, t_pushswap *ps)
 	return (ret);
 }
 
-bool	stay_b(t_box *stack_b, t_pushswap *ps, long size)
+bool	stay_b(t_box *stack_b, t_bunch *ps, long size)
 {
 	ps->b++;
 	if (size == 1)
@@ -45,7 +45,7 @@ bool	stay_b(t_box *stack_b, t_pushswap *ps, long size)
 	return (false);
 }
 
-void	settle_top(t_box *stack_a, t_box *stack_b, t_pushswap *ps)
+void	settle_top(t_box *stack_a, t_box *stack_b, t_bunch *ps)
 {
 	long	i;
 
@@ -72,7 +72,7 @@ void	settle_top(t_box *stack_a, t_box *stack_b, t_pushswap *ps)
 	}
 }
 
-void	settle_half(t_box *stack_a, t_box *stack_b, t_pushswap *ps)
+void	settle_half(t_box *stack_a, t_box *stack_b, t_bunch *ps)
 {
 	long	i;
 	long	size_b;
@@ -101,7 +101,7 @@ void	settle_half(t_box *stack_a, t_box *stack_b, t_pushswap *ps)
 	}
 }
 
-void	sort_over5(t_box *stack_a, t_box *stack_b, t_pushswap *ps)
+void	sort_over5(t_box *stack_a, t_box *stack_b, t_bunch *ps)
 {
 	long	size;
 

@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 17:47:54 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 18:21:13 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_digit(char c)
 	return (1);
 }
 
-long	ps_atoi(char *str, t_pushswap *ps)
+long	ps_atoi(char *str, t_bunch *ps)
 {
 	long	ret;
 	long	sign;
@@ -48,7 +48,7 @@ long	ps_atoi(char *str, t_pushswap *ps)
 	return (ret);
 }
 
-void	check_dub_number(t_pushswap *ps)
+void	check_dub_number(t_bunch *ps)
 {
 	long	i;
 
@@ -60,7 +60,7 @@ void	check_dub_number(t_pushswap *ps)
 	}
 }
 
-void	get_id(t_pushswap *ps)
+void	get_id(t_bunch *ps)
 {
 	long	i;
 
@@ -73,7 +73,7 @@ void	get_id(t_pushswap *ps)
 	}
 }
 
-t_pushswap	*init_ps(int ac, char **av, t_pushswap *ps)
+t_bunch	*init_ps(int ac, char **av, t_bunch *ps)
 {
 	long		i;
 

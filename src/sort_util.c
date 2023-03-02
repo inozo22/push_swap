@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:47:19 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 16:28:05 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 18:21:48 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	stack_update(t_box *stack_a, t_box *stack_b, t_sorting *sort)
 	}
 }
 
-void	ans_join(t_pushswap *ps, t_sorting *sort)
+void	ans_join(t_bunch *ps, t_sorting *sort)
 {
 	long	i;
 

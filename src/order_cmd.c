@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 16:27:31 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 16:22:12 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 18:21:21 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ long	recover(long command)
 	return (command);
 }
 
-void	move_add_box(t_box *stack_a, t_box *stack_b, t_pushswap *ps, long cmd)
+void	move_add_box(t_box *stack_a, t_box *stack_b, t_bunch *ps, long cmd)
 {
 	if (cmd == SA)
 		cmd_swap(stack_a);

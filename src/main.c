@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:51 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 16:10:14 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/02 18:21:17 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	arg_nbr(char const *str, char c)
 
 int	main(int ac, char **av)
 {
-	t_pushswap	*ps;
+	t_bunch	*ps;
 
 	if (ac > ARGLIMIT)
 	{
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 		return (0);
 		ft_putchar_fd('\n', 1);
 	}
-	ps = (t_pushswap *)malloc(sizeof(t_pushswap));
+	ps = (t_bunch *)malloc(sizeof(t_bunch));
 	if (!ps)
 		exit(hollow_error());
 	if (ac == 2)
