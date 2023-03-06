@@ -47,6 +47,7 @@ void	combine_cmd(t_box *answer)
 	}	
 }
 
+//to reset previous movement 
 long	recover(long command)
 {
 	if (command == PA)
@@ -86,6 +87,7 @@ void	move_add_box(t_box *stack_a, t_box *stack_b, t_bunch *ps, long cmd)
 		cmd_reverse(stack_a);
 	else if (cmd == RRB)
 		cmd_reverse(stack_b);
+//after move, record the command
 	add_box(ps->answer, cmd);
 }
 

@@ -105,11 +105,13 @@ void	sort_over5(t_box *stack_a, t_box *stack_b, t_bunch *ps)
 {
 	long	size;
 
+//move a half of stack_a to stack_b
 	settle_half(stack_a, stack_b, ps);
 	while (ps->a != ps->size)
 	{
+	//check the stack_b length
 		size = stack_len(stack_b);
-		while (size > SORT_SIZE)
+		while (size > SORT_SIZE)//sort_size is 4
 		{
 			b_qsort(stack_a, stack_b, ps, size);
 			size = stack_len(stack_b);

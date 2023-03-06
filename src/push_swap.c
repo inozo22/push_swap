@@ -32,6 +32,7 @@ void	add_box(t_box *dummy, long num)
 	t_box	*tmp;
 
 	new = malloc(sizeof(t_box));
+//I think it would be a problem, because the ps and dummy will not be freed
 	if (!new)
 		exit (hollow_error());
 	new->value = num;
@@ -47,6 +48,7 @@ t_box	*make_dummy(void)
 	t_box	*dummy;
 
 	dummy = malloc(sizeof(t_box));
+//I think it would be a problem, because the ps will not be freed
 	if (!dummy)
 		exit(hollow_error());
 	dummy->value = -1;
