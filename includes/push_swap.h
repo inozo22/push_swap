@@ -6,7 +6,7 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:26 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 18:50:52 by nimai            ###   ########.fr       */
+/*   Updated: 2023/03/11 21:28:36 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,6 @@ typedef struct s_bunch
 	long		init[ARGLIMIT];
 	long		a;
 	long		b;
-	long		ans_ret;
-	long		ans_turn;
-	char		ans_next[5][10];
 	char		**strs;
 	long		len;
 }	t_bunch;
