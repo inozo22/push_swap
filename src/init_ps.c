@@ -77,6 +77,7 @@ t_bunch	*init_ps(int ac, char **av, t_bunch *ps)
 {
 	long		i;
 
+//check if I have done ft_split, if not, I have to put numbers from **av
 	if (!ps->strs)
 		ps->strs = av + 1;
 	ps->answer = make_dummy();
@@ -95,9 +96,13 @@ t_bunch	*init_ps(int ac, char **av, t_bunch *ps)
 	}
 	ps->a = 0;
 	ps->b = 0;
+//directory quicksort to know the position where should be
 	quick_sort(ps->n, 0, ps->size - 1, SORT_VALUE);
+//check comparing numbers before and behind after sorting
 	check_dub_number(ps);
+//Save the original value and assign an ID, ps->n[i].value = i;
 	get_id(ps);
+//quicksort to rearrange in the original order
 	quick_sort(ps->n, 0, ps->size - 1, SORT_ID);
 	return (ps);
 }

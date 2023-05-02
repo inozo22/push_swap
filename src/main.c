@@ -35,19 +35,22 @@ int	main(int ac, char **av)
 {
 	t_bunch	*ps;
 
+//when there are more than 500 arguments, return ERROR
 	if (ac > ARGLIMIT)
 	{
 		ft_putstr_fd("Error\n", STDERR);
 		return (0);
 	}
+//when there is no arguments, return nothing
 	if (ac < 2)
 	{
 		return (0);
-		ft_putchar_fd('\n', 1);
 	}
+//allocate memory for t_pushswap, to control ps->strs(memory that allocated in ft_split)
 	ps = (t_bunch *)malloc(sizeof(t_bunch));
 	if (!ps)
 		exit(hollow_error());
+//when the argument as a string (or one)
 	if (ac == 2)
 	{
 		ps->strs = ft_split(av[1], 32);

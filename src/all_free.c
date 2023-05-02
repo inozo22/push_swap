@@ -39,6 +39,7 @@ char	**strs_clear(char **tab, long i)
 
 void	all_free(t_box *stack_a, t_box *stack_b, t_bunch *ps)
 {
+	//to free a memory that allocated in ft_split
 	if (ps->len)
 		strs_clear(ps->strs, ps->len);
 	list_clear(ps->answer);

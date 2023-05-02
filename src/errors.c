@@ -12,14 +12,17 @@
 
 #include "../includes/push_swap.h"
 
+//error when doesn't have allocated memory
 long	hollow_error(void)
 {
 	ft_putstr_fd("Error\n", STDERR);
 	return (1);
 }
 
+//error when does have allocated memory with t_pushswap structure
 long	ps_error(t_bunch *ps)
 {
+//to avoid double free, I have to check if I have done ft_split
 	if (ps->len)
 		strs_clear(ps->strs, ps->len);
 	list_clear(ps->answer);
