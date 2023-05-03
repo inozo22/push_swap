@@ -6,16 +6,18 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:08:54 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 18:21:13 by nimai            ###   ########.fr       */
+/*   Updated: 2023/05/03 15:12:27 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	is_digit(char c)
 {
 	if (c < 48 || c > 57)
+	{
 		return (0);
+	}
 	return (1);
 }
 
@@ -41,7 +43,7 @@ long	ps_atoi(char *str, t_bunch *ps)
 		str++;
 	}
 	if (*str)
-		ps_error(ps);
+		exit(ps_error(ps));
 	ret = ret * sign;
 	if (ret < -2147483648 || ret > 2147483647)
 		exit(ps_error(ps));
@@ -77,7 +79,6 @@ t_bunch	*init_ps(int ac, char **av, t_bunch *ps)
 {
 	long		i;
 
-//check if I have done ft_split, if not, I have to put numbers from **av
 	if (!ps->strs)
 		ps->strs = av + 1;
 	ps->answer = make_dummy();
@@ -98,11 +99,11 @@ t_bunch	*init_ps(int ac, char **av, t_bunch *ps)
 	ps->b = 0;
 //directory quicksort to know the position where should be
 	quick_sort(ps->n, 0, ps->size - 1, SORT_VALUE);
-//check comparing numbers before and behind after sorting
+//check comparing numbers before and after sorting
 	check_dub_number(ps);
 //Save the original value and assign an ID, ps->n[i].value = i;
 	get_id(ps);
-//quicksort to rearrange in the original order
+//quicksort to re-sort in the original order
 	quick_sort(ps->n, 0, ps->size - 1, SORT_ID);
 	return (ps);
 }

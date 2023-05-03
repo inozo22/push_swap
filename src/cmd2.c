@@ -6,11 +6,11 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:03:53 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 15:57:34 by nimai            ###   ########.fr       */
+/*   Updated: 2023/05/02 14:23:42 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 bool	cmd_ss(t_box *stack_a, t_box *stack_b)
 {

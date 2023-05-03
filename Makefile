@@ -5,75 +5,125 @@
 #                                                     +:+ +:+         +:+      #
 #    By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/13 13:02:59 by nimai             #+#    #+#              #
-#    Updated: 2023/03/02 16:48:25 by nimai            ###   ########.fr        #
+#    Created: 2023/03/09 10:21:26 by nimai             #+#    #+#              #
+#    Updated: 2023/05/03 15:42:46 by nimai            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME			:= push_swap
+#------------------------------------------------#
+#   INGREDIENTS                                  #
+#------------------------------------------------#
+# LIBS        libraries to be used
+# LIBS_TARGET libraries to be built
+## INCS        header file locations
+## SRC_DIR     source directory
+# SRCS        source files
+## BUILD_DIR   build directory
+# OBJS        object files
+# DEPS        dependency files
+## CC          compiler
+# CFLAGS      compiler flags
+# CPPFLAGS    preprocessor flags
+# LDFLAGS     linker flags
+# LDLIBS      libraries name
 
-SRCDIR = ./src/
-SRC = \
-		all_free.c \
-		cmd1.c \
-		cmd2.c \
-		errors.c \
-		init_ps.c \
-		push_swap.c \
-		quick_sort.c \
-		sort_less6.c \
-		sort_over5.c \
-		sort_over5_2.c \
-		sort_over5_util.c \
-		sort_util.c \
-		order_cmd.c \
-		print_answer.c \
-		main.c
+LIBS			:= ft
+LIBS_TARGET		:= libft/libft.a 
 
-OBJDIR = ./obj/
-OBJ = $(addprefix $(OBJDIR), $(SRC:.c=.o))
+INCS			:= \
+					inc \
+					libft/inc \
 
-LIBDIR = ./libft
+SRC_DIR			:= src
+SRCS			:= \
+					all_free.c \
+					cmd1.c \
+					cmd2.c \
+					errors.c \
+					init_ps.c \
+					push_swap.c \
+					quick_sort.c \
+					sort_less6.c \
+					sort_over5.c \
+					sort_over5_2.c \
+					sort_over5_util.c \
+					sort_util.c \
+					order_cmd.c \
+					print_answer.c \
+					main.c
+SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g1
-#if add "-fsanitize=address", give me "0xbebebebebebebebe" instead of null
-#-g1 gives me a message like "Nothing to be done for 'all'"
+BUILD_DIR		:= .build
+OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+DEPS			:= $(OBJS:.o=.d)
 
-CLR_RMV		:= \033[0m
-RED		    := \033[1;31m
-GREEN		:= \033[1;32m
-YELLOW		:= \033[1;33m
-BLUE		:= \033[1;34m
-CYAN 		:= \033[1;36m
+CC				:= cc
+CFLAGS			:= -Wall -Wextra -Werror
+CPPFLAGS		:= $(addprefix -I,$(INCS)) -MMD -MP
+LDFLAGS			:= $(addprefix -L,$(dir $(LIBS_TARGET)))
+LDLIBS			:= $(addprefix -l,$(LIBS))
+#------------------------------------------------#
+#   UTENSILS                                     #
+#------------------------------------------------#
+# RM        force remove
+# MAKEFLAGS make flags
+# DIR_DUP   duplicate directory tree
 
-all: $(OBJDIR) $(NAME)
+RM				:= rm -f
+RF				:= rm -rf
+MAKEFLAGS		+= --silent --no-print-directory
+DIR_DUP			= mkdir -p $(@D)
 
-$(OBJDIR):
-	@mkdir -p $@
+#------------------------------------------------#
+#   RECIPES                                      #
+#------------------------------------------------#
+# all       default goal
+# $(NAME)   link .o -> archive
+# $(LIBS)   build libraries
+# %.o       compilation .c -> .o
+# clean     remove .o
+# fclean    remove .o + binary
+# re        remake default goal
+# run       run the program
+# info      print the default goal recipe
 
-$(OBJDIR)%.o : $(SRCDIR)%.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+all: $(NAME)
 
-$(NAME): $(OBJ)
-	@echo "$(BLUE)--Compiling ${CLR_RMV} ${YELLOW}$(NAME) ${CLR_RMV}..."
-	@make --directory $(LIBDIR)
-#	$(CC) $(CFLAGS) -I../includes -L $(LIBDIR) -lft -o $@ $^#with this line, doesn't work in codespase
-	$(CC) $(CFLAGS) -I../includes -o $@ $^ -L $(LIBDIR) -lft
-	@echo "$(GREEN)$(NAME) created[0m ✔️"
-#Name the static library with -lft#
+$(NAME): $(OBJS) $(LIBS_TARGET)
+	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
+	$(info CREATED $(NAME))
+
+$(LIBS_TARGET):
+	$(MAKE) -C $(@D)
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	$(DIR_DUP)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+	$(info CREATED $@)
+
+-include $(DEPS)
 
 clean:
-	@rm -rf $(OBJDIR)
-	@make clean --directory $(LIBDIR)
-	@ echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)objs ✔️"
+	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
+	$(RM) $(OBJS) $(DEPS)
 
 fclean: clean
-	@make fclean --directory $(LIBDIR)
-	@rm -rf ./push_swap.dSYM
-	@rm -f $(NAME)
-	@echo "$(RED)Deleted $(YELLOW)$(NAME) $(CLR_RMV)binary ✔️"
+	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
+	$(RM) $(NAME)
+	$(RF) ./push_swap.dSYM
+	$(RF) $(BUILD_DIR)
 
-re: fclean all
+re:
+	$(MAKE) fclean
+	$(MAKE) all
 
-.PHONY: all, clean, fclean, re
+info-%:
+	$(MAKE) --dry-run --always-make $* | grep -v "info"
+
+#------------------------------------------------#
+#   SPEC                                         #
+#------------------------------------------------#
+
+.PHONY: all clean fclean re
+.SILENT:

@@ -6,11 +6,11 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:39:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 18:21:44 by nimai            ###   ########.fr       */
+/*   Updated: 2023/05/03 15:16:38 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 long	get_a_len(t_box *stack_a, t_bunch *ps)
 {
@@ -111,7 +111,7 @@ void	sort_over5(t_box *stack_a, t_box *stack_b, t_bunch *ps)
 	{
 	//check the stack_b length
 		size = stack_len(stack_b);
-		while (size > SORT_SIZE)//sort_size is 4
+		while (size > SORT_SIZE)
 		{
 			b_qsort(stack_a, stack_b, ps, size);
 			size = stack_len(stack_b);

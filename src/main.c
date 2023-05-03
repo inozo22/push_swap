@@ -6,11 +6,11 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:51 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 18:21:17 by nimai            ###   ########.fr       */
+/*   Updated: 2023/05/03 15:13:50 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	arg_nbr(char const *str, char c)
 {
@@ -46,7 +46,7 @@ int	main(int ac, char **av)
 	{
 		return (0);
 	}
-//allocate memory for t_pushswap, to control ps->strs(memory that allocated in ft_split)
+//allocate memory for t_bunch, to control ps->strs
 	ps = (t_bunch *)malloc(sizeof(t_bunch));
 	if (!ps)
 		exit(hollow_error());
