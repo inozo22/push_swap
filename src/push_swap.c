@@ -6,11 +6,11 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:02:37 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 18:21:26 by nimai            ###   ########.fr       */
+/*   Updated: 2023/05/03 15:15:08 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 bool	is_sorted(t_box *stack_a)
 {
@@ -32,7 +32,6 @@ void	add_box(t_box *dummy, long num)
 	t_box	*tmp;
 
 	new = malloc(sizeof(t_box));
-//I think it would be a problem, because the ps and dummy will not be freed
 	if (!new)
 		exit (hollow_error());
 	new->value = num;
@@ -48,7 +47,6 @@ t_box	*make_dummy(void)
 	t_box	*dummy;
 
 	dummy = malloc(sizeof(t_box));
-//I think it would be a problem, because the ps will not be freed
 	if (!dummy)
 		exit(hollow_error());
 	dummy->value = -1;

@@ -6,11 +6,11 @@
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 09:14:02 by nimai             #+#    #+#             */
-/*   Updated: 2023/03/02 18:21:37 by nimai            ###   ########.fr       */
+/*   Updated: 2023/05/02 14:24:39 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	get_head_a(t_box *stack_a, t_box *stack_b, t_sorting *sort, long turn)
 {

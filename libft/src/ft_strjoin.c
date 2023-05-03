@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nimai <nimai@student.42urduliz.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 13:33:11 by nimai             #+#    #+#             */
-/*   Updated: 2023/05/03 15:12:01 by nimai            ###   ########.fr       */
+/*   Created: 2022/12/14 11:34:54 by nimai             #+#    #+#             */
+/*   Updated: 2023/05/01 11:10:07 by nimai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-//error when doesn't have allocated memory
-long	hollow_error(void)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	ft_putstr_fd("Error\n", STDERR);
-	return (1);
-}
+	size_t	len;
+	char	*pmem;
 
-//error when does have allocated memory with t_bunch structure
-long	ps_error(t_bunch *ps)
-{
-	if (ps->len)
-		strs_clear(ps->strs, ps->len);
-	list_clear(ps->answer);
-	free(ps);
-	ft_putstr_fd("Error\n", STDERR);
-	return (1);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	pmem = malloc(len + 1);
+	if (pmem == NULL)
+		return (NULL);
+	ft_strlcpy(pmem, s1, ft_strlen(s1) + 1);
+	ft_strlcat(pmem, s2, len + 1);
+	return (pmem);
 }
