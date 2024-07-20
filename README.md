@@ -1,5 +1,5 @@
 <h1>
-	push_swap (Finished)
+	push_swap (Final grade 100/100)
 </h1>  
 
 <p align="center">
@@ -11,7 +11,7 @@
 </p>
 
 <p>
-	<b>As fast as you can.</b><br>
+	<b>Sort numbers as fast as you can.</b><br>
 </p>
 
 ## Making programs
